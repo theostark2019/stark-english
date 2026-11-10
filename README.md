@@ -23,11 +23,11 @@ Use the existing Supabase project's public client URL and publishable key. Never
 ## Modules
 
 - `/dashboard`: student dashboard and assigned lessons
-- `/lessons/[id]`: save responses and upload evidence files to a private student attempt
+- `/lessons/[id]`: green, integrated student lesson with original episode reading/tasks, autosaved answers, voice/file evidence, one-button submission and visible teacher feedback
 - `/teacher/reviews`: eligible teacher queue
 - `/teacher/reviews/[id]`: claim, assess, request revision, finalize
 - `/admin/assignments`: admin teacher registration, teacher group creation, and assignment
 
 Read [Architecture](docs/ARCHITECTURE.md) for the data flow, access control, release blockers and test plan.
 
-> **Release guard:** The application has been reconstructed from the accessible deployed structure and new components. It has not replaced or been linked to the production project. The approved Agriculture 101 static lesson remains unchanged, and its interactive fields have not yet been auto-connected to these submissions.
+> **Release guard:** The feature branch includes a single green lesson workspace that renders the existing `episodes.lesson_body` and writes responses to the shared Supabase submission tables. The separate static Agriculture 101 preview remains an unchanged reference, not the student submission path. The reconstructed app has not replaced the original Stark Learning production project. End-to-end authenticated student/teacher tests must pass before replacing production.

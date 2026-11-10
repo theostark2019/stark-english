@@ -26,7 +26,7 @@ function mimeFor(type:string){
  const mime=type.split(';')[0].trim().toLowerCase();
  return mime==='audio/mp4'?'audio/mp4':mime==='audio/mpeg'?'audio/mpeg':mime==='audio/wav'?'audio/wav':'audio/webm';
 }
-export function IntegratedAgricultureLesson({attempt,initialResponses,initialFiles,reviews}:{attempt:Attempt;initialResponses:ResponseRow[];initialFiles:FileRow[];reviews:ReviewRow[]}){
+export function IntegratedAgricultureLesson({attempt,initialResponses,initialFiles,reviews,episodeCode,episodeTitle}:{attempt:Attempt;initialResponses:ResponseRow[];initialFiles:FileRow[];reviews:ReviewRow[];episodeCode:string;episodeTitle:string}){
  const frame=useRef<HTMLIFrameElement|null>(null);
  const [ready,setReady]=useState(false);
  const [status,setStatus]=useState(attempt.status);
@@ -44,7 +44,9 @@ export function IntegratedAgricultureLesson({attempt,initialResponses,initialFil
  const [failedAudio,setFailedAudio]=useState<string[]>([]);
  const [capturing,setCapturing]=useState<string[]>([]);
  const editable=status==='draft'||status==='revision_requested';
- const prefix=attempt.id+':ag101-';
+ const lessonSlug=episodeCode==='AGRO-A1-02'?'ag102':'ag101';
+ const lessonFile=episodeCode==='AGRO-A1-02'?'agribiology.html':'agriculture101.html';
+ const prefix=attempt.id+':'+lessonSlug+'-';
 
  useEffect(()=>{
   // Keep local drafts isolated by attempt ID, and restore canonical cloud records
@@ -162,7 +164,7 @@ export function IntegratedAgricultureLesson({attempt,initialResponses,initialFil
    setError('Complete the final written response in First Production and Transfer before submitting.');
    return;
   }
-  if(!window.confirm('Submit your Agriculture 101 activities, writing and recordings for teacher feedback?'))return;
+  if(!window.confirm('Submit your '+episodeTitle+' activities, writing and recordings for teacher feedback?'))return;
   setSubmitting(true);
   const ok=await persist(latest,true);
   if(!ok||lastSaveFailed.current){setSubmitting(false);return}
@@ -174,11 +176,11 @@ export function IntegratedAgricultureLesson({attempt,initialResponses,initialFil
  return <div className="agro-integrated">
   <div className="agro-integrated-head">
    <Link href="/dashboard" aria-label="Return to dashboard">← My learning</Link>
-   <strong>🌱 Agriculture 101</strong>
+   <strong>🌱 {episodeTitle}</strong>
    <span aria-live="polite">{saving?'Saving answers…':uploading?'Uploading audio…':status==='finalized'?'Reviewed':status==='submitted'||status==='claimed'?'Submitted':savedCount?'Answers saved':'Autosave on'}</span>
   </div>
   <div className="agro-integrated-stage">
-   {ready?<iframe title="Agriculture 101 — interactive activities" ref={frame} src={'/lessons/agriculture101.html?attempt='+encodeURIComponent(attempt.id)} className="agro-integrated-frame" allow="microphone" />:<div className="agro-integrated-loading">Opening your lesson…</div>}
+   {ready?<iframe title={episodeTitle+' — interactive activities'} ref={frame} src={'/lessons/'+lessonFile+'?attempt='+encodeURIComponent(attempt.id)} className="agro-integrated-frame" allow="microphone" />:<div className="agro-integrated-loading">Opening your lesson…</div>}
   </div>
   {reviews.length>0&&<section className="agro-integrated-feedback" aria-label="Teacher feedback">
    <h2>Teacher feedback</h2>

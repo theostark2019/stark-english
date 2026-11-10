@@ -256,5 +256,32 @@
     "I can report visible differences without guessing a cause.",
     "I can adapt a biological explanation to another listener."
   ],
-  "speechify": {}
+  "speechify": {
+    "A1": "https://app.speechify.com/soundbite/2a7fd2c5b9c6478295bcb9c6ca4d04a3?utm_source=chatgpt_app&utm_medium=punchout",
+    "A2": "https://app.speechify.com/soundbite/76916c59ced24d779d0a86a70126e0e2?utm_source=chatgpt_app&utm_medium=punchout",
+    "B1": "https://app.speechify.com/soundbite/f255dd79ac3b48ebac580dc235ab1fd3?utm_source=chatgpt_app&utm_medium=punchout",
+    "B2": "https://app.speechify.com/soundbite/a30d81eb353f4b7ab82a2ed79efa1abc?utm_source=chatgpt_app&utm_medium=punchout"
+  },
+  "readingQuestions": {
+    "A1": [
+      "Where is Marina visiting today?",
+      "What do roots absorb from the soil?",
+      "How are the two bean plants different?"
+    ],
+    "A2": [
+      "Which conditions help a seed begin to germinate?",
+      "Why does the team avoid naming the cause of yellow leaves immediately?",
+      "Name one role of microorganisms in the soil."
+    ],
+    "B1": [
+      "How is an observation different from a diagnosis?",
+      "Name two conditions the greenhouse team checks.",
+      "What do roots and leaves do for a plant?"
+    ],
+    "B2": [
+      "How is photosynthesis different from mineral nutrient uptake?",
+      "Why can waterlogging reduce root function?",
+      "What information should be gathered before recommending treatment?"
+    ]
+  }
 }

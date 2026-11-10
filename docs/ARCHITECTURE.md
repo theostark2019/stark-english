@@ -13,8 +13,8 @@ The learning platform uses **one shared submission infrastructure** for every co
 ## Submission workflow
 
 1. Admin registers active teacher profiles and assigns lessons to enrolled students.
-2. Student opens `/lessons/[assignment_id]` and starts a draft attempt.
-3. Student writes answers and uploads recordings; answers are saved per `activity_key` and `field_key`.
+2. Student opens `/lessons/[assignment_id]`, which automatically creates a draft when needed, and sees the green lesson workspace.
+3. Student reads the original material from `episodes.lesson_body`, practices in the corresponding lesson tab, writes responses (autosaved to `lesson_responses`), and uploads audio/files to the private attempt.
 4. Student submits the attempt with `submit_lesson_attempt`. A complete response is required by the database function.
 5. Eligible teacher finds it in `/teacher/reviews` and atomically claims it with `claim_lesson_attempt`.
 6. Teacher reviews evidence against the per-episode assessment schema and sends feedback using `review_lesson_attempt`.
@@ -30,7 +30,7 @@ Authorization is enforced in the database, not by choosing a link.
 
 ## Known limitations before student release
 
-- The approved **Agriculture 101** interactive lesson remains a separate static Vercel page. Its browser-local fields do **not** automatically synchronize with authenticated `lesson_responses`. Students currently attach or copy outputs into Stark Learning. Connecting the original fields requires editing that lesson's source.
+- The approved static **Agriculture 101** page remains separate as a reference only. The student-facing green LMS lesson renders pedagogical content already stored in `episodes.lesson_body` and saves its own fields directly; no copy/paste through a white submission form is required. This is a rebuilt native interface, not a byte-for-byte migration of every control on the original static page; test all exercises and mobile behaviors before release.
 - Credits and `mastery` updates are **not yet** performed automatically when a teacher finalizes the lesson.
 - Teacher group creation is available; group membership administration is not yet built.
 - This repository is a reconstructed, independent Next.js baseline based on the available deployed project structure. It has **not** been verified to contain every file of the existing production app; do not overwrite production with it.

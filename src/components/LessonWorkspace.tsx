@@ -2,6 +2,7 @@
 import {useEffect,useRef,useState} from 'react';
 import {browserClient} from '@/lib/supabase/browser';
 import {StudentSubmission} from '@/components/StudentSubmission';
+import {IntegratedAgricultureLesson} from '@/components/IntegratedAgricultureLesson';
 type Attempt={id:string;assignment_id:string;student_id:string;episode_id:string;status:string};
 type Activity={activity_key:string;activity_type:string;position:number;config:Record<string,unknown>};
 type Episode={title:string;code:string;level:string;description?:string;lesson_body?:string};
@@ -24,6 +25,7 @@ export function LessonWorkspace({assignment,studentId,episode,initialAttempt,act
   started.current=true;
   void start();
  },[initialAttempt]);
+ if(attempt&&episode?.code==='AGRO-A1-01')return <IntegratedAgricultureLesson attempt={attempt} initialResponses={responses} initialFiles={files} reviews={reviews}/>;
  if(attempt)return <StudentSubmission attempt={attempt} episode={episode} activities={activities} initialResponses={responses} initialFiles={files} reviews={reviews}/>;
  return <div className="unified-lesson">
   <header className="unified-hero"><p>STARK LEARNING · {episode?.code||'LESSON'}</p><h1>{episode?.title||'Your lesson'}</h1><p>Your answers and teacher feedback will stay in this lesson.</p></header>

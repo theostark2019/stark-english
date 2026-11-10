@@ -5,6 +5,21 @@ type Attempt={id:string;student_id:string;status:string;claimed_by:string|null;e
 type Response={id:string;activity_key:string;field_key:string;response:Record<string,unknown>};
 type FileRow={id:string;activity_key:string;storage_path:string;mime_type:string};
 type Criterion={key:string;label:string;scale:number[]};
+const activityOrder=['reading','vocabulary','substitution','word_families','first_production','transfer','feedback'];
+function responseLabel(field:string){
+ return field==='28'?'Flashcard familiarity (28 words)':field==='first-final'||field==='transfer-final'?'Final written performance':field.replaceAll('-',' ').replaceAll('_',' ');
+}
+function responseDisplay(row:Response){
+ const raw=Object.prototype.hasOwnProperty.call(row.response,'value')?row.response.value:row.response.text;
+ if(Array.isArray(raw)&&row.field_key==='28'){
+  const classified=raw.filter(x=>x!==null&&x!==undefined).length;
+  return classified+'/28 vocabulary cards classified; '+raw.filter(x=>x===0).length+' marked confident';
+ }
+ if(typeof raw==='boolean')return raw?'Yes':'No';
+ if(typeof raw==='string'||typeof raw==='number')return String(raw);
+ return JSON.stringify(raw,null,2);
+}
+
 export function TeacherReview({attempt,responses,files,currentTeacher,criteria,studentName,episodeTitle}:{attempt:Attempt;responses:Response[];files:FileRow[];currentTeacher:string;criteria:Criterion[];studentName:string;episodeTitle:string}){
  const [status,setStatus]=useState(attempt.status),[claimedBy,setClaimedBy]=useState(attempt.claimed_by);
  const [feedback,setFeedback]=useState(''),[scores,setScores]=useState<Record<string,number>>({}),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
@@ -26,7 +41,7 @@ export function TeacherReview({attempt,responses,files,currentTeacher,criteria,s
  }
  return <section className="panel"><a href="/teacher/reviews">← Review queue</a><h1>{episodeTitle} · Review</h1><p><strong>Student:</strong> {studentName}</p><p><span className="tag">{status.replaceAll('_',' ')}</span></p>
   <h2>Evidence and submissions</h2>{responses.length===0&&<p>No written evidence saved.</p>}
-  <div className="responses">{responses.map(r=><section className="response" key={r.id}><strong>{r.activity_key.replaceAll('_',' ')} · {r.field_key.replaceAll('_',' ')}</strong><p style={{whiteSpace:'pre-wrap'}}>{typeof r.response.text==='string'?r.response.text:JSON.stringify(r.response,null,2)}</p></section>)}</div>
+  <div className="responses">{responses.slice().sort((a,b)=>activityOrder.indexOf(a.activity_key)-activityOrder.indexOf(b.activity_key)||a.field_key.localeCompare(b.field_key)).map(r=><section className="response" key={r.id}><strong>{r.activity_key.replaceAll('_',' ')} · {responseLabel(r.field_key)}</strong><p style={{whiteSpace:'pre-wrap'}}>{responseDisplay(r)}</p></section>)}</div>
   <h2>Audio and attached evidence</h2>{!files.length&&<p>No files submitted.</p>}{files.map(f=><p key={f.id}><button className="secondary" onClick={()=>open(f.storage_path)}>Open {f.activity_key.replaceAll('_',' ')} · {f.mime_type}</button></p>)}
   {status==='submitted'&&<button className="gold" disabled={busy} onClick={claim}>Claim submission</button>}
   {status==='claimed'&&claimedBy===currentTeacher&&<div className="panel"><h2>Assess the performance</h2><p>Evaluate the observable language performance. Give specific, actionable feedback.</p>

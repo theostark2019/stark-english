@@ -4,7 +4,7 @@ import {browserClient} from '@/lib/supabase/browser';
 import {StudentSubmission} from '@/components/StudentSubmission';
 type Attempt={id:string;assignment_id:string;student_id:string;episode_id:string;status:string};
 type Activity={activity_key:string;activity_type:string;position:number;config:Record<string,unknown>};
-export function LessonWorkspace({assignment,studentId,episode,initialAttempt,activities,responses,files,reviews}:{assignment:{id:string;episode_id:string};studentId:string;episode:{title:string;code:string;level:string}|null;initialAttempt:Attempt|null;activities:Activity[];responses:any[];files:any[];reviews:any[]}){
+export function LessonWorkspace({assignment,studentId,episode,initialAttempt,activities,responses,files,reviews}:{assignment:{id:string;episode_id:string};studentId:string;episode:{title:string;code:string;level:string;description?:string;lesson_body?:string}|null;initialAttempt:Attempt|null;activities:Activity[];responses:any[];files:any[];reviews:any[]}){
  const [attempt,setAttempt]=useState(initialAttempt),[loading,setLoading]=useState(false),[error,setError]=useState('');
  async function start(){
   setLoading(true);

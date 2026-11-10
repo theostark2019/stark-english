@@ -130,13 +130,13 @@ export function IntegratedAgricultureLesson({attempt,initialResponses,initialFil
  useEffect(()=>{
   function receive(event:MessageEvent){
    if(event.origin!==window.location.origin||event.source!==frame.current?.contentWindow)return;
-   const data=event.data as BridgeSync|BridgeAudio|{type:string;attemptId:string;activity?:string};
+   const data=event.data as {type:string;attemptId:string;fields?:Fields;blob?:Blob;activity?:string};
    if(!data||data.attemptId!==attempt.id)return;
    if(data.type==='STARK_LESSON_SYNC'){
     if(editable&&data.fields&&typeof data.fields==='object')void persist(data.fields);
    }else if(data.type==='STARK_LESSON_AUDIO'){
     if(editable&&data.blob instanceof Blob&&data.blob.size>0)
-     void uploadAudio(data.activity,data.blob);
+     void uploadAudio(data.activity||'first',data.blob);
    }else if(data.type==='STARK_LESSON_AUDIO_ERROR'){
     setError('Could not capture your recording. Please record it again.');
    }

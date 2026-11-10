@@ -69,7 +69,7 @@ export default async function Dashboard({searchParams}:{searchParams:Promise<{q?
   <section className="stream-kpis" aria-label="Your learning indicators">
     <div className="stream-kpi"><span className="stream-kpi-icon">◷</span><div><h2>Hours invested</h2><strong>{confirmedHours} <small>h</small></strong><p>Teacher-confirmed lesson credit</p></div><span className="stream-kpi-mark">↗</span></div>
     <div className="stream-kpi"><span className="stream-kpi-icon">▤</span><div><h2>Content acquired</h2><strong>{completed.length} <small>lessons</small></strong><p>{ass.length} assigned · {catalog.length} in curriculum</p></div><span className="stream-kpi-mark">▥</span></div>
-    <div className="stream-kpi"><span className="stream-kpi-icon">◎</span><div><h2>Efficiency</h2><strong>{reviewed.length?'Tracking':'—'}</strong><p>Based on reviewed competencies</p></div><span className="stream-kpi-mark">◌</span></div>
+    <div className="stream-kpi"><span className="stream-kpi-icon">◎</span><div><h2>Efficiency</h2><strong>{'—'}</strong><p>Based on reviewed competencies</p></div><span className="stream-kpi-mark">◌</span></div>
     <div className="stream-kpi"><span className="stream-kpi-icon">↗</span><div><h2>Effectiveness</h2><strong>{reviewed.length?Math.round(reviewed.reduce((sum,x)=>sum+x.score,0)/reviewed.length/4*100)+'%':'—'}</strong><p>{reviewed.length?'Average assessed mastery':'Awaiting your first assessment'}</p></div><span className="stream-kpi-mark">▦</span></div>
   </section>
   <div className="stream-layout">
@@ -85,7 +85,7 @@ export default async function Dashboard({searchParams}:{searchParams:Promise<{q?
     <section className="stream-surface" id="continuar">
      <div className="stream-heading"><h2 className="stream-section-title"><span>▷</span> Continue learning</h2><a href="#series">View all ›</a></div>
      <div className="stream-continue">
-      {working.slice(0,3).map((x,i)=><Link className="stream-episode" key={x.assignment.id} href={'/lessons/'+x.assignment.id}><span className={'stream-thumb tone-'+i}>{arts[i]}</span><span className="stream-episode-body"><small>{x.episode?.series_name} · {x.episode?.episode_level}</small><strong>{x.episode?.episode_title}</strong><span className="stream-progress"><i style={{width:x.attempt?'45%':'7%'}}/></span><em>{labelStatus(x.attempt?.status)}</em></span><span className="stream-play">▶</span></Link>)}
+      {working.slice(0,3).map((x,i)=><Link className="stream-episode" key={x.assignment.id} href={'/lessons/'+x.assignment.id}><span className={'stream-thumb tone-'+i}>{arts[i]}</span><span className="stream-episode-body"><small>{x.episode?.series_name} · {x.episode?.episode_level}</small><strong>{x.episode?.episode_title}</strong><em>{labelStatus(x.attempt?.status)}</em></span><span className="stream-play">▶</span></Link>)}
       {!working.length&&<div className="stream-empty">{completed.length?'Your assigned lessons are complete. Well done!':'Your next lesson will appear here when assigned.'}</div>}
      </div>
     </section>
@@ -117,8 +117,8 @@ export default async function Dashboard({searchParams}:{searchParams:Promise<{q?
     <section className="stream-surface stream-cefr">
       <h2 className="stream-section-title"><span>◈</span> CEFR expectation</h2>
       <p className="stream-tiny">Your assessed English level</p>
-      <h3>{reviewed.length?'Assessment in progress':'Awaiting assessment'}</h3>
-      <div className="stream-cefr-track">{['A1','A2','B1','B2','C+'].map((level,i)=><div key={level}><span className={i===0&&reviewed.length?'active':''}>{i===0&&reviewed.length?'✓':'·'}</span><small>{level}</small></div>)}</div>
+      <h3>{'Awaiting CEFR placement'}</h3>
+      <div className="stream-cefr-track">{['A1','A2','B1','B2','C+'].map((level,i)=><div key={level}><span className="">{'·'}</span><small>{level}</small></div>)}</div>
       <div className="stream-objective"><span>◎</span><div><strong>Next objective</strong><p>Complete your assigned lesson and receive teacher feedback to track your CEFR progress.</p></div></div>
     </section>
     <section className="stream-surface stream-profile"><p className="stream-kicker">LEARNING RECORD</p><strong>{ass.length} assignments</strong><p>{attempts.filter(a=>a.status==='submitted'||a.status==='claimed').length} awaiting review</p>{teacher?.active&&<Link href="/teacher/reviews">Open teacher workspace ›</Link>}{profile?.role==='admin'&&<Link href="/admin/assignments">Manage assignments ›</Link>}</section>

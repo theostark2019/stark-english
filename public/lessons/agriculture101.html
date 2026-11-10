@@ -17,6 +17,7 @@
   const button=e&&e.closest?e.closest('[data-stop]'):null;
   if(button){
    const activity=button.getAttribute('data-stop');
+   window.parent.postMessage({type:'STARK_LESSON_AUDIO_PENDING',attemptId:id,activity},window.location.origin);
    let tries=0;
    function capture(){
     const node=document.getElementById(activity+'-audio');

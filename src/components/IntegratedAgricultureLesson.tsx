@@ -42,6 +42,7 @@ export function IntegratedAgricultureLesson({attempt,initialResponses,initialFil
  const uploadFail=useRef<Map<string,Blob>>(new Map());
  const lastSaveFailed=useRef(false);
  const [failedAudio,setFailedAudio]=useState<string[]>([]);
+ const [capturing,setCapturing]=useState<string[]>([]);
  const editable=status==='draft'||status==='revision_requested';
  const prefix=attempt.id+':ag101-';
 
@@ -134,10 +135,14 @@ export function IntegratedAgricultureLesson({attempt,initialResponses,initialFil
    if(!data||data.attemptId!==attempt.id)return;
    if(data.type==='STARK_LESSON_SYNC'){
     if(editable&&data.fields&&typeof data.fields==='object')void persist(data.fields);
+   }else if(data.type==='STARK_LESSON_AUDIO_PENDING'){
+    if(data.activity)setCapturing(keys=>keys.includes(data.activity!)?keys:[...keys,data.activity!]);
    }else if(data.type==='STARK_LESSON_AUDIO'){
+    setCapturing(keys=>keys.filter(k=>k!==data.activity));
     if(editable&&data.blob instanceof Blob&&data.blob.size>0)
      void uploadAudio(data.activity||'first',data.blob);
    }else if(data.type==='STARK_LESSON_AUDIO_ERROR'){
+    setCapturing(keys=>keys.filter(k=>k!==data.activity));
     setError('Could not capture your recording. Please record it again.');
    }
   }
@@ -146,7 +151,7 @@ export function IntegratedAgricultureLesson({attempt,initialResponses,initialFil
  },[attempt.id,editable,persist]);
 
  async function submit(){
-  if(!editable||submitting||uploading>0)return;
+  if(!editable||submitting||uploading>0||capturing.length>0)return;
   setError('');setMessage('');
   if(uploadFail.current.size){
    setError('Retry failed audio uploads before submitting.');
@@ -173,7 +178,7 @@ export function IntegratedAgricultureLesson({attempt,initialResponses,initialFil
    <span aria-live="polite">{saving?'Saving answers…':uploading?'Uploading audio…':status==='finalized'?'Reviewed':status==='submitted'||status==='claimed'?'Submitted':savedCount?'Answers saved':'Autosave on'}</span>
   </div>
   <div className="agro-integrated-stage">
-   {ready?<iframe title="Agriculture 101 — interactive activities" ref={frame} src={'/lessons/agriculture101.html?attempt='+encodeURIComponent(attempt.id)} className="agro-integrated-frame" />:<div className="agro-integrated-loading">Opening your lesson…</div>}
+   {ready?<iframe title="Agriculture 101 — interactive activities" ref={frame} src={'/lessons/agriculture101.html?attempt='+encodeURIComponent(attempt.id)} className="agro-integrated-frame" allow="microphone" />:<div className="agro-integrated-loading">Opening your lesson…</div>}
   </div>
   {reviews.length>0&&<section className="agro-integrated-feedback" aria-label="Teacher feedback">
    <h2>Teacher feedback</h2>
@@ -182,10 +187,10 @@ export function IntegratedAgricultureLesson({attempt,initialResponses,initialFil
   <div className="agro-integrated-toolbar">
    <div className="agro-integrated-meta">
     <strong>{status==='finalized'?'Lesson finalized':status==='submitted'||status==='claimed'?'Awaiting teacher review':'Your lesson saves as you work'}</strong>
-    <span>{savedCount} responses · {files.length} recording(s) or attachment(s){uploading?' · Uploading…':''}</span>
+    <span>{savedCount} responses · {files.length} recording(s) or attachment(s){uploading?' · Uploading…':capturing.length?' · Preparing audio…':''}</span>
    </div>
    {failedAudio.length>0&&<button type="button" className="agro-integrated-retry" disabled={uploading>0||submitting} onClick={()=>{failedAudio.forEach(k=>{const b=uploadFail.current.get(k);if(b)void uploadAudio(k,b)})}}>Retry audio upload</button>}
-   {editable&&<button type="button" className="agro-integrated-submit" disabled={!ready||saving||submitting||uploading>0} onClick={()=>void submit()}>{submitting?'Submitting…':'Submit lesson →'}</button>}
+   {editable&&<button type="button" className="agro-integrated-submit" disabled={!ready||saving||submitting||uploading>0||capturing.length>0} onClick={()=>void submit()}>{submitting?'Submitting…':'Submit lesson →'}</button>}
    {(status==='submitted'||status==='claimed'||status==='finalized')&&<span className="agro-integrated-complete">{status==='finalized'?'✓ Finalized':'✓ Sent to teacher'}</span>}
   </div>
   {(error||message)&&<div className={error?'agro-integrated-alert error':'agro-integrated-alert'} role="status">{error||message}</div>}

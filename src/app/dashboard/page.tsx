@@ -1,0 +1,13 @@
+export const dynamic='force-dynamic';
+import Link from 'next/link';
+import {requireUser} from '@/lib/auth';
+export default async function Dashboard(){
+ const {sb,user}=await requireUser();
+ const [{data:profile},{data:assigned},{data:enrollments},{data:teacher}]=await Promise.all([
+ sb.from('profiles').select('full_name,role').eq('id',user.id).maybeSingle(),
+ sb.from('lesson_assignments').select('id,episode_id,due_at').eq('student_id',user.id).order('created_at',{ascending:false}).limit(100),
+ sb.from('enrollments').select('course_id').eq('student_id',user.id),
+ sb.from('teacher_profiles').select('user_id,active').eq('user_id',user.id).maybeSingle()]);
+ const links=assigned||[];const ids=links.map(x=>x.episode_id);const {data:episodes}=ids.length?await sb.from('episodes').select('id,title,code,level').in('id',ids):{data:[]};const map=new Map((episodes||[]).map(e=>[e.id,e]));const {data:attempts}=links.length?await sb.from('lesson_attempts').select('id,assignment_id,status').in('assignment_id',links.map(a=>a.id)):{data:[]};
+ return <><p className="eyebrow">Student dashboard</p><h1>Welcome{profile?.full_name?' back, '+profile.full_name:''}</h1><p className="muted">Active courses: {enrollments?.length||0} · Assigned lessons: {links.length}</p><section className="grid">{links.map(x=>{const e=map.get(x.episode_id);const a=(attempts||[]).find(z=>z.assignment_id===x.id);return <article className="panel" key={x.id}><span className="tag">{e?.level||'Lesson'}</span><h2>{e?.title||'Assigned lesson'}</h2><p className="muted">{e?.code||''} {x.due_at?'· Due '+new Date(x.due_at).toLocaleDateString():''}</p><Link className="button" href={'/lessons/'+x.id}>{a?'Resume lesson':'Start lesson'}</Link>{a&&<p><span className="tag">{a.status}</span></p>}</article>})}</section>{!links.length&&<section className="panel"><p>No lessons assigned yet. Your teacher can assign a lesson from the administration panel.</p></section>}{teacher?.active&&<p><Link className="button secondary" href="/teacher/reviews">Teacher review queue</Link></p>}{profile?.role==='admin'&&<p><Link className="button secondary" href="/admin/assignments">Manage assignments</Link></p>}</>
+}

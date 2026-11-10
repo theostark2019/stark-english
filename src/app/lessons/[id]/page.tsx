@@ -7,7 +7,7 @@ export default async function Lesson({params}:{params:Promise<{id:string}>}){
  const {data:assignment}=await sb.from('lesson_assignments').select('id,episode_id').eq('id',id).eq('student_id',user.id).maybeSingle();
  if(!assignment)notFound();
  const [{data:episode},{data:attempts},{data:activities}]=await Promise.all([
-  sb.from('episodes').select('title,code,level').eq('id',assignment.episode_id).maybeSingle(),
+  sb.from('episodes').select('title,code,level,description,lesson_body').eq('id',assignment.episode_id).maybeSingle(),
   sb.from('lesson_attempts').select('id,assignment_id,student_id,episode_id,status,created_at').eq('assignment_id',id).order('created_at',{ascending:false}).limit(1),
   sb.from('lesson_activity_definitions').select('activity_key,activity_type,position,config').eq('episode_id',assignment.episode_id).order('position')
  ]);

@@ -25,7 +25,7 @@ export function LessonWorkspace({assignment,studentId,episode,initialAttempt,act
   started.current=true;
   void start();
  },[initialAttempt]);
- if(attempt&&episode?.code==='AGRO-A1-01')return <IntegratedAgricultureLesson attempt={attempt} initialResponses={responses} initialFiles={files} reviews={reviews}/>;
+ if(attempt&&(episode?.code==='AGRO-A1-01'||episode?.code==='AGRO-A1-02'))return <IntegratedAgricultureLesson attempt={attempt} episodeCode={episode.code} episodeTitle={episode.title} initialResponses={responses} initialFiles={files} reviews={reviews}/>;
  if(attempt)return <StudentSubmission attempt={attempt} episode={episode} activities={activities} initialResponses={responses} initialFiles={files} reviews={reviews}/>;
  return <div className="unified-lesson">
   <header className="unified-hero"><p>STARK LEARNING · {episode?.code||'LESSON'}</p><h1>{episode?.title||'Your lesson'}</h1><p>Your answers and teacher feedback will stay in this lesson.</p></header>

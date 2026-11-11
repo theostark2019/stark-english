@@ -18,3 +18,12 @@ export async function requireAdmin(){
  if(profile?.role!=='admin') redirect('/dashboard');
  return {sb,user};
 }
+
+export async function requireSupervisor(){
+ const {sb,user}=await requireUser();
+ const {data:staff}=await sb.from('staff_profiles')
+ .select('user_id,hierarchy,active,job_title,biography,specializations,cefr_levels,manager_id')
+ .eq('user_id',user.id).maybeSingle();
+ if(!staff?.active) redirect('/dashboard');
+ return {sb,user,staff};
+}

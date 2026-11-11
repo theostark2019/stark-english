@@ -384,3 +384,47 @@ insert into public.teacher_profiles(user_id,active)
 select sp.user_id,true from public.staff_profiles sp
 where sp.hierarchy='Principal' and sp.active
 on conflict(user_id) do nothing;
+
+
+-- Repair previously observed cross-episode policy mistakes before enabling new staff access.
+drop policy if exists attempt_student_create on public.lesson_attempts;
+create policy attempt_student_create on public.lesson_attempts
+for insert to authenticated with check (
+ student_id=auth.uid() and status='draft' and submitted_at is null
+ and claimed_by is null and claimed_at is null and finalized_at is null
+ and exists(select 1 from public.lesson_assignments a where a.id=assignment_id
+   and a.student_id=auth.uid() and a.episode_id=lesson_attempts.episode_id)
+ and (assessment_schema_id is null or exists(
+   select 1 from public.lesson_assessment_schemas s
+   where s.id=assessment_schema_id and s.episode_id=lesson_attempts.episode_id
+ ))
+);
+drop policy if exists activity_student_read on public.lesson_activity_definitions;
+create policy activity_student_read on public.lesson_activity_definitions
+for select to authenticated using (
+ exists(select 1 from public.lesson_assignments a
+ where a.student_id=auth.uid() and a.episode_id=lesson_activity_definitions.episode_id)
+);
+drop policy if exists rubric_student_read on public.lesson_assessment_schemas;
+create policy rubric_student_read on public.lesson_assessment_schemas
+for select to authenticated using (
+ exists(select 1 from public.lesson_assignments a
+ where a.student_id=auth.uid() and a.episode_id=lesson_assessment_schemas.episode_id)
+);
+create policy rubric_teacher_review_read on public.lesson_assessment_schemas
+for select to authenticated using (
+ exists(select 1 from public.lesson_attempts a
+ where a.episode_id=lesson_assessment_schemas.episode_id
+ and app_private.can_review_attempt(a.id,auth.uid()))
+);
+create policy supervised_student_profile_read on public.profiles
+for select to authenticated using (
+ app_private.can_supervise_student(id,1)
+ or exists(select 1 from public.lesson_attempts a where a.student_id=profiles.id
+  and app_private.can_review_attempt(a.id,auth.uid()))
+);
+create policy staff_episode_review_read on public.episodes
+for select to authenticated using (
+ exists(select 1 from public.lesson_attempts a where a.episode_id=episodes.id
+  and app_private.can_review_attempt(a.id,auth.uid()))
+);

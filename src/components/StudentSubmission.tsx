@@ -53,7 +53,7 @@ function readingQuestions(section:string){
 function glossary(section:string){
  const output:{word:string;meaning:string}[]=[];
  for(const line of section.split('\n')){
-  if(!/^\*\*(People|Places|Crops|Actions):\*\*/.test(line))continue;
+  if(!/^\*\*(People|Places|Crops|Actions|Materials|Equipment|Tools|Measures|Numbers|Units|Animals|Body|Safety|Weather|Inputs|Conditions|Roles|Items|Places and spaces|Objects|Processes|Describing words):\*\*/.test(line))continue;
   const rest=line.replace(/^\*\*[^*]+:\*\*\s*/,'');
   for(const pair of rest.split(';')){
    const index=pair.indexOf('=');
@@ -65,7 +65,8 @@ function glossary(section:string){
 function selectIntro(code:string){
  return code.startsWith('AGRO')?'AGROENGLISH':code.startsWith('MED')?'MED-ENGLISH':'STARK LEARNING';
 }
-function examplePlaceholder(key:string){
+function examplePlaceholder(key:string, config?:Record<string,unknown>){
+ if(typeof config?.response_placeholder==='string')return config.response_placeholder;
  if(key==='reading')return 'Answer the reading-check questions here.';
  if(key==='vocabulary')return 'Use three new words in sentences about agriculture or your work.';
  if(key==='substitution')return 'Write your new sentences using the substitution patterns.';
@@ -235,7 +236,7 @@ export function StudentSubmission({attempt,episode,activities,initialResponses,i
     {section&&key!=='reading'&&/(\*\*Key:|\*\*Answers:|\*\*Model for comparison|\*\*Possible model)/.test(section)&&<button className="unified-soft" type="button" onClick={()=>setReveal(r=>({...r,[key]:!r[key]}))}>{reveal[key]?'Hide model / answer key':'Reveal model / answer key'}</button>}
     <div className="unified-evidence">
      <label htmlFor={'answer-'+key}>{key==='feedback'?'My reflection / revision note':key==='first_production'||key==='transfer'?'My writing':'My answers / practice'}</label>
-     <textarea id={'answer-'+key} rows={key==='first_production'||key==='transfer'?8:5} placeholder={examplePlaceholder(key)} value={drafts[key]||''} disabled={!editable||busy} onChange={e=>changeDraft(key,e.target.value)}/>
+     <textarea id={'answer-'+key} rows={key==='first_production'||key==='transfer'?8:5} placeholder={examplePlaceholder(key,current.config)} value={drafts[key]||''} disabled={!editable||busy} onChange={e=>changeDraft(key,e.target.value)}/>
      <div className="unified-row">
       {editable&&<button className="unified-soft" type="button" disabled={busy||saving||!dirty[key]} onClick={()=>void saveOne(key,draftsRef.current[key]||'')}>{saving?'Saving…':'Save now'}</button>}
       {editable&&<label className="unified-upload">Attach audio or document<input type="file" accept="audio/webm,audio/mp4,audio/mpeg,audio/wav,.mp3,.m4a,.pdf,.txt" disabled={busy||recording} onChange={e=>{const f=e.target.files?.[0];if(f)void upload(key,f);e.target.value='';}}/></label>}

@@ -195,3 +195,10 @@ body:has(.agro-integrated){background:#0c1912}
  .supervision-assignment{grid-template-columns:1fr 1fr}
  .supervision-assignment>span:last-child{grid-column:1/-1}
 }
+
+
+.supervision-due-editor{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.supervision-due-editor input{max-width:205px;border:1px solid #d4dce6;border-radius:6px;padding:6px;color:#284056;background:#f9fbfd;font-size:.76rem}
+.supervision-due-editor button{border:0;background:#e2c874;color:#1b3145;border-radius:6px;padding:7px 10px;font-size:.73rem;font-weight:700;cursor:pointer}
+.supervision-due-editor button:disabled{opacity:.5;cursor:not-allowed}
+.supervision-due-editor small{color:#64748b;flex-basis:100%}

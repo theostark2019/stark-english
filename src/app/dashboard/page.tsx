@@ -121,7 +121,7 @@ export default async function Dashboard({searchParams}:{searchParams:Promise<{q?
       <div className="stream-cefr-track">{['A1','A2','B1','B2','C+'].map((level,i)=><div key={level}><span className="">{'·'}</span><small>{level}</small></div>)}</div>
       <div className="stream-objective"><span>◎</span><div><strong>Next objective</strong><p>Complete your assigned lesson and receive teacher feedback to track your CEFR progress.</p></div></div>
     </section>
-    <section className="stream-surface stream-profile"><p className="stream-kicker">LEARNING RECORD</p><strong>{ass.length} assignments</strong><p>{attempts.filter(a=>a.status==='submitted'||a.status==='claimed').length} awaiting review</p>{teacher?.active&&<Link href="/teacher/reviews">Open teacher workspace ›</Link>}{profile?.role==='admin'&&<Link href="/admin/assignments">Manage assignments ›</Link>}</section>
+    <section className="stream-surface stream-profile"><p className="stream-kicker">LEARNING RECORD</p><strong>{ass.length} assignments</strong><p>{attempts.filter(a=>a.status==='submitted'||a.status==='claimed').length} awaiting review</p>{teacher?.active&&<Link href="/teacher">Open teacher workspace ›</Link>}{profile?.role==='admin'&&<Link href="/admin/assignments">Manage assignments ›</Link>}</section>
    </aside>
   </div>
  </div>;

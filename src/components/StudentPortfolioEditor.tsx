@@ -72,6 +72,33 @@ function EditSection({studentId,section,title,description,fields,rank,userRank,i
   {message&&<p role="status" className={'supervision-notice'+(message.startsWith('Save failed')?' error':'')}>{message}</p>}
  </section>;
 }
+
+function DueDateEditor({assignment,editable}:{assignment:Assignment;editable:boolean}){
+ const router=useRouter();
+ const fmt=(iso:string|null)=>{
+  if(!iso)return '';
+  const d=new Date(iso);
+  const p=(n:number)=>String(n).padStart(2,'0');
+  return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+'T'+p(d.getHours())+':'+p(d.getMinutes());
+ };
+ const [date,setDate]=useState(fmt(assignment.dueAt));
+ const [busy,setBusy]=useState(false),[message,setMessage]=useState('');
+ const locked=assignment.status==='submitted'||assignment.status==='claimed'||assignment.status==='revision_requested'||assignment.status==='finalized';
+ async function saveDue(){
+  setBusy(true);setMessage('');
+  const {error}=await browserClient().rpc('set_supervision_homework_due',{p_assignment:assignment.id,
+   p_due:date?new Date(date).toISOString():null});
+  setMessage(error?'Unable to set due date: '+error.message:'Due date updated.');
+  setBusy(false);if(!error)router.refresh();
+ }
+ if(!editable||locked)return <span>{assignment.dueAt?'Due '+new Date(assignment.dueAt).toLocaleString():'No deadline'}</span>;
+ return <div className="supervision-due-editor">
+  <input type="datetime-local" aria-label={'Due date for '+assignment.title} value={date} onChange={e=>setDate(e.target.value)}/>
+  <button type="button" disabled={busy} onClick={()=>void saveDue()}>{busy?'…':'Save due'}</button>
+  {message&&<small role="status">{message}</small>}
+ </div>;
+}
+
 export function StudentPortfolioEditor({studentId,role,name,metrics,stats,detail}:{studentId:string;role:string;name:string;
  metrics:ReturnType<typeof import('@/lib/supervision').indicators>;stats:SupervisionRow;detail:Details}){
  const rank=roleRank(role),assignments=detail.assignments||[];
@@ -104,7 +131,7 @@ export function StudentPortfolioEditor({studentId,role,name,metrics,stats,detail
    <div className="supervision-assignments">{assignments.length?assignments.map(a=><div key={a.id} className="supervision-assignment">
     <div><strong>{a.title}</strong><small>{a.code}</small></div>
     <span>{a.status?.replaceAll('_',' ')||'Not started'}</span>
-    <span>{a.dueAt?'Due '+new Date(a.dueAt).toLocaleDateString('en-GB'):'No deadline'}</span>
+    <DueDateEditor assignment={a} editable={rank>=3}/>
    </div>):<p>No lesson assignments yet.</p>}</div>
    <p className="supervision-footnote">School records are stored separately from the reference Notion page. These fields do not synchronize automatically with Notion.</p>
   </section>

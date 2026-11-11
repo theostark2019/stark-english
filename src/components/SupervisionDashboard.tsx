@@ -27,8 +27,10 @@ export function SupervisionDashboard({rows,staffRole}:{rows:SupervisionRow[];sta
  const kpis=[
   {label:'Enrolled students',value:String(enrolled),hint:'Students visible to your role',icon:'♟'},
   {label:'Hours invested',value:sum(r=>r.metrics.hours).toFixed(1)+'h',hint:'Confirmed learning credit',icon:'◷'},
-  {label:'Lessons completed',value:String(sum(r=>Number(r.completed_count||0))),hint:'Teacher-finalized lessons',icon:'✓'},
-  {label:'Average mastery',value:assessed.length?Math.round(sum(r=>r.metrics.mastery??0)/assessed.length)+'%':'—',hint:'Only assessed competencies',icon:'◎'},
+  {label:'Content acquired',value:String(sum(r=>Number(r.completed_count||0))),hint:'Teacher-finalized lessons',icon:'✓'},
+  {label:'Efficiency',value:sum(r=>Number(r.assigned_count||0))?Math.round(sum(r=>Number(r.completed_count||0))/sum(r=>Number(r.assigned_count||0))*100)+'%':'—',hint:'Finalized / assigned lessons',icon:'↗'},
+  {label:'Average streak',value:(enrolled?sum(r=>r.metrics.streak)/enrolled:0).toFixed(1),hint:'Consecutive learning days',icon:'♨'},
+  {label:'Effectiveness',value:assessed.length?Math.round(sum(r=>r.metrics.mastery??0)/assessed.length)+'%':'—',hint:'Only assessed mastery',icon:'◎'},
   {label:'Active in 30 days',value:String(enhanced.filter(r=>r.metrics.active30>0).length),hint:'At least one saved learning day',icon:'◉'},
   {label:'Homework assiduity',value:homework.length?Math.round(homework.reduce((x,r)=>x+Number(r.homework_ontime_count),0)/homework.reduce((x,r)=>x+Number(r.homework_due_count),0)*100)+'%':'—',hint:'Submitted on time / homework due',icon:'▣'},
   {label:'Needs follow-up',value:String(enhanced.filter(r=>r.metrics.flag!=='On track').length),hint:'Inactivity or missed homework',icon:'!'}

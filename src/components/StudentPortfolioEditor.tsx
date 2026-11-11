@@ -99,8 +99,8 @@ function DueDateEditor({assignment,editable}:{assignment:Assignment;editable:boo
  </div>;
 }
 
-export function StudentPortfolioEditor({studentId,role,name,metrics,stats,detail}:{studentId:string;role:string;name:string;
- metrics:ReturnType<typeof import('@/lib/supervision').indicators>;stats:SupervisionRow;detail:Details}){
+export function StudentPortfolioEditor({studentId,role,name,metrics,stats,detail,fileCreatedAt}:{studentId:string;role:string;name:string;
+ metrics:ReturnType<typeof import('@/lib/supervision').indicators>;stats:SupervisionRow;detail:Details;fileCreatedAt:string|null}){
  const rank=roleRank(role),assignments=detail.assignments||[];
  const metricCards=[
   ['Hours invested',metrics.hours.toFixed(1)+'h','Confirmed credit'],
@@ -115,7 +115,7 @@ export function StudentPortfolioEditor({studentId,role,name,metrics,stats,detail
    <p>{label}</p><strong>{value}</strong><small>{hint}</small>
   </div>)}</div>
   <div className="supervision-student-summary">
-   <div><strong>Student:</strong> {name}</div><div><strong>Enrolled:</strong> {stats.enrolled_at?new Date(stats.enrolled_at).toLocaleDateString('en-GB'):'—'}</div>
+   <div><strong>Student:</strong> {name}</div><div><strong>Enrolled:</strong> {stats.enrolled_at?new Date(stats.enrolled_at).toLocaleDateString('en-GB'):'—'}</div><div><strong>File created:</strong> {fileCreatedAt?new Date(fileCreatedAt).toLocaleDateString('en-GB'):'—'}</div>
    <div><strong>Mentors:</strong> {(detail.staff||[]).map(s=>s.name+' ('+s.hierarchy+')').join(', ')||'Unassigned'}</div>
    <div><strong>Last learning activity:</strong> {stats.last_activity||'No activity logged'}</div>
    {detail.notionPageUrl&&<div><a href={detail.notionPageUrl} target="_blank" rel="noopener noreferrer">Open related Notion record ↗</a></div>}

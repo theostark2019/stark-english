@@ -103,3 +103,95 @@ body:has(.agro-integrated){background:#0c1912}
  .agro-integrated-meta span{font-size:.68rem}
  .agro-integrated-submit{padding:11px 13px;font-size:.8rem}
 }
+
+
+/* Student supervision — navy / mustard Stark Learning staff experience */
+.supervision-home{max-width:1460px;margin:0 auto;padding:12px 12px 72px;color:#172536}
+.supervision-hero{background:linear-gradient(115deg,#101e37,#1b3356 76%,#273a59);color:#f5f7fb;border-radius:20px;
+ padding:clamp(22px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin:0 0 22px;box-shadow:0 15px 35px #101e3723}
+.supervision-hero h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.12;color:#fff;margin:10px 0 14px}
+.supervision-hero p{color:#d7e0ec;margin:0;max-width:650px;line-height:1.65}
+.supervision-eyebrow{font-size:.73rem!important;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#ad862a!important;margin:0 0 5px!important}
+.supervision-hero .supervision-eyebrow{color:#f3d280!important}
+.supervision-role{display:inline-block;margin-top:18px;border:1px solid #b99d65;padding:7px 12px;border-radius:8px;color:#f9e7a6;font-size:.8rem;font-weight:700}
+.supervision-back{color:#9b7428;display:inline-block;font-size:.86rem;font-weight:700;margin:8px 0;text-decoration:none}
+.supervision-hero .supervision-back{color:#f3d280}
+.supervision-hero-actions{display:flex;flex-direction:column;gap:10px}
+.supervision-hero-actions a{color:#f5edd4;text-decoration:none;display:block;background:#fff1;border:1px solid #dbe6ee55;border-radius:9px;padding:10px 15px;font-size:.88rem;font-weight:700;white-space:nowrap}
+.supervision-hero-actions a:hover{background:#fff2}
+.supervision-kpis{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:11px;margin:15px 0 24px}
+.supervision-kpi{border:1px solid #e1e5ea;border-radius:14px;background:#fff;padding:17px 14px;min-height:130px;box-shadow:0 8px 22px #17253607}
+.supervision-kpi-glyph{float:right;font-size:1.2rem;color:#ab852e}
+.supervision-kpi p{color:#657285;font-size:.77rem;font-weight:700;margin:0 0 12px}
+.supervision-kpi strong{display:block;color:#162b46;font-size:clamp(1.38rem,2.4vw,2.15rem);font-weight:800;line-height:1.2}
+.supervision-kpi small{display:block;font-size:.68rem;color:#718096;line-height:1.4;margin-top:10px}
+.supervision-section{background:#fff;border:1px solid #dfe4e9;border-radius:16px;padding:clamp(17px,2vw,27px);margin:19px 0;box-shadow:0 8px 24px #17253608}
+.supervision-section-heading{display:flex;align-items:start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.supervision-section-heading h2{font-size:1.32rem;color:#152940;margin:4px 0}
+.supervision-section-heading p:not(.supervision-eyebrow){color:#64748b;font-size:.88rem;margin:3px 0}
+.supervision-count{border-radius:8px;background:#f0f3f6;padding:8px 11px;color:#55657a;font-size:.8rem;font-weight:700}
+.supervision-filters{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:10px;margin:0 0 18px}
+.supervision-filters label,.supervision-field{display:flex;flex-direction:column;gap:7px;font-size:.74rem;color:#69788a;font-weight:700}
+.supervision-filters input,.supervision-filters select,.supervision-field input:not([type=checkbox]),.supervision-field textarea,.supervision-field select{border:1px solid #ccd5df!important;border-radius:8px!important;
+ background:#f9fbfd!important;color:#1d3148!important;padding:11px 12px!important;font:inherit!important;font-size:.88rem!important;min-height:43px;width:100%;box-sizing:border-box}
+.supervision-filters input:focus,.supervision-filters select:focus,.supervision-field input:focus,.supervision-field textarea:focus,.supervision-field select:focus{outline:2px solid #d1b35c;outline-offset:1px}
+.supervision-table-wrap{overflow-x:auto}
+.supervision-table{width:100%;border-collapse:collapse;min-width:790px}
+.supervision-table th{text-transform:uppercase;text-align:left;letter-spacing:.07em;font-size:.63rem;font-weight:800;color:#8490a1;background:#f6f8fa;padding:13px 12px}
+.supervision-table td{padding:15px 12px;border-bottom:1px solid #eef0f4;font-size:.86rem;color:#27394f;vertical-align:middle}
+.supervision-table tr:last-child td{border-bottom:0}
+.supervision-table tr:hover td{background:#fbfcfe}
+.supervision-student-name{color:#112b4c;font-weight:800;text-decoration:none;font-size:.9rem}
+.supervision-student-name:hover{text-decoration:underline}
+.supervision-sub{color:#788699;font-size:.72rem;font-weight:400;margin-top:4px;line-height:1.5}
+.supervision-table td strong{color:#152c49}
+.supervision-table td strong small{font-size:.71rem;color:#8792a2;font-weight:500}
+.supervision-meter{width:115px;max-width:100%;height:6px;border-radius:7px;background:#edf0f2;overflow:hidden;margin:7px 0 2px}
+.supervision-meter span{display:block;background:#b79337;height:100%;border-radius:7px}
+.supervision-state{display:inline-block;font-size:.72rem;font-weight:700;border-radius:50px;padding:6px 10px;white-space:nowrap}
+.supervision-state.okay{background:#e9f3ea;color:#426b47}
+.supervision-state.attention{background:#fff0e4;color:#995520}
+.supervision-view{color:#967022;font-size:.78rem;font-weight:800;text-decoration:none;white-space:nowrap}
+.supervision-empty{padding:30px;text-align:center;color:#8792a0}
+.supervision-footnote{font-size:.76rem;line-height:1.65;color:#7e8996;max-width:1100px;margin:20px 7px}
+.supervision-student-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px;border:1px solid #dbe4ef;border-radius:12px;background:#f8fafc;padding:18px;margin:18px 0;font-size:.82rem;color:#4c6079}
+.supervision-student-summary a{color:#947124}
+.supervision-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 18px;margin:15px 0 20px}
+.supervision-field.wide{grid-column:1 / -1}
+.supervision-field span{color:#495d73;font-weight:700}
+.supervision-field small{color:#8190a0;font-weight:400;font-size:.7rem}
+.supervision-field input[type=checkbox]{width:20px;height:20px;accent-color:#9a7728}
+.supervision-check{font-weight:700;font-size:.85rem;color:#45586b;display:flex;align-items:center;gap:10px}
+.supervision-check input{width:18px;height:18px;accent-color:#aa842e}
+.supervision-save{display:inline-flex;align-items:center;justify-content:center;padding:10px 20px;border:0;border-radius:9px;background:#d6b55d;color:#14253a;font-weight:800;font-size:.84rem;cursor:pointer}
+.supervision-save:hover{background:#ebcf79}
+.supervision-save:disabled{opacity:.5;cursor:not-allowed}
+.supervision-notice{margin:13px 0;padding:12px;border:1px solid #b2d8b4;border-radius:8px;background:#ecf7ed;color:#366141;font-weight:700;font-size:.84rem}
+.supervision-notice.error{border-color:#e5bdba;background:#fff3f1;color:#9f4f43}
+.supervision-assignments{border:1px solid #e3e8ef;border-radius:10px;overflow:hidden}
+.supervision-assignment{display:grid;grid-template-columns:1.5fr 1fr 1fr;align-items:center;gap:12px;padding:12px 15px;border-bottom:1px solid #edf0f3;font-size:.8rem;color:#607187}
+.supervision-assignment:last-child{border:0}
+.supervision-assignment strong{font-size:.86rem;color:#203950}
+.supervision-assignment small{display:block;color:#94a1af;margin-top:2px}
+.supervision-role-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.supervision-role-card{background:white;border:1px solid #e0e6ec;border-radius:14px;padding:19px;min-height:160px}
+.supervision-role-card h2{color:#1a314f;margin:5px 0 7px;font-size:1.23rem}
+.supervision-role-card p{font-size:.81rem;line-height:1.55;color:#6e7d8e;margin:5px 0 15px}
+.supervision-role-card small{color:#96732a;font-size:.71rem;font-weight:700}
+.supervision-rank{color:#b19142;font-size:.77rem;font-weight:800}
+@media(max-width:1100px){.supervision-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:700px){
+ .supervision-home{padding:0 0 50px}
+ .supervision-hero{border-radius:12px;padding:22px 19px}
+ .supervision-hero-actions{width:100%;flex-direction:row;flex-wrap:wrap}
+ .supervision-hero-actions a{font-size:.75rem;padding:8px 9px}
+ .supervision-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .supervision-kpi{min-height:112px;padding:14px 12px}
+ .supervision-kpi strong{font-size:1.58rem}
+ .supervision-filters,.supervision-form-grid,.supervision-student-summary,.supervision-role-grid{grid-template-columns:1fr}
+ .supervision-field.wide{grid-column:auto}
+ .supervision-role-card{min-height:0}
+ .supervision-section{padding:16px 12px}
+ .supervision-assignment{grid-template-columns:1fr 1fr}
+ .supervision-assignment>span:last-child{grid-column:1/-1}
+}

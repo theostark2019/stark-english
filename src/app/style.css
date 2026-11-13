@@ -202,3 +202,73 @@ body:has(.agro-integrated){background:#0c1912}
 .supervision-due-editor button{border:0;background:#e2c874;color:#1b3145;border-radius:6px;padding:7px 10px;font-size:.73rem;font-weight:700;cursor:pointer}
 .supervision-due-editor button:disabled{opacity:.5;cursor:not-allowed}
 .supervision-due-editor small{color:#64748b;flex-basis:100%}
+
+
+/* Student file · pedagogical goals, milestones, lesson assignments and feedback */
+.learning-file-nav{display:flex;align-items:center;gap:7px;flex-wrap:wrap;background:#f4f6f9;
+ border:1px solid #e1e6ed;border-radius:11px;padding:8px 11px;margin:18px 0}
+.learning-file-nav a{font-size:.78rem;font-weight:740;color:#566982;padding:10px 12px;border-radius:7px;text-decoration:none}
+.learning-file-nav a:hover,.learning-file-nav a:focus-visible{background:#fff;color:#182c48}
+.learning-record-section{scroll-margin-top:16px}
+.learning-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0 22px}
+.learning-summary>div{background:#f7f9fb;border:1px solid #e6ecf2;border-radius:10px;padding:15px 16px}
+.learning-summary strong{font-size:1.48rem;letter-spacing:-.02em;color:#233b59;display:block;line-height:1.3}
+.learning-summary span{font-size:.73rem;color:#718199;font-weight:650;line-height:1.35}
+.learning-form{padding:19px;border:1px solid #d7e0ea;border-radius:13px;background:#f7fafb;margin:15px 0 20px}
+.learning-form .supervision-form-grid{margin:4px 0 18px}
+.learning-filter{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 17px}
+.learning-filter button{background:transparent;color:#61738d;border:1px solid #d6e0e8;
+ border-radius:25px;padding:8px 15px;font-size:.77rem;font-weight:740;cursor:pointer}
+.learning-filter button.current{background:#1e3552;color:#fff;border-color:#1e3552}
+.learning-goals-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.learning-goal-card{border:1px solid #dce4ed;border-radius:13px;padding:19px;background:white;min-width:0}
+.learning-goal-card.completed{background:#f9fcf9;border-color:#cbdccc}
+.learning-goal-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:9px}
+.learning-domain{font-size:.69rem;text-transform:uppercase;letter-spacing:.055em;font-weight:800;color:#996f25}
+.learning-goal-state{font-size:.71rem;font-weight:750;color:#395c8a}
+.learning-goal-state.achieved{color:#3b7452}
+.learning-goal-state.paused{color:#8a7a63}
+.learning-goal-card h3{color:#1d344e;font-size:1.08rem;line-height:1.4;margin:13px 0 8px}
+.learning-goal-description{font-size:.82rem;line-height:1.57;color:#586d83;margin:7px 0 15px;white-space:pre-wrap}
+.learning-goal-dates{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.7rem;color:#79889b;margin:14px 0}
+.learning-goal-dates strong{color:#36734f}
+.learning-goal-progress{margin:16px 0 8px}
+.learning-goal-progress>div:first-child{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#60738b;font-size:.76rem}
+.learning-goal-progress strong{color:#2b435f}
+.learning-goal-track{background:#e8edf1;height:8px;border-radius:15px;overflow:hidden;margin-top:8px}
+.learning-goal-track span{display:block;height:100%;background:#bb9a43;border-radius:15px}
+.learning-goal-card.completed .learning-goal-track span{background:#458761}
+.learning-linked{font-size:.75rem;color:#62738a;line-height:1.6;border-top:1px solid #edf0f4;padding-top:12px}
+.learning-history{font-size:.75rem;color:#536985;border-top:1px solid #edf0f4;margin:14px 0;padding-top:12px}
+.learning-history summary{cursor:pointer;font-weight:800;color:#344e6b;list-style:revert}
+.learning-history-event{border-left:2px solid #d5b86b;margin:10px 0 12px;padding:4px 0 4px 12px}
+.learning-history-event span,.learning-history-event small{font-size:.68rem;color:#8a9bb1;display:block}
+.learning-history-event strong{display:block;margin:3px 0;color:#304b69}
+.learning-history-event p{margin:5px 0;line-height:1.6;white-space:pre-wrap}
+.learning-goal-actions{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+.learning-goal-actions button{border:1px solid #d4dee8;border-radius:8px;background:#f5f7fa;color:#38516e;font-size:.76rem;font-weight:780;padding:9px 11px;cursor:pointer}
+.learning-goal-actions button:disabled{opacity:.55;cursor:not-allowed}
+.learning-evidence-editor{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:15px;padding:15px;
+ border:1px solid #d6e3d9;background:#f9fcfa;border-radius:10px}
+.learning-evidence-editor label{display:flex;flex-direction:column;gap:5px;font-size:.73rem;font-weight:750;color:#536780}
+.learning-evidence-editor label input,.learning-evidence-editor select,.learning-evidence-editor textarea{
+ min-height:39px;padding:9px 10px;font:inherit;font-size:.82rem;background:white;border:1px solid #c8d6df;border-radius:7px;color:#263d56;width:100%;max-width:100%}
+.learning-evidence-editor label span{font-size:.69rem;font-weight:500;color:#78889b}
+.learning-evidence-editor .learning-wide{grid-column:1/-1}
+.learning-evidence-editor button{justify-self:start}
+.learning-evidence-editor .supervision-notice{grid-column:1/-1;margin:0}
+.learning-no-goals{background:#f8fafb;border:1px dashed #cbd8e2;border-radius:10px}
+.learning-no-goals strong{display:block;color:#3c536c;font-size:.97rem}
+.learning-no-goals p{font-size:.8rem;line-height:1.55;max-width:540px;margin:8px auto 0}
+.learning-shortcut{font-size:.82rem;color:#657a91;line-height:1.65}
+.learning-feedback-entry{border:1px solid #e2e8ee;border-radius:10px;padding:15px 17px;margin:10px 0}
+.learning-feedback-entry>div{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.85rem}
+.learning-feedback-entry strong{color:#314b69}
+.learning-feedback-entry span{font-size:.71rem;color:#8897a9}
+.learning-feedback-entry p{font-size:.83rem;line-height:1.62;white-space:pre-wrap;color:#455c76;margin:11px 0}
+.learning-feedback-entry small{font-size:.73rem;color:#9a772e}
+@media(max-width:850px){.learning-goals-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.learning-summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .learning-goal-card{padding:15px}.learning-evidence-editor{grid-template-columns:1fr}
+ .learning-evidence-editor .learning-wide{grid-column:auto}
+ .learning-file-nav a{padding:9px 8px;font-size:.72rem}}

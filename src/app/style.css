@@ -272,3 +272,22 @@ body:has(.agro-integrated){background:#0c1912}
  .learning-goal-card{padding:15px}.learning-evidence-editor{grid-template-columns:1fr}
  .learning-evidence-editor .learning-wide{grid-column:auto}
  .learning-file-nav a{padding:9px 8px;font-size:.72rem}}
+
+
+/* Notion-staged student dataset, visible only to senior authorized school staff */
+.notion-import-banner{border:1px solid #d9d1b5;background:#f8f6ed;border-radius:13px;
+ padding:17px 21px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin:15px 0 22px}
+.notion-import-banner strong{font-size:1.03rem;color:#293c55}
+.notion-import-banner p{font-size:.81rem;max-width:770px;line-height:1.58;color:#68758a;margin:6px 0 0}
+.notion-import-banner a{font-size:.86rem;font-weight:800;white-space:nowrap;color:#7e5d18;text-decoration:none}
+.notion-import-banner a:hover{text-decoration:underline}
+.notion-registry-metrics{grid-template-columns:repeat(4,minmax(0,1fr))}
+.notion-registry-filters{grid-template-columns:2fr 1fr 1.3fr}
+.notion-long-cell{max-width:250px;font-size:.79rem!important;line-height:1.5;overflow-wrap:anywhere}
+.notion-student-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px;margin:0}
+.notion-student-fields>div{border-bottom:1px solid #ecf0f4;padding:13px 5px;min-width:0}
+.notion-student-fields dt{font-size:.73rem;font-weight:750;color:#738399;margin:0 0 5px}
+.notion-student-fields dd{margin:0;color:#30465f;font-size:.87rem;line-height:1.55;overflow-wrap:anywhere;white-space:pre-wrap}
+@media(max-width:720px){.notion-registry-filters,.notion-student-fields{grid-template-columns:1fr}
+.notion-registry-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+.notion-import-banner{padding:15px}}

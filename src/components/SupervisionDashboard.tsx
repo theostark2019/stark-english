@@ -42,7 +42,7 @@ export function SupervisionDashboard({rows,staffRole,registryCount=0}:{rows:Supe
     <p>Follow engagement, evidence and learning progress across your authorized students.</p>
     <span className="supervision-role">{staffRole} · {new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})}</span>
    </div>
-   <div className="supervision-hero-actions">{registryCount>0&&<Link href="/teacher/imported">Notion: {registryCount} alunos →</Link>}<Link href="/teacher/staff">Staff directory →</Link><Link href="/teacher/profile">My staff profile →</Link><Link href="/teacher/reviews">Teacher reviews →</Link></div>
+   <div className="supervision-hero-actions">{registryCount>0&&<Link href="/teacher/imported">Notion: {registryCount} alunos →</Link>}<Link href="/teacher/staff">Staff directory →</Link><Link href="/teacher/profile">My staff profile →</Link><Link href="/teacher/reviews">Teacher reviews →</Link><Link href="/teacher/course-requests">Course choices →</Link></div>
   </div>
   {registryCount>0&&<div className="notion-import-banner"><div><strong>{registryCount} alunos cadastrados com curso e professor</strong><p>O dataset inicial do Notion já possui curso e professor responsável definidos. Acompanhe e ajuste as atribuições na ficha de cada aluno. O vínculo com as contas de login ainda será feito individualmente; os alunos importados não entram nos KPIs de atividade do LMS.</p></div><Link href="/teacher/imported">Ver alunos importados →</Link></div>}
   <div className="supervision-kpis">{kpis.map(k=><div className="supervision-kpi" key={k.label}>

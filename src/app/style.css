@@ -448,3 +448,17 @@ body:has(.agro-integrated){background:#0c1912}
  .portal-feature-banner-icon{flex-basis:55px;width:55px;height:65px;font-size:2rem}
  .portal-crumbs{font-size:.68rem}
 }
+
+
+/* Course choice actions in student and staff dashboards */
+.stream-course-callout{display:flex;align-items:center;justify-content:space-between;gap:17px;flex-wrap:wrap;
+ border:1px solid #4b8578;background:linear-gradient(110deg,#173b48,#194550);border-radius:13px;
+ padding:17px 21px;margin:12px 0 20px;color:#e4fcf4}
+.stream-course-callout strong{display:block;font-size:1rem;color:#f4fffa}
+.stream-course-callout p{font-size:.77rem;line-height:1.6;color:#afcece;margin:5px 0}
+.stream-course-callout a{display:inline-flex;align-items:center;border-radius:9px;padding:11px 14px;
+ background:#29dbac;text-decoration:none;color:#0c3033;font-size:.79rem;font-weight:850;white-space:nowrap}
+.course-approval-actions{display:flex;gap:8px;flex-wrap:wrap}
+.course-approval-actions button{font-size:.77rem;padding:8px 12px;background:#264968;border-radius:7px}
+.course-approval-actions .course-approval-decline{background:#e6ecf3;color:#4b6178}
+@media(max-width:630px){.stream-course-callout{padding:13px}}

@@ -4,6 +4,7 @@ import {useRouter} from 'next/navigation';
 import Link from 'next/link';
 import {browserClient} from '@/lib/supabase/browser';
 import {roleRank,displayPercent,type SupervisionRow} from '@/lib/supervision';
+import {StudentLearningPlan,type StudentLearningRecord,type AssignableEpisode} from '@/components/StudentLearningPlan';
 
 type Field={name:string;kind?:'text'|'multi'|'long'|'checkbox'|'date'|'number'|'url';hint?:string};
 type Assignment={id:string;code:string;title:string;dueAt:string|null;submittedAt:string|null;status:string|null};
@@ -52,7 +53,7 @@ function EditSection({studentId,section,title,description,fields,rank,userRank,i
   if(!error)router.refresh();
   setBusy(false);
  }
- return <section className="supervision-section supervision-form-section">
+ return <section className="supervision-section supervision-form-section" id={section+"-profile"}>
   <div className="supervision-section-heading"><div><p className="supervision-eyebrow">{section.toUpperCase()}</p><h2>{title}</h2><p>{description}</p></div>
    {editable&&<button className="supervision-save" onClick={()=>void save()} disabled={busy}>{busy?'Saving…':'Save section'}</button>}</div>
   <div className="supervision-form-grid">
@@ -99,8 +100,9 @@ function DueDateEditor({assignment,editable}:{assignment:Assignment;editable:boo
  </div>;
 }
 
-export function StudentPortfolioEditor({studentId,role,name,metrics,stats,detail,fileCreatedAt}:{studentId:string;role:string;name:string;
- metrics:ReturnType<typeof import('@/lib/supervision').indicators>;stats:SupervisionRow;detail:Details;fileCreatedAt:string|null}){
+export function StudentPortfolioEditor({studentId,role,name,metrics,stats,detail,fileCreatedAt,learningRecord,availableLessons}:{studentId:string;role:string;name:string;
+ metrics:ReturnType<typeof import('@/lib/supervision').indicators>;stats:SupervisionRow;detail:Details;fileCreatedAt:string|null;
+ learningRecord:StudentLearningRecord;availableLessons:AssignableEpisode[]}){
  const rank=roleRank(role),assignments=detail.assignments||[];
  const metricCards=[
   ['Hours invested',metrics.hours.toFixed(1)+'h','Confirmed credit'],
@@ -120,13 +122,9 @@ export function StudentPortfolioEditor({studentId,role,name,metrics,stats,detail
    <div><strong>Last learning activity:</strong> {stats.last_activity||'No activity logged'}</div>
    {detail.notionPageUrl&&<div><a href={detail.notionPageUrl} target="_blank" rel="noopener noreferrer">Open related Notion record ↗</a></div>}
   </div>
-  {definitions.map(d=>{
-   const contents=detail[d.section];
-   if(contents===null||contents===undefined)return null;
-   return <EditSection key={d.section} studentId={studentId} section={d.section} title={d.title} description={d.description}
-    fields={d.fields} initial={contents} rank={d.rank} userRank={rank}/>;
-  })}
-  <section className="supervision-section">
+  <nav className="learning-file-nav" aria-label="Student record sections"><a href="#learning-goals">Learning goals</a><a href="#assignments">Assign a lesson</a><a href="#assigned-lessons">Assigned lessons</a><a href="#teacher-feedback">Feedback</a><a href="#academic-profile">Profile</a></nav>
+  <StudentLearningPlan studentId={studentId} rank={rank} record={learningRecord} episodes={availableLessons} assignments={assignments}/>
+  <section className="supervision-section" id="assigned-lessons">
    <div className="supervision-section-heading"><div><p className="supervision-eyebrow">LEARNING EVIDENCE</p><h2>Assigned lessons</h2></div><span className="supervision-count">{assignments.length} assignments</span></div>
    <div className="supervision-assignments">{assignments.length?assignments.map(a=><div key={a.id} className="supervision-assignment">
     <div><strong>{a.title}</strong><small>{a.code}</small></div>
@@ -135,6 +133,12 @@ export function StudentPortfolioEditor({studentId,role,name,metrics,stats,detail
    </div>):<p>No lesson assignments yet.</p>}</div>
    <p className="supervision-footnote">School records are stored separately from the reference Notion page. These fields do not synchronize automatically with Notion.</p>
   </section>
+  {definitions.map(d=>{
+   const contents=detail[d.section];
+   if(contents===null||contents===undefined)return null;
+   return <EditSection key={d.section} studentId={studentId} section={d.section} title={d.title} description={d.description}
+    fields={d.fields} initial={contents} rank={d.rank} userRank={rank}/>;
+  })}
   <Link className="supervision-back" href="/teacher">← Back to supervision</Link>
  </>;
 }

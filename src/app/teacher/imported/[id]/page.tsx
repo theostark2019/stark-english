@@ -3,10 +3,14 @@ import {notFound,redirect} from 'next/navigation';
 import Link from 'next/link';
 import {requireSupervisor} from '@/lib/auth';
 import {roleRank} from '@/lib/supervision';
+import {RegistryAssignmentEditor} from '@/components/RegistryAssignmentEditor';
+import type {RegistryAssignmentOptions} from '@/components/NotionStudentRegistry';
 type Data={
  id:string;fullName:string;status:string;academic:Record<string,unknown>;
  contact:Record<string,unknown>;linkedStudentId:string|null;
  sourceUrl:string;importedAt:string;updatedAt:string;
+ courseId:string;courseSlug:string;courseTitle:string;
+ teacherId:string;teacherName:string;teacherHierarchy:string;assignmentBasis:string;
 };
 function show(v:unknown):string{
  if(v===null||v===undefined||v==='')return 'Não informado';
@@ -38,8 +42,11 @@ export default async function ImportedStudentDetail({params}:{params:Promise<{id
  const {sb,staff}=await requireSupervisor();
  if(roleRank(staff.hierarchy)<5)redirect('/teacher');
  if(!/^[0-9a-fA-F]{8}-[0-9a-fA-F-]{27,36}$/.test(id))notFound();
- const {data,error}=await sb.rpc('supervision_import_registry_detail',{p_id:id});
- if(error||!data)notFound();
+ const [{data,error},{data:options,error:optionsError}]=await Promise.all([
+  sb.rpc('supervision_import_registry_detail',{p_id:id}),
+  sb.rpc('supervision_registry_assignment_options')
+ ]);
+ if(error||optionsError||!data||!options)notFound();
  const s=data as Data;
  return <div className="supervision-home">
    <div className="supervision-hero"><div>
@@ -52,11 +59,20 @@ export default async function ImportedStudentDetail({params}:{params:Promise<{id
     {s.linkedStudentId&&<Link href={'/teacher/students/'+s.linkedStudentId}>Dossiê LMS →</Link>}
    </div></div>
    <div className="supervision-student-summary">
+    <div><strong>Curso atribuído:</strong> {s.courseTitle||'Não atribuído'}</div>
+    <div><strong>Professor responsável:</strong> {s.teacherName||'Não atribuído'} · {s.teacherHierarchy||'—'}</div>
     <div><strong>Nível CEFR:</strong> {show(s.academic.CEFR)}</div>
     <div><strong>Grupo:</strong> {show(s.academic.Group)}</div>
     <div><strong>Objetivos:</strong> {show(s.academic.Objetivos)}</div>
     <div><strong>Interesses:</strong> {show(s.academic.Interesses)}</div>
    </div>
+   <section className="supervision-section"><div className="supervision-section-heading"><div>
+     <p className="supervision-eyebrow">ATRIBUIÇÕES PEDAGÓGICAS</p><h2>Curso e professor responsável</h2>
+     <p>Selecione um dos quatro cursos e um professor ativo para manter o cadastro atualizado.</p>
+   </div></div>
+   <RegistryAssignmentEditor registryId={s.id} courseId={s.courseId} teacherId={s.teacherId}
+     options={options as RegistryAssignmentOptions}/>
+   </section>
    <section className="supervision-section"><div className="supervision-section-heading"><div>
     <p className="supervision-eyebrow">DADOS DO NOTION</p><h2>Perfil pedagógico</h2>
     <p>Campos originais preservados quando preenchidos. Os campos ausentes não foram presumidos.</p>

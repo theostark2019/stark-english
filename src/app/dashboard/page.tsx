@@ -66,6 +66,7 @@ export default async function Dashboard({searchParams}:{searchParams:Promise<{q?
    <p className="stream-subtitle">Welcome{profile?.full_name?', '+profile.full_name.split(' ')[0]:''}. Continue your journey through real situations and practical English.</p></div>
    <form className="stream-search" action="/dashboard" method="get" role="search"><span aria-hidden="true">⌕</span><input name="q" type="search" aria-label="Search series and episodes" placeholder="Search series and episodes..." defaultValue={search}/><button type="submit">Search</button></form>
   </section>
+  <div className="stream-course-callout"><div><strong>Four courses. One learning journey.</strong><p>Explore Stark English, Business English, AgroEnglish and Med-English. Preview them all before requesting a new course.</p></div><Link href="/courses">Choose / preview courses →</Link></div>
   <section className="stream-kpis" aria-label="Your learning indicators">
     <div className="stream-kpi"><span className="stream-kpi-icon">◷</span><div><h2>Hours invested</h2><strong>{confirmedHours} <small>h</small></strong><p>Teacher-confirmed lesson credit</p></div><span className="stream-kpi-mark">↗</span></div>
     <div className="stream-kpi"><span className="stream-kpi-icon">▤</span><div><h2>Content acquired</h2><strong>{completed.length} <small>lessons</small></strong><p>{ass.length} assigned · {catalog.length} in curriculum</p></div><span className="stream-kpi-mark">▥</span></div>
@@ -105,7 +106,7 @@ export default async function Dashboard({searchParams}:{searchParams:Promise<{q?
     </section>
     <section className="stream-surface stream-discover">
       <div className="stream-heading"><h2 className="stream-section-title"><span>▦</span> Your courses</h2></div>
-      <div className="stream-courses">{courses.map((c,i)=><Link className="stream-course-card" href={c.slug==='agroenglish'?'/agroenglish':'/dashboard#series'} key={c.id}><span>{i===0?'🌾':'📚'}</span><span><strong>{c.title}</strong><small>Explore your series and learning stages</small></span><span>›</span></Link>)}</div>
+      <div className="stream-courses">{courses.map((c,i)=><Link className="stream-course-card" href={'/courses/'+c.slug} key={c.id}><span>{i===0?'🌾':'📚'}</span><span><strong>{c.title}</strong><small>Explore your series and learning stages</small></span><span>›</span></Link>)}</div>
     </section>
    </div>
    <aside className="stream-side stream-right">

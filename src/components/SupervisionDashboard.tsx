@@ -3,7 +3,7 @@ import {useMemo,useState} from 'react';
 import Link from 'next/link';
 import {indicators,localDay,displayPercent,type SupervisionRow,type Hierarchy} from '@/lib/supervision';
 
-export function SupervisionDashboard({rows,staffRole}:{rows:SupervisionRow[];staffRole:Hierarchy}){
+export function SupervisionDashboard({rows,staffRole,registryCount=0}:{rows:SupervisionRow[];staffRole:Hierarchy;registryCount?:number}){
  const [query,setQuery]=useState('');
  const [course,setCourse]=useState('all');
  const [attention,setAttention]=useState('all');
@@ -42,8 +42,9 @@ export function SupervisionDashboard({rows,staffRole}:{rows:SupervisionRow[];sta
     <p>Follow engagement, evidence and learning progress across your authorized students.</p>
     <span className="supervision-role">{staffRole} · {new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})}</span>
    </div>
-   <div className="supervision-hero-actions"><Link href="/teacher/staff">Staff directory →</Link><Link href="/teacher/profile">My staff profile →</Link><Link href="/teacher/reviews">Teacher reviews →</Link></div>
+   <div className="supervision-hero-actions">{registryCount>0&&<Link href="/teacher/imported">Notion: {registryCount} alunos →</Link>}<Link href="/teacher/staff">Staff directory →</Link><Link href="/teacher/profile">My staff profile →</Link><Link href="/teacher/reviews">Teacher reviews →</Link></div>
   </div>
+  {registryCount>0&&<div className="notion-import-banner"><div><strong>{registryCount} alunos cadastrados no Notion</strong><p>Dataset inicial importado com CEFR, grupos e informações pedagógicas. Os registros ainda aguardam vínculo individual às contas de login; não entram nos KPIs de atividade do LMS.</p></div><Link href="/teacher/imported">Ver alunos importados →</Link></div>}
   <div className="supervision-kpis">{kpis.map(k=><div className="supervision-kpi" key={k.label}>
     <span className="supervision-kpi-glyph">{k.icon}</span><p>{k.label}</p><strong>{k.value}</strong><small>{k.hint}</small>
    </div>)}</div>

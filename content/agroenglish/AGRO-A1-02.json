@@ -1,0 +1,287 @@
+{
+  "code": "AGRO-A1-02",
+  "title": "Agribiology — Life on the Farm",
+  "level": "A1",
+  "minutes": 60,
+  "mission": "During a greenhouse visit, explain how plants are living organisms, what their main parts do, and what they need to grow. Then adapt your explanation for a different listener.",
+  "competency": "Describe basic plant structures, simple biological needs, and observable differences using clear A1 English.",
+  "readings": [
+    "My name is Marina, and today I am visiting a greenhouse with Luisa, a farm manager. We look at young bean plants. A plant is a living organism. It needs water, light, air and nutrients to grow. A seed can become a new plant. The roots absorb water from the soil. The stem supports the plant and carries water to other parts. The leaves use light to make food for the plant. Some small organisms also live in the soil. They help break down dead plants and other organic material. Luisa shows me two bean plants. One is tall and green. The other is small and has yellow leaves. I describe what I can see. I do not know the cause yet. I ask, “How do you check these plants?”",
+    "Marina visits a greenhouse where a team grows bean seedlings. Luisa asks her to identify the parts of a plant and explain their functions. Marina points to the roots, which take up water and dissolved nutrients from the growing medium. She then identifies the stem, which supports the plant and transports materials, and the leaves, which capture light for photosynthesis. The group also examines seeds that are starting to germinate. With suitable moisture, oxygen and temperature, a seed may begin to grow. Marina notices that one tray has smaller plants with pale leaves. The team records the difference but avoids deciding on a cause immediately: light, water, nutrients, roots and other factors may all be relevant. In a sample of soil, they find earthworms and discuss microorganisms. Some bacteria and fungi help decompose organic material and recycle nutrients. Marina understands that agribiology connects living things, plant functions and careful observations.",
+    "During a greenhouse inspection, Marina compares two groups of bean seedlings. Both were planted on the same day, but one group has shorter stems and yellowing leaves. Rather than announcing a diagnosis, she begins with what she can observe and asks the manager about the growing conditions. Plants are living systems: roots absorb water and dissolved mineral nutrients, stems support and connect organs, and leaves use light energy to produce sugars through photosynthesis. Growth also depends on the conditions that allow cells to divide and expand. The greenhouse team checks recent watering, drainage, light exposure and the roots of a few seedlings. They discuss how microorganisms in the growing medium can influence nutrient cycling, although their presence does not automatically mean the plants are healthy or unhealthy. Marina learns to distinguish an observation from an explanation. Saying “the leaves are yellow” reports visible evidence; saying “the plants lack nitrogen” is a hypothesis that requires more information. She prepares a short report with observations, possible factors and questions for the manager.",
+    "Plant growth emerges from interacting biological processes rather than a single input. In photosynthesis, leaves use light energy to convert carbon dioxide and water into carbohydrates, releasing oxygen; mineral nutrients, by contrast, are absorbed mainly through roots and support processes such as enzyme activity and tissue formation. Germination depends on suitable environmental conditions, and root function may be restricted in waterlogged growing media because oxygen becomes less available. During a training visit, Marina examines two trays of bean seedlings: one appears vigorous, while the other shows reduced growth and leaf yellowing. A responsible explanation separates symptoms from causes. Differences in light, irrigation, nutrition, root health, pathogens or several interacting factors could produce similar patterns. The growing medium also contains a biological community, including fungi, bacteria and sometimes earthworms. Decomposition and nutrient cycling can benefit crops, but microbial activity varies with environmental conditions. Rather than claiming certainty, Marina suggests documenting the patterns, checking management records and comparing relevant measurements before recommending an intervention. Her report communicates both biological knowledge and the limits of the available evidence."
+  ],
+  "words": [
+    "biology",
+    "organism",
+    "plant",
+    "seed",
+    "root",
+    "stem",
+    "leaf",
+    "flower",
+    "fruit",
+    "soil",
+    "water",
+    "light",
+    "air",
+    "nutrient",
+    "cell",
+    "tissue",
+    "species",
+    "growth",
+    "germination",
+    "absorb",
+    "transport",
+    "photosynthesis",
+    "microorganism",
+    "bacteria",
+    "fungus",
+    "earthworm",
+    "decompose",
+    "observe"
+  ],
+  "emojis": [
+    "🧬",
+    "🦠",
+    "🌱",
+    "🌰",
+    "🥕",
+    "🌿",
+    "🍃",
+    "🌸",
+    "🍅",
+    "🟤",
+    "💧",
+    "☀️",
+    "🌬️",
+    "🧂",
+    "🔬",
+    "🧫",
+    "🌾",
+    "📈",
+    "🌱",
+    "💧",
+    "🚰",
+    "☀️",
+    "🦠",
+    "🧫",
+    "🍄",
+    "🪱",
+    "🍂",
+    "🔍"
+  ],
+  "pt": [
+    "biologia",
+    "organismo",
+    "planta",
+    "semente",
+    "raiz",
+    "caule",
+    "folha",
+    "flor",
+    "fruto",
+    "solo",
+    "água",
+    "luz",
+    "ar",
+    "nutriente",
+    "célula",
+    "tecido",
+    "espécie",
+    "crescimento",
+    "germinação",
+    "absorver",
+    "transportar",
+    "fotossíntese",
+    "microrganismo",
+    "bactérias",
+    "fungo",
+    "minhoca",
+    "decompor",
+    "observar"
+  ],
+  "sentences": [
+    "Biology helps us understand living things.",
+    "A bean plant is a living organism.",
+    "This plant needs light and water.",
+    "A bean seed can grow into a new plant.",
+    "The root absorbs water from the soil.",
+    "The stem supports the plant.",
+    "The leaf uses light to help make food.",
+    "The flower is a reproductive part of many plants.",
+    "The fruit can protect and carry seeds.",
+    "Good soil supports plant roots.",
+    "Plants need water to grow.",
+    "Leaves use light during photosynthesis.",
+    "Roots also need air in the growing medium.",
+    "A plant needs nutrients such as nitrogen.",
+    "Living organisms are made of cells.",
+    "Plant tissues have different functions.",
+    "Two plants can belong to the same species.",
+    "Growth can be slower under stress.",
+    "Germination begins when conditions are suitable.",
+    "Roots absorb water and dissolved nutrients.",
+    "The stem helps transport water.",
+    "Photosynthesis uses light energy to produce sugars.",
+    "A microorganism may be too small to see unaided.",
+    "Some bacteria help decompose organic material.",
+    "Some fungi help break down dead plant material.",
+    "An earthworm can help change soil structure.",
+    "Microorganisms decompose dead organic matter.",
+    "Observe the leaves before suggesting a cause."
+  ],
+  "substitution": [
+    [
+      "Plants need water.",
+      "light",
+      "Plants need light."
+    ],
+    [
+      "Roots absorb water.",
+      "nutrients",
+      "Roots absorb nutrients."
+    ],
+    [
+      "The stem transports water.",
+      "nutrients",
+      "The stem transports nutrients."
+    ],
+    [
+      "Leaves use light.",
+      "sunlight",
+      "Leaves use sunlight."
+    ],
+    [
+      "Microorganisms live in the soil.",
+      "near plant roots",
+      "Microorganisms live near plant roots."
+    ]
+  ],
+  "wordFamilies": [
+    [
+      "A seed begins to ___ when conditions are suitable.",
+      "germinate",
+      [
+        "germinate",
+        "germination",
+        "germinated"
+      ]
+    ],
+    [
+      "Plant ___ depends on water and light.",
+      "growth",
+      [
+        "grows",
+        "growth",
+        "grower"
+      ]
+    ],
+    [
+      "Roots ___ water from the soil.",
+      "absorb",
+      [
+        "absorption",
+        "absorbing",
+        "absorb"
+      ]
+    ],
+    [
+      "The agronomist makes careful ___ in the greenhouse.",
+      "observations",
+      [
+        "observe",
+        "observations",
+        "observer"
+      ]
+    ]
+  ],
+  "production": {
+    "title": "First Production · Explain what plants need",
+    "listener": "Luisa, a greenhouse manager",
+    "goal": "Report what you can see in two trays of bean seedlings. Explain two plant parts and what they do, mention two basic needs, and ask one useful question. Write 5–7 connected A1 sentences. Do not invent a diagnosis.",
+    "purposePrompt": "Luisa needs a clear observation, two basic biological explanations, and one question before she decides what to check.",
+    "ideas": [
+      "What is different between the two groups of plants?",
+      "Which plant parts can I name?",
+      "What does each part do?",
+      "Which growing conditions should we check?"
+    ],
+    "models": [
+      "These are bean plants.",
+      "One plant has green leaves, and the other has yellow leaves.",
+      "Roots absorb water from the soil.",
+      "Leaves use light to make food.",
+      "We need to check the water and light.",
+      "Can we look at the roots?"
+    ],
+    "connect": "Use and, but, because, and I can see to connect 5–7 simple sentences.",
+    "checklist": [
+      "I describe observable differences.",
+      "I explain two plant parts correctly.",
+      "I mention at least two plant needs.",
+      "I ask a useful question without guessing the cause."
+    ]
+  },
+  "transfer": {
+    "title": "Transfer · Explain plant life to a visitor",
+    "listener": "a younger student visiting the greenhouse for the first time",
+    "goal": "Change your audience and purpose. Explain how a seed becomes a plant, what roots and leaves do, and what a plant needs. Use simple familiar words, give one example, and ask the visitor one checking question. Write 5–7 connected sentences.",
+    "purposePrompt": "The visitor needs a friendly explanation with everyday words, not a technical report.",
+    "ideas": [
+      "What would I show the visitor first?",
+      "How can I explain roots in simple words?",
+      "What does the leaf do?",
+      "What question can I ask to check understanding?"
+    ],
+    "models": [
+      "This seed can grow into a plant.",
+      "The roots are under the soil.",
+      "Roots take in water.",
+      "Leaves need light.",
+      "The plant also needs air and nutrients.",
+      "What does a plant need to grow?"
+    ],
+    "connect": "Use first, then, and, and because. Replace technical vocabulary with clear examples when necessary.",
+    "checklist": [
+      "I use language appropriate for a beginner.",
+      "I explain seed, root and leaf.",
+      "I give an example the listener can see.",
+      "I ask a simple checking question."
+    ]
+  },
+  "reflection": [
+    "I can name basic plant parts and their functions.",
+    "I can explain what plants need to grow.",
+    "I can report visible differences without guessing a cause.",
+    "I can adapt a biological explanation to another listener."
+  ],
+  "speechify": {
+    "A1": "https://app.speechify.com/soundbite/2a7fd2c5b9c6478295bcb9c6ca4d04a3?utm_source=chatgpt_app&utm_medium=punchout",
+    "A2": "https://app.speechify.com/soundbite/76916c59ced24d779d0a86a70126e0e2?utm_source=chatgpt_app&utm_medium=punchout",
+    "B1": "https://app.speechify.com/soundbite/f255dd79ac3b48ebac580dc235ab1fd3?utm_source=chatgpt_app&utm_medium=punchout",
+    "B2": "https://app.speechify.com/soundbite/a30d81eb353f4b7ab82a2ed79efa1abc?utm_source=chatgpt_app&utm_medium=punchout"
+  },
+  "readingQuestions": {
+    "A1": [
+      "Where is Marina visiting today?",
+      "What do roots absorb from the soil?",
+      "How are the two bean plants different?"
+    ],
+    "A2": [
+      "Which conditions help a seed begin to germinate?",
+      "Why does the team avoid naming the cause of yellow leaves immediately?",
+      "Name one role of microorganisms in the soil."
+    ],
+    "B1": [
+      "How is an observation different from a diagnosis?",
+      "Name two conditions the greenhouse team checks.",
+      "What do roots and leaves do for a plant?"
+    ],
+    "B2": [
+      "How is photosynthesis different from mineral nutrient uptake?",
+      "Why can waterlogging reduce root function?",
+      "What information should be gathered before recommending treatment?"
+    ]
+  }
+}

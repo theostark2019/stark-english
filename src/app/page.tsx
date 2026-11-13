@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export default function Home(){return <><section className="panel"><p className="eyebrow">Stark Learning</p><h1>English for the situations that matter.</h1><p>Stark English, Business English, AgroEnglish and Med-English share one learning platform and teacher feedback system.</p><p className="row"><Link className="button gold" href="/courses">Explore all four courses</Link><Link className="button secondary" href="/dashboard">Open my learning</Link><Link className="button secondary" href="/login">Sign in</Link></p></section></>}

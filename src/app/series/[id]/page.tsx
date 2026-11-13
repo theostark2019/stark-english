@@ -16,8 +16,10 @@ export default async function Series({params}:{params:Promise<{id:string}>}){
  const {data:attempts}=assignments?.length?await sb.from('lesson_attempts').select('assignment_id,status').in('assignment_id',assignments.map(a=>a.id)):{data:[]};
  const statuses=new Map((attempts||[]).map(a=>[a.assignment_id,a.status]));
  const available=episodes.filter(e=>e.episode_status==='published');
+ const courseSlug=(courses||[]).find(c=>c.id===episodes[0]?.course_id)?.slug;
+ const backToSeries=courseSlug?'/courses/'+courseSlug+'#series':'/courses';
  return <div className="stream-series-page">
- <Link href="/dashboard#series" className="stream-back">← All series</Link>
+ <Link href={backToSeries} className="stream-back">← All series</Link>
  <section className="stream-series-banner"><div><p className="stream-kicker">STARK LEARNING · {episodes[0].course_title}</p><h1>{episodes[0].series_name}</h1><p>Build English for real professional situations, one episode at a time.</p><div className="row"><span className="tag">{episodes[0].episode_level}</span><span className="tag">{episodes.length} episodes</span><span className="tag">{available.length} published</span></div></div><span aria-hidden="true">🌾</span></section>
  <div className="stream-heading"><h2>Episodes</h2><span className="stream-tiny">{available.length} available in this series</span></div>
  <div className="stream-series-episode-list">{episodes.map((e,i)=>{const a=amap.get(e.episode_id);const canOpen=e.episode_status==='published'&&!!a;return <article className="stream-series-episode" key={e.episode_id}><div className="stream-episode-number">{String(i+1).padStart(2,'0')}</div><div className="stream-episode-icon">{['🚜','🌱','🧪','🌦️','🌻','🐄','🌾','🔬'][i%8]}</div><div className="stream-episode-details"><span>{e.episode_code} · {e.episode_minutes} MIN</span><h3>{e.episode_title}</h3><p>{e.episode_level} · {canOpen?(statuses.get(a!)||'Ready to start').replaceAll('_',' '):e.episode_status==='published'?'Awaiting assignment':'Coming soon'}</p></div>{canOpen?<Link className="button gold" href={'/lessons/'+a}>Open episode ▶</Link>:<span className="stream-locked">Not available yet</span>}</article>})}</div></div>;

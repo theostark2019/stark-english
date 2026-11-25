@@ -4,6 +4,7 @@ import Link from 'next/link';
 import {requireSupervisor} from '@/lib/auth';
 import {roleRank} from '@/lib/supervision';
 import {RegistryAssignmentEditor} from '@/components/RegistryAssignmentEditor';
+import {StudentInvitationControls,type StudentInviteInfo} from '@/components/StudentInvitationControls';
 import type {RegistryAssignmentOptions} from '@/components/NotionStudentRegistry';
 type Data={
  id:string;fullName:string;status:string;academic:Record<string,unknown>;
@@ -42,12 +43,14 @@ export default async function ImportedStudentDetail({params}:{params:Promise<{id
  const {sb,staff}=await requireSupervisor();
  if(roleRank(staff.hierarchy)<5)redirect('/teacher');
  if(!/^[0-9a-fA-F]{8}-[0-9a-fA-F-]{27,36}$/.test(id))notFound();
- const [{data,error},{data:options,error:optionsError}]=await Promise.all([
+ const [{data,error},{data:options,error:optionsError},{data:invites,error:invitesError}]=await Promise.all([
   sb.rpc('supervision_import_registry_detail',{p_id:id}),
-  sb.rpc('supervision_registry_assignment_options')
+  sb.rpc('supervision_registry_assignment_options'),
+  sb.rpc('supervision_student_invite_roster')
  ]);
- if(error||optionsError||!data||!options)notFound();
+ if(error||optionsError||invitesError||!data||!options)notFound();
  const s=data as Data;
+ const info=((invites||[]) as StudentInviteInfo[]).find(x=>x.registry_student_id===id)||null;
  return <div className="supervision-home">
    <div className="supervision-hero"><div>
     <p className="supervision-eyebrow">STARK LEARNING / FICHA IMPORTADA</p>
@@ -85,6 +88,11 @@ export default async function ImportedStudentDetail({params}:{params:Promise<{id
    </div></div><dl className="notion-student-fields">{contactFields.map(f=><div key={f.key}>
     <dt>{f.label}</dt><dd>{show(s.contact[f.key])}</dd>
    </div>)}</dl></section>
+   <section className="supervision-section" id="invitation"><div className="supervision-section-heading"><div>
+    <p className="supervision-eyebrow">MATRÍCULA INDIVIDUAL</p><h2>Convite de acesso ao Stark Learning</h2>
+    <p>Gere um link pessoal, válido por 14 dias. Depois do cadastro, confirme a identidade do aluno quando necessário.</p></div></div>
+    <StudentInvitationControls studentId={s.id} studentName={s.fullName} linkedStudentId={s.linkedStudentId} info={info}/>
+   </section>
    <section className="supervision-section"><div className="supervision-section-heading"><div>
     <p className="supervision-eyebrow">PRÓXIMA ETAPA</p><h2>Vincular ao Stark Learning</h2></div></div>
     {s.linkedStudentId?<p>Esta ficha já está relacionada a uma conta do LMS. Os registros de atividades devem ser consultados no dossiê pedagógico.</p>:

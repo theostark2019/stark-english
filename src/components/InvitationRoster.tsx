@@ -8,6 +8,14 @@ export function InvitationRoster({rows}:{rows:StudentInviteInfo[]}){
  const [search,setSearch]=useState(''),[filter,setFilter]=useState('all');
  const [bulkBusy,setBulkBusy]=useState(false),[bulkMessage,setBulkMessage]=useState('');
  const [bulkError,setBulkError]=useState(false);
+ const [lastCsv,setLastCsv]=useState('');
+ function downloadCsv(csv:string){
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+  const link=URL.createObjectURL(blob);
+  const anchor=document.createElement('a');anchor.href=link;anchor.download='stark-learning-convites-individuais.csv';
+  document.body.appendChild(anchor);anchor.click();anchor.remove();
+  window.setTimeout(()=>URL.revokeObjectURL(link),5000);
+ }
  const router=useRouter();
  async function bulkGenerate(){
   if(bulkBusy||!window.confirm(
@@ -26,11 +34,8 @@ export function InvitationRoster({rows}:{rows:StudentInviteInfo[]}){
   const values=items.map(x=>[x.student_name,x.course_title,
     window.location.origin+'/join#invite='+x.invite_token,x.expires_at.slice(0,10)]);
   const csv='\uFEFF'+[header,...values].map(row=>row.map(v=>escapeCell(String(v))).join(';')).join('\r\n');
-  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
-  const download=URL.createObjectURL(blob);
-  const anchor=document.createElement('a');anchor.href=download;anchor.download='stark-learning-convites-individuais.csv';
-  document.body.appendChild(anchor);anchor.click();anchor.remove();
-  window.setTimeout(()=>URL.revokeObjectURL(download),1000);
+  setLastCsv(csv);
+  downloadCsv(csv);
   setBulkMessage(items.length+' links pessoais criados e preparados em um CSV. Envie cada linha apenas ao aluno correspondente. Os links não podem ser recuperados depois.');
   router.refresh();
  }
@@ -40,7 +45,7 @@ export function InvitationRoster({rows}:{rows:StudentInviteInfo[]}){
   issued:rows.filter(x=>x.status==='issued'&&x.expires_at&&new Date(x.expires_at)>new Date()).length
  };
  const active=rows.filter(r=>{
-  const status=r.linked_student_id?'linked':r.status||'not-issued';
+  const status=r.linked_student_id?'linked':r.status==='issued'&&r.expires_at&&new Date(r.expires_at)<=new Date()?'expired':r.status||'not-issued';
   const q=search.trim().toLocaleLowerCase('pt-BR');
   return (!q||[r.full_name,r.course_title].join(' ').toLocaleLowerCase('pt-BR').includes(q))
    &&(filter==='all'||status===filter);
@@ -74,6 +79,9 @@ export function InvitationRoster({rows}:{rows:StudentInviteInfo[]}){
        {bulkBusy?'Gerando links…':'Gerar links pendentes (CSV)'}
       </button>
       {bulkMessage&&<p role="status" className={'supervision-notice'+(bulkError?' error':'')}>{bulkMessage}</p>}
+      {lastCsv&&<button type="button" className="student-invite-export-again" onClick={()=>downloadCsv(lastCsv)}>
+        Baixar novamente a última planilha nesta sessão
+      </button>}
     </div>
     <div className="supervision-section-heading"><div><p className="supervision-eyebrow">LISTA DE CONVITES</p><h2>Enviar e acompanhar convites</h2>
       <p>Abra uma ficha para gerar ou copiar o link. Convites já gerados não são recuperáveis: gere um novo se perder o endereço.</p></div>

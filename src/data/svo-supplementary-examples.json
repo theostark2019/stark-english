@@ -1,0 +1,118 @@
+{
+  "SVO-L02": {
+    "beef": "We eat beef at home.",
+    "chicken": "I eat chicken and rice.",
+    "school": "You work at the school.",
+    "restaurant": "We eat at the restaurant."
+  },
+  "SVO-L03": {
+    "mother": "I play games with my mother.",
+    "father": "I like to play with my father.",
+    "square": "We play games in the square.",
+    "dog": "I like my dog.",
+    "cat": "You play with your cat.",
+    "book": "I like fantasy books.",
+    "your": "I play with your brother."
+  },
+  "SVO-L04": {
+    "bedroom": "He reads a book in the bedroom.",
+    "pencil": "She writes with a pencil."
+  },
+  "SVO-L05": {
+    "salad": "We cook salad for lunch.",
+    "bread": "I eat bread for breakfast."
+  },
+  "SVO-L06": {
+    "earphones": "I listen to music with earphones."
+  },
+  "SVO-L07": {
+    "teacher": "She is a teacher.",
+    "engineer": "He is an engineer.",
+    "chef": "I am a chef.",
+    "school": "We are at school.",
+    "office": "She is in the office.",
+    "city": "He is in the city.",
+    "sad": "He is sad today.",
+    "okay": "I am okay, thank you."
+  },
+  "SVO-L08": {
+    "singer": "I am not a singer.",
+    "nurse": "She is not a nurse.",
+    "manager": "He is not a manager.",
+    "architect": "She is not an architect.",
+    "museum": "They are not at the museum.",
+    "bank": "He is not at the bank.",
+    "store": "They are not in the store.",
+    "sad": "I am not sad.",
+    "bored": "She is not bored.",
+    "hot": "The room is not hot."
+  },
+  "SVO-L09": {
+    "chef": "Is he a chef?",
+    "farmer": "Are you a farmer?",
+    "pilot": "Is she a pilot?",
+    "waiter": "Is he a waiter?",
+    "theater": "Where is the theater?",
+    "mall": "Are you at the mall?",
+    "airport": "Where is the airport?",
+    "supermarket": "Where is the supermarket?",
+    "afraid": "Are you afraid?",
+    "surprised": "Are they surprised?",
+    "curious": "Is she curious?",
+    "ready": "Are you ready?"
+  },
+  "SVO-L10": {
+    "drink": "I drink coffee, but I don't drink tea.",
+    "eat": "I eat rice, but I don't eat meat.",
+    "meat": "He doesn't eat meat.",
+    "music": "She usually listens to music.",
+    "email": "He never writes an email.",
+    "always": "She always drinks coffee.",
+    "usually": "I usually watch TV at night.",
+    "often": "We often eat at home.",
+    "sometimes": "I sometimes play soccer."
+  },
+  "SVO-L11": {
+    "like": "Do you like pizza?",
+    "pizza": "Do you like pizza?",
+    "book": "Does she have a book?",
+    "job": "Does he have a job?"
+  },
+  "SVO-L12": {
+    "drink": "What do you drink for breakfast?",
+    "play": "What do you play in the park?",
+    "watch": "When do you watch TV?",
+    "read": "What do you read?",
+    "have": "Do you have a dog?",
+    "speak": "What language do you speak?",
+    "friend": "Who is your friend?",
+    "book": "Where is your book?",
+    "supermarket": "Where is the supermarket?",
+    "coffee": "When do you drink coffee?",
+    "music": "What music do you like?",
+    "movie": "What movie do you watch?",
+    "brother": "Where does your brother work?",
+    "sister": "Who is your sister?",
+    "father": "What is your father's job?",
+    "mother": "How is your mother?",
+    "car": "Why do you want a car?",
+    "dog": "Do you have a dog?",
+    "phone": "Where is your phone?",
+    "language": "What language do you speak?"
+  },
+  "SVO-L13": {
+    "study → studied": "I studied Geography yesterday.",
+    "see → saw": "I saw my friend last weekend.",
+    "read → read": "I read a book last night."
+  },
+  "SVO-L14": {
+    "work → worked": "I worked yesterday, but I didn't work today."
+  },
+  "SVO-L15": {
+    "work → worked": "Did you work last Monday?",
+    "play → played": "Did they play soccer?",
+    "have → had": "Did you have a party?",
+    "eat → ate": "What did you eat this morning?",
+    "last monday": "Did you work last Monday?"
+  }
+}

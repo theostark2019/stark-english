@@ -11,6 +11,56 @@ function responseLabel(field:string){
 }
 function responseDisplay(row:Response){
  const raw=Object.prototype.hasOwnProperty.call(row.response,'value')?row.response.value:row.response.text;
+ if((row.activity_key==='svo_course'||row.activity_key==='svo_review')&&
+  row.field_key==='portfolio'&&raw&&typeof raw==='object'&&!Array.isArray(raw)){
+  const a=raw as Record<string,unknown>;
+  const lines=(items:unknown)=>{
+   if(!Array.isArray(items))return 'No responses';
+   return items.map((v,i)=>(i+1)+'. '+String(v||'')).join('\n');
+  };
+  if(row.activity_key==='svo_course')return [
+   'SVO COURSE LESSON · '+String(a.code||''),
+   '',
+   'Selected unfamiliar vocabulary: '+lines(a.unknown),
+   '',
+   'EXPRESS IT · SOURCE TRANSLATIONS',
+   lines(a.translations),
+   '',
+   'TWO ORIGINAL SUBSTITUTION SENTENCES',
+   lines(a.substitutions),
+   '',
+   'IMMEDIATE PRACTICE A · CHOICES',
+   JSON.stringify(a.practiceChoice||{}),
+   '',
+   'IMMEDIATE PRACTICE B · GAP ANSWERS',
+   lines(a.practiceGap),
+   '',
+   'DICTATION · FIVE SENTENCES',
+   lines(a.dictation),
+   '',
+   'Student doubts: '+String(a.doubts||'None recorded')
+  ].join('\n');
+  return [
+   'CUMULATIVE SVO REVIEW · '+String(a.code||''),
+   '',
+   'CHANGE IT · ADAPTED PARAGRAPH',
+   String(a.changed||''),
+   '',
+   'ANSWER IT · SOURCE QUESTIONS',
+   lines(a.answers),
+   '',
+   'CREATE SENTENCES · SOURCE SENTENCE FRAMES',
+   lines(a.fills),
+   '',
+   'EXPRESS IT+ · INDEPENDENT TRANSLATION',
+   String(a.translation||''),
+   '',
+   'PERSONAL TRANSFER',
+   lines(a.originals),
+   '',
+   'Reflection: '+String(a.reflection||'None recorded')
+  ].join('\n');
+ }
  if(row.activity_key==='svo_l01'&&row.field_key==='portfolio'&&raw&&typeof raw==='object'&&!Array.isArray(raw)){
   const p=raw as Record<string,unknown>;
   const asText=(v:unknown)=>Array.isArray(v)?v.map((x,i)=>(i+1)+'. '+String(x||'')).join('\n'):'None';

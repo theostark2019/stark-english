@@ -31,6 +31,7 @@ function mimeFor(type:string){
 export function IntegratedAgricultureLesson({attempt,initialResponses,initialFiles,reviews,episodeCode,episodeTitle}:{attempt:Attempt;initialResponses:ResponseRow[];initialFiles:FileRow[];reviews:ReviewRow[];episodeCode:string;episodeTitle:string}){
  const frame=useRef<HTMLIFrameElement|null>(null);
  const [ready,setReady]=useState(false);
+ const [frameHeight,setFrameHeight]=useState(900);
  const [agroMedia,setAgroMedia]=useState<AgroMediaManifest>({});
  const [status,setStatus]=useState(attempt.status);
  const [files,setFiles]=useState(initialFiles);
@@ -142,10 +143,12 @@ export function IntegratedAgricultureLesson({attempt,initialResponses,initialFil
  useEffect(()=>{
   function receive(event:MessageEvent){
    if(event.origin!==window.location.origin||event.source!==frame.current?.contentWindow)return;
-   const data=event.data as {type:string;attemptId:string;fields?:Fields;blob?:Blob;activity?:string};
+   const data=event.data as {type:string;attemptId:string;fields?:Fields;blob?:Blob;activity?:string;height?:number};
    if(!data||data.attemptId!==attempt.id)return;
    if(data.type==='STARK_LESSON_SYNC'){
     if(editable&&data.fields&&typeof data.fields==='object')void persist(data.fields);
+   }else if(data.type==='STARK_LESSON_HEIGHT'&&typeof data.height==='number'){
+    setFrameHeight(Math.max(520,Math.ceil(data.height)));
    }else if(data.type==='STARK_LESSON_AUDIO_PENDING'){
     if(data.activity)setCapturing(keys=>keys.includes(data.activity!)?keys:[...keys,data.activity!]);
    }else if(data.type==='STARK_LESSON_AUDIO'){
@@ -192,8 +195,11 @@ export function IntegratedAgricultureLesson({attempt,initialResponses,initialFil
      <span>Reading, vocabulary, substitution, word families, production and teacher feedback</span></div>
    </div>
    <Agro101ReadingPlayer media={agroMedia} compact/>
-   <div className="agrs-embedded-task-heading" id="agro-activities"><h2>Now put the language to work</h2>
-    <p>The following activities save to your assigned student account and can be submitted to your teacher.</p></div>
+   <div className="agrs-embedded-task-heading" id="agro-activities">
+    <img src="/agro101/marina-field-notes.webp" alt="Marina organizing her field notes after the farm visit" loading="lazy"/>
+    <div><span>YOUR TURN</span><h2>Now put the language to work</h2>
+     <p>Keep the same lesson going through vocabulary, guided practice, production and transfer. Your work saves to your assigned account.</p></div>
+   </div>
   </div>}
   <div className="agro-integrated-head">
    <Link href="/dashboard" aria-label="Return to dashboard">← My learning</Link>
@@ -201,7 +207,9 @@ export function IntegratedAgricultureLesson({attempt,initialResponses,initialFil
    <span aria-live="polite">{saving?'Saving answers…':uploading?'Uploading audio…':status==='finalized'?'Reviewed':status==='submitted'||status==='claimed'?'Submitted':savedCount?'Answers saved':'Autosave on'}</span>
   </div>
   <div className="agro-integrated-stage">
-   {ready?<iframe title={episodeTitle+' — interactive activities'} ref={frame} src={'/lessons/'+lessonFile+'?attempt='+encodeURIComponent(attempt.id)} className="agro-integrated-frame" allow="microphone" />:<div className="agro-integrated-loading">Opening your lesson…</div>}
+   {ready?<iframe title={episodeTitle+' — interactive activities'} ref={frame}
+    src={'/lessons/'+lessonFile+'?embedded=1&attempt='+encodeURIComponent(attempt.id)}
+    style={{height:frameHeight}} className="agro-integrated-frame" allow="microphone" scrolling="no" />:<div className="agro-integrated-loading">Opening your lesson…</div>}
   </div>
   {reviews.length>0&&<section className="agro-integrated-feedback" aria-label="Teacher feedback">
    <h2>Teacher feedback</h2>

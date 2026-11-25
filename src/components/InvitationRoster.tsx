@@ -19,13 +19,13 @@ export function InvitationRoster({rows}:{rows:StudentInviteInfo[]}){
   const items=(data||[]) as {student_id:string;student_name:string;course_title:string;invite_token:string;expires_at:string}[];
   if(!items.length){setBulkMessage('Nenhum novo convite necessário. Os alunos restantes já possuem convites ativos ou contas vinculadas.');router.refresh();return;}
   const escapeCell=(value:string)=>{
-   const neutral=/^[\\t\\r\\n ]*[=+@-]/.test(value)?"'"+value:value;
+   const neutral=/^[\t\r\n ]*[=+@-]/.test(value)?"'"+value:value;
    return '"'+neutral.replaceAll('"','""')+'"';
   };
   const header=['Aluno','Curso','Link pessoal','Validade'];
   const values=items.map(x=>[x.student_name,x.course_title,
     window.location.origin+'/join#invite='+x.invite_token,x.expires_at.slice(0,10)]);
-  const csv='\\uFEFF'+[header,...values].map(row=>row.map(v=>escapeCell(String(v))).join(';')).join('\\r\\n');
+  const csv='\uFEFF'+[header,...values].map(row=>row.map(v=>escapeCell(String(v))).join(';')).join('\r\n');
   const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
   const download=URL.createObjectURL(blob);
   const anchor=document.createElement('a');anchor.href=download;anchor.download='stark-learning-convites-individuais.csv';

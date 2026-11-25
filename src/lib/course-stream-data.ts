@@ -6,11 +6,16 @@ export type StreamAssignment={
  id:string;episodeId:string;code:string;title:string;series:string;level:string;
  minutes:number;seriesId:string;status:string;dueAt:string|null;isCompleted:boolean;
 };
+export type SvoVocabularyKpi={
+ weeklyTarget:number;selectedThisWeek:number;masteredThisWeek:number;
+ learningTotal:number;masteredTotal:number;
+};
 export type StreamLearning={
  enrolled:boolean;hours:number;assigned:number;completed:number;completionRate:number|null;
  effectiveness:number|null;reviewCount:number;activeDays30:number|null;
  assignments:StreamAssignment[];finished:StreamAssignment[];
  seriesIds:Record<string,string>;nextGoal:string|null;studentFirstName:string|null;
+ svoVocabulary:SvoVocabularyKpi|null;
 };
 type CatalogRow={
  series_id:string;series_name:string;episode_id:string;episode_code:string;
@@ -26,7 +31,7 @@ export async function getCourseStreamLearning(
  const initial:StreamLearning={
   enrolled:true,hours:0,assigned:0,completed:0,completionRate:null,
   effectiveness:null,reviewCount:0,activeDays30:null,assignments:[],finished:[],
-  seriesIds:{},nextGoal:null,studentFirstName:null
+  seriesIds:{},nextGoal:null,studentFirstName:null,svoVocabulary:null
  };
  const {data:catalog, error:catalogError}=await sb.rpc('course_catalog',{p_course_slug:slug});
  if(catalogError)throw new Error('Unable to load the enrolled course curriculum: '+catalogError.message);
@@ -40,6 +45,10 @@ export async function getCourseStreamLearning(
     .gte('activity_day',new Date(Date.now()-29*86400000).toISOString().slice(0,10))
  ]);
  initial.studentFirstName=profile?.full_name?.trim()?.split(/\s+/)?.[0]||null;
+ if(slug==='stark-english'){
+  const {data:words,error:wordError}=await sb.rpc('svo_weekly_word_kpi');
+  if(!wordError&&words)initial.svoVocabulary=words as SvoVocabularyKpi;
+ }
  initial.nextGoal=goals?.[0]?.title||null;
  initial.activeDays30=days?.length??null;
  if(!items.length)return initial;

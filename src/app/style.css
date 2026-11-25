@@ -683,3 +683,54 @@ body:has(.stream-course-shell) > main{max-width:none;margin:0;padding:0;min-heig
  .stream-course-brand strong{font-size:1.18rem}
  .stream-course-footer{flex-wrap:wrap}
 }
+
+
+/* Private student invitation workflow */
+.student-invite-controls{background:#f8fafc;border:1px solid #dfe6ed;border-radius:12px;padding:18px}
+.student-invite-status{display:flex;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:18px}
+.student-invite-status>strong{color:#283e57;font-size:.9rem}
+.student-invite-controls>p{font-size:.84rem;color:#597088;line-height:1.6}
+.student-invite-link{display:grid;gap:9px;margin-top:16px;padding:16px;border:1px solid #c9dbc9;border-radius:10px;background:#f1f9f1}
+.student-invite-link label{font-size:.8rem;font-weight:800;color:#365c49}
+.student-invite-link textarea{font-size:.81rem;background:#fff;color:#183b32;border:1px solid #c7d5c7;border-radius:8px;resize:vertical;padding:10px;width:100%;word-break:break-all}
+.student-invite-link button,.student-invite-actions button{justify-self:start;border:0;border-radius:8px;background:#173f51;color:#fff;font-weight:800;font-size:.8rem;padding:9px 15px;cursor:pointer}
+.student-invite-link small{font-size:.72rem;color:#627c64}
+.student-invite-approval{margin:16px 0;padding:17px;background:#fff9ec;border:1px solid #ecd9ad;border-radius:9px}
+.student-invite-approval h3{font-size:1rem;color:#69512b}
+.student-invite-approval p{font-size:.8rem;line-height:1.6;color:#7a6441;overflow-wrap:anywhere}
+.student-invite-actions{display:flex;gap:9px;margin:15px 0 0;flex-wrap:wrap}
+.student-invite-actions button.secondary{background:#e6e3dd;color:#67473f}
+.student-invite-actions button:disabled{opacity:.5;cursor:not-allowed}
+.student-invite-revoke{display:block;border:0;background:transparent;color:#9f5946;font-size:.77rem;text-decoration:underline;margin-top:15px;cursor:pointer}
+.personal-invite-page{background:radial-gradient(ellipse at 10% 0%,#253c59,#0b2134 58%,#0a1929);min-height:calc(100vh - 130px);padding:35px 14px 60px;color:#e8f2f6;border-radius:18px}
+.personal-invite-head,.personal-invite-foot{max-width:530px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.personal-invite-head a{font-size:1.1rem;font-weight:900;letter-spacing:.04em;color:#f0c769;text-decoration:none}
+.personal-invite-head small{color:#8dabb9;letter-spacing:.1em;font-size:.63rem}
+.personal-invite-card{max-width:530px;margin:30px auto 20px;border:1px solid #30576a;border-radius:18px;background:linear-gradient(150deg,#113044,#0a2131);padding:clamp(24px,4vw,40px);box-shadow:0 18px 60px #0005}
+.personal-invite-eyebrow{color:#e7c26f;font-size:.68rem;letter-spacing:.14em;font-weight:850}
+.personal-invite-card h1{color:white;font-size:clamp(1.8rem,3vw,2.7rem);letter-spacing:-.035em;line-height:1.1;margin:10px 0 15px}
+.personal-invite-card>p:not(.personal-invite-eyebrow):not(.personal-invite-message){color:#b6d0dc;line-height:1.65;font-size:.87rem}
+.personal-invite-form{margin-top:22px}
+.personal-invite-form h2{font-size:1.2rem;color:#f2f7fc}
+.personal-invite-form p{color:#b5cbd7;font-size:.86rem;line-height:1.58}
+.personal-invite-form label{display:grid;gap:7px;font-size:.77rem;font-weight:750;color:#d9e7ec;margin:15px 0}
+.personal-invite-form input{border-radius:8px;border:1px solid #47697c;background:#102b3b;color:#f4f8fa;padding:12px 13px;font-size:.92rem;width:100%}
+.personal-invite-form input:focus{outline:2px solid #e7c26f;outline-offset:1px}
+.personal-invite-tabs{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:16px 0}
+.personal-invite-tabs button{border-radius:9px;padding:12px 7px;border:1px solid #355366;color:#a9bdc8;font-weight:750;font-size:.79rem;background:#102b3a;cursor:pointer}
+.personal-invite-tabs button.selected{background:#214953;border-color:#48ab92;color:#e6ffed}
+.personal-invite-primary{display:flex;align-items:center;justify-content:center;border:0;border-radius:9px;background:#e7bd63;color:#203043;font-size:.87rem;font-weight:850;min-height:45px;padding:12px 16px;cursor:pointer;width:100%;text-decoration:none}
+.personal-invite-primary:disabled{opacity:.6;cursor:not-allowed}
+.personal-invite-small{font-size:.75rem!important;line-height:1.7;color:#adc2cd!important}
+.personal-invite-message{margin:15px 0 0;border:1px solid #7eb897;border-radius:9px;background:#16483a;color:#d6f7e5;font-size:.79rem;line-height:1.6;padding:13px}
+.personal-invite-message.error{background:#543333;border-color:#b87575;color:#ffe9dc}
+.personal-invite-success{padding:20px;border:1px solid #569d81;border-radius:10px;background:#12483f;margin-top:20px}
+.personal-invite-success h2{margin:0 0 9px;color:#e4ffed}
+.personal-invite-success p{line-height:1.6;font-size:.85rem;color:#d0e6df}
+.personal-invite-success a{color:#f0cf7a;font-weight:800;font-size:.87rem}
+.student-invite-invalid{background:#3d3231;border:1px solid #aa8578;border-radius:10px;padding:18px;margin-top:20px}
+.student-invite-invalid strong{color:#ffe0c9}
+.student-invite-invalid p{font-size:.79rem;color:#e3cabe;line-height:1.5}
+.personal-invite-foot{color:#8faebb;font-size:.74rem}
+.personal-invite-foot a{color:#e9c475;text-decoration:none;font-weight:700}
+@media(max-width:650px){.personal-invite-head small{display:none}.personal-invite-card{margin:20px auto;padding:24px}}

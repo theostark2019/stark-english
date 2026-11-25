@@ -13,8 +13,8 @@ begin
   where n.linked_student_id is null
   order by n.full_name for update of n
  loop
-  update public.student_registration_invites set status='expired'
-    where registry_student_id=r.id and status='issued' and expires_at<=now();
+  update public.student_registration_invites as i set status='expired'
+    where i.registry_student_id=r.id and i.status='issued' and i.expires_at<=now();
   if exists(select 1 from public.student_registration_invites
    where registry_student_id=r.id and status in ('issued','claimed')) then
     continue;

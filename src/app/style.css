@@ -1041,3 +1041,19 @@ body:has(.svo-player)>main{max-width:none;margin:0;padding:0;min-height:100vh}
  .svo-navigation span{display:none}
  .svo-flashcard{min-height:185px}
 }
+
+
+/* Weekly SVO vocabulary dashboard panel */
+.stream-course-words .stream-course-word-eyebrow{font-size:.67rem;font-weight:800;letter-spacing:.09em;
+ color:var(--sc-accent);margin:7px 0 5px}
+.stream-course-word-number{display:flex;gap:10px;align-items:baseline;margin:4px 0 10px}
+.stream-course-word-number strong{font-size:2.15rem;color:#eefaff;letter-spacing:-.045em}
+.stream-course-word-number span{font-size:.8rem;color:#a5c0ce}
+.stream-course-word-meter{height:8px;border-radius:20px;background:#315565;overflow:hidden}
+.stream-course-word-meter i{display:block;height:100%;border-radius:20px;
+ background:linear-gradient(90deg,var(--sc-accent),#f2d18d)}
+.stream-course-word-details{display:grid;gap:7px;margin:14px 0}
+.stream-course-word-details span{font-size:.75rem;color:#c7e3df}
+.stream-course-words>p:not(.stream-course-word-eyebrow){color:#9fbccc;font-size:.72rem;line-height:1.64}
+.stream-course-words>a{display:inline-block;border:1px solid #729b8e;border-radius:8px;
+ padding:9px 11px;font-size:.78rem;font-weight:800;color:var(--sc-accent)!important;margin-top:7px}

@@ -4,6 +4,7 @@ import {serverClient} from '@/lib/supabase/server';
 import {StreamingCourseDashboard} from '@/components/StreamingCourseDashboard';
 import {getCourseStreamLearning,type StreamLearning} from '@/lib/course-stream-data';
 import {isPortalSlug,type CoursePreview,type CourseStatus} from '@/lib/course-portals';
+import type {StarkCatalogCollection} from '@/lib/stark-catalog';
 export default async function CoursePortal({params,searchParams}:{
  params:Promise<{slug:string}>;searchParams:Promise<{q?:string}>
 }){
@@ -19,6 +20,11 @@ export default async function CoursePortal({params,searchParams}:{
  const course=(catalog as CoursePreview[]).find(c=>c.slug===slug);
  if(!course)notFound();
  const account=(status||{signedIn:false,enrolled:[],pending:null}) as CourseStatus;
+ const {data:starkData,error:catalogError}=slug==='stark-english'
+  ?await sb.rpc('stark_english_catalog')
+  :{data:[] as StarkCatalogCollection[],error:null};
+ const starkCatalog=slug==='stark-english'&&!catalogError&&Array.isArray(starkData)
+  ?starkData as StarkCatalogCollection[]:[];
  let learning:StreamLearning|null=null;
  if(user&&account.enrolled?.includes(slug)){
   try{learning=await getCourseStreamLearning(sb,user.id,slug,course)}
@@ -26,5 +32,5 @@ export default async function CoursePortal({params,searchParams}:{
    <p role="alert">Your course is enrolled, but the learning record could not be loaded. Please try again.</p>
    <p><a href="/courses">Back to the course selector</a></p></section>}
  }
- return <StreamingCourseDashboard slug={slug} course={course} status={account} learning={learning} query={query}/>;
+ return <StreamingCourseDashboard slug={slug} course={course} status={account} learning={learning} query={query} starkCatalog={starkCatalog}/>;
 }

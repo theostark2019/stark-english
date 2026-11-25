@@ -20,6 +20,8 @@ export function AgroStreamingDashboard({course,status,learning,media,isEditor,qu
  const lessonProgress=latest?.status==='finalized'?100:0;
  const series=(course.series||[]).filter(c=>!query||c.name.toLowerCase().includes(query.toLowerCase()));
  const courses=course.publishedEpisodes||[];
+ const foundationSeriesId=learning?.seriesIds['A1 Foundations']||null;
+ const foundationSeriesHref=foundationSeriesId?'/series/'+foundationSeriesId:'/courses/agroenglish#series';
  const agroItems=[
   {title:'Agriculture 101',sub:'Visit a coffee farm and learn to describe crops, field work and teams.',href:'/courses/agroenglish/agriculture-101',thumb:media['a1-coffee']||media.hero,badge:'A1 · A2'},
   {title:'Agribiology',sub:'Plants, agricultural organisms and the vocabulary of life.',href:assigned.find(a=>a.code==='AGRO-A1-02')?'/lessons/'+assigned.find(a=>a.code==='AGRO-A1-02')?.id:'/courses/agroenglish#series',thumb:undefined,badge:'A1'},
@@ -100,9 +102,9 @@ export function AgroStreamingDashboard({course,status,learning,media,isEditor,qu
        <a href="#shorts">▷ Shorts</a><a href="#interviews">♧ Interviews</a>
       </nav>
       <div className="agrs-card-grid">
-       <Link className="agrs-film-card" href="/courses/agroenglish/agriculture-101">
-        <Tile src={media['a2-photo-story']||media['a2-mixed-farms']} alt="Agriculture 101 farm landscapes" kind="agrs-film-thumb" label="SERIES 1"/>
-        <div><strong>Agriculture 101</strong><small>Foundations for English in agriculture</small><span>A1 → A2 · 1 pilot lesson</span></div>
+       <Link className="agrs-film-card" href={foundationSeriesHref}>
+        <Tile src={media['a2-photo-story']||media['a2-mixed-farms']} alt="Agricultural foundations series" kind="agrs-film-thumb" label="SERIES 1"/>
+        <div><strong>A1 Foundations</strong><small>Explore a full series, with SVO-style episodes and progress.</small><span>12 published learning episodes · A1</span></div>
        </Link>
        {agroItems.slice(0,3).map((item,i)=><Link key={item.title} href={item.href} className="agrs-film-card">
         <Tile src={item.thumb} alt={item.title} kind="agrs-film-thumb" label={item.badge}/>
@@ -111,7 +113,9 @@ export function AgroStreamingDashboard({course,status,learning,media,isEditor,qu
       </div>
       {series.length>0&&<div className="agrs-available-series">
        <h3>Available curriculum</h3>
-       {series.map(s=><div key={s.name}><strong>{s.name}</strong><span>{s.published} published · {s.count} total episodes · {s.levels.join(' / ')}</span></div>)}
+       {series.map(s=>learning?.seriesIds[s.name]?<Link key={s.name} className="agrs-available-series-link" href={'/series/'+learning.seriesIds[s.name]}>
+        <strong>{s.name} <span aria-hidden="true">▶</span></strong><span>{s.published} published · {s.count} total episodes · {s.levels.join(' / ')}</span>
+       </Link>:<div key={s.name}><strong>{s.name}</strong><span>{s.published} published · {s.count} total episodes · {s.levels.join(' / ')} · Enroll to explore</span></div>)}
       </div>}
      </section>
      <section className="agrs-field-strip" id="field-visits">

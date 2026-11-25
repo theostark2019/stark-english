@@ -1,6 +1,8 @@
 import lessonsA from '@/data/svo-lessons-02-08.json';
 import lessonsB from '@/data/svo-lessons-09-15.json';
 import reviews from '@/data/svo-reviews.json';
+import supplementary from '@/data/svo-supplementary-examples.json';
+import {SVO_L01} from '@/lib/svo-lesson-content';
 export type SvoPracticeChoice=[string,string,string[]];
 export type SvoGap=[string,string];
 export type SvoTranslation=[string,string];
@@ -28,10 +30,16 @@ export function getSvoWords(lesson:SvoLesson):SvoWord[]{
   const pt=pair.slice(i+1).trim();
   const term=en.includes('→')?en.split('→')[1].trim():en;
   const source=[...lesson.context,...lesson.grammarExamples,...lesson.express.map(e=>e[1])];
-  const example=source.find(s=>s.toLowerCase().includes(term.toLowerCase()))||'';
+  const original=source.find(s=>s.toLowerCase().includes(term.toLowerCase()))||'';
+  const written=(supplementary as Record<string,Record<string,string>>)[lesson.code]?.[en.toLowerCase()]||'';
+  const example=original||written;
   return {key:svoWordKey(en),en,pt,example};
  });
 }
+export const SVO_ALL_WORDS:Record<string,SvoWord>=Object.fromEntries([
+ ...SVO_L01.lexicon.map(w=>({key:w.key,en:w.en,pt:w.pt,example:w.example})),
+ ...lessonData.flatMap(l=>getSvoWords(l))
+ ].reverse().map(w=>[w.key,w]));
 export const SVO_LESSON_ORDER=[
  'SVO-L01','SVO-L02','SVO-L03','SVO-R01','SVO-L04','SVO-L05','SVO-L06','SVO-R02',
  'SVO-L07','SVO-L08','SVO-L09','SVO-R03','SVO-L10','SVO-L11','SVO-L12','SVO-R04',

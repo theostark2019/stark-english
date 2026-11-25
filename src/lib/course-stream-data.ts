@@ -53,14 +53,21 @@ export async function getCourseStreamLearning(
  initial.activeDays30=days?.length??null;
  if(!items.length)return initial;
  const episodeIds=items.map(x=>x.episode_id);
- const [{data:assignedRows},{data:creditRows}]=await Promise.all([
+ const [{data:assignedRows},{data:creditRows},{data:completedCredits}]=await Promise.all([
   sb.from('lesson_assignments').select('id,episode_id,due_at')
    .eq('student_id',userId).in('episode_id',episodeIds),
-  sb.from('credit_ledger').select('minutes').eq('student_id',userId)
+  sb.from('credit_ledger').select('episode_id,minutes').eq('student_id',userId)
+   .in('episode_id',episodeIds),
+  sb.from('lesson_completion_credits').select('episode_id,minutes').eq('student_id',userId)
    .in('episode_id',episodeIds)
  ]);
  const assigned=(assignedRows||[]) as DBRecord[];
- initial.hours=(creditRows||[]).reduce((n,x)=>n+Number(x.minutes||0),0)/60;
+ // One planned-duration credit per completed episode across both legacy and LMS review systems.
+ const awarded=new Map<string,number>();
+ for(const x of (creditRows||[]))awarded.set(x.episode_id,Number(x.minutes||0));
+ for(const x of (completedCredits||[]))if(!awarded.has(x.episode_id))
+  awarded.set(x.episode_id,Number(x.minutes||0));
+ initial.hours=[...awarded.values()].reduce((n,minutes)=>n+minutes,0)/60;
  if(!assigned.length)return initial;
  const {data:attemptRows}=await sb.from('lesson_attempts')
   .select('id,assignment_id,status,created_at').eq('student_id',userId)

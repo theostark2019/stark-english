@@ -37,7 +37,7 @@ export function NotionStudentRegistry({students,courses}:{students:ImportedStude
     <h1>Alunos e atribuições</h1>
     <p>Cadastro inicial dos alunos importados do Notion, organizado por curso e professor responsável.</p>
     <span className="supervision-role">{students.length} alunos cadastrados · {uniqueTeachers} professor{uniqueTeachers===1?'':'es'} responsável{uniqueTeachers===1?'':'eis'}</span>
-  </div><div className="supervision-hero-actions"><Link href="/teacher">Dashboard LMS →</Link></div></div>
+  </div><div className="supervision-hero-actions"><Link href="/teacher">Dashboard LMS →</Link><Link href="/teacher/invitations">Convites individuais →</Link></div></div>
   <div className="supervision-kpis notion-registry-metrics">
    <div className="supervision-kpi"><p>Alunos cadastrados</p><strong>{students.length}</strong><small>Status Student no Notion</small></div>
    {courses.map(c=><div className="supervision-kpi" key={c.id}>

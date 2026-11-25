@@ -1,0 +1,826 @@
+[
+  {
+    "code": "SVO-L09",
+    "page": 20,
+    "title": "To Be · Questions",
+    "level": "A1",
+    "vocab": "chef=cozinheiro/chef|driver=motorista|farmer=agricultor|pilot=piloto|waiter=garçom|student=estudante|library=biblioteca|theater=teatro/cinema|mall=shopping|airport=aeroporto|supermarket=supermercado|hospital=hospital|afraid=com medo|surprised=surpreso|curious=curioso|ready=pronto|late=atrasado|who=quem|what=o que/qual|where=onde|why=por que|how=como",
+    "context": [
+      "Are you a student? Yes, I am.",
+      "Is she a doctor at the hospital? Yes, she is.",
+      "Where is the library?",
+      "Who is that? That is my brother.",
+      "What is your job? I am a driver.",
+      "Why are you late?",
+      "How are you? I am fine, thank you."
+    ],
+    "chunks": [
+      "Are you a student?",
+      "Yes, I am.",
+      "No, I'm not.",
+      "Where is the library?",
+      "What is your job?",
+      "How are you?"
+    ],
+    "grammar": "To ask a question using be, move am/is/are before the subject: Are you a student? Is she a doctor? Use short answers matching the verb: Yes, I am; No, I'm not; Yes, she is. Add Who, What, Where, Why or How for information questions.",
+    "grammarExamples": [
+      "Are you a student? Yes, I am.",
+      "Is she a doctor? Yes, she is.",
+      "Where is the library?"
+    ],
+    "express": [
+      [
+        "Você é um estudante? - Sim, eu sou. / Não, não sou.",
+        "Are you a student? Yes, I am. / No, I'm not."
+      ],
+      [
+        "Ela é médica no hospital? - Sim, ela é.",
+        "Is she a doctor at the hospital? Yes, she is."
+      ],
+      [
+        "Onde fica a biblioteca?",
+        "Where is the library?"
+      ],
+      [
+        "Quem é aquele? - Aquele é meu irmão.",
+        "Who is that? That is my brother."
+      ],
+      [
+        "Qual é o seu trabalho? - Eu sou motorista.",
+        "What is your job? I am a driver."
+      ],
+      [
+        "Por que você está atrasado?",
+        "Why are you late?"
+      ],
+      [
+        "Como você está? - Estou bem, obrigado.",
+        "How are you? I am fine, thank you."
+      ]
+    ],
+    "choose": [
+      [
+        "___ you a student?",
+        "Are",
+        [
+          "Are",
+          "Is",
+          "Am"
+        ]
+      ],
+      [
+        "___ she a doctor?",
+        "Is",
+        [
+          "Is",
+          "Are",
+          "Do"
+        ]
+      ],
+      [
+        "Where ___ the library?",
+        "is",
+        [
+          "is",
+          "are",
+          "do"
+        ]
+      ],
+      [
+        "Are you ready? Yes, I ___.",
+        "am",
+        [
+          "am",
+          "is",
+          "do"
+        ]
+      ]
+    ],
+    "gaps": [
+      [
+        "___ you a student?",
+        "Are"
+      ],
+      [
+        "Is he a pilot? Yes, he ___.",
+        "is"
+      ],
+      [
+        "___ is the supermarket?",
+        "Where"
+      ],
+      [
+        "How ___ you?",
+        "are"
+      ],
+      [
+        "___ is your job?",
+        "What"
+      ]
+    ]
+  },
+  {
+    "code": "SVO-L10",
+    "page": 22,
+    "title": "Present Simple · Don't / Doesn't",
+    "level": "A1–A2",
+    "vocab": "drink=beber|eat=comer|like=gostar|work=trabalhar|play=jogar|watch=assistir|read=ler|coffee=café|meat=carne|tv=televisão|music=música|soccer=futebol|email=email|newspaper=jornal|always=sempre|usually=geralmente|often=frequentemente|sometimes=às vezes|never=nunca|it=isso/ele/ela|don't=não (do not)|doesn't=não (does not)",
+    "context": [
+      "I like coffee, but I don't like tea.",
+      "She works in an office, but she doesn't work on Saturdays.",
+      "He plays soccer, but he doesn't play basketball.",
+      "We watch TV in the evening, but we never watch the news.",
+      "It rains in winter, but it doesn't rain every day.",
+      "You speak English, but you don't speak Spanish."
+    ],
+    "chunks": [
+      "I don't like tea",
+      "He doesn't work",
+      "We never watch the news",
+      "She always drinks coffee",
+      "but I don't",
+      "doesn't rain every day"
+    ],
+    "grammar": "Use don't + base verb with I, you, we and they: I don't drink tea. Use doesn't + base verb with he, she and it: She doesn't work on Saturdays. After doesn't, don't add -s to the main verb. Frequency words (always, usually, often, sometimes, never) describe habits, and but contrasts two facts.",
+    "grammarExamples": [
+      "I don't like tea.",
+      "She doesn't work on Saturdays.",
+      "He plays soccer, but he doesn't play basketball."
+    ],
+    "express": [
+      [
+        "Eu gosto de café, mas não gosto de chá.",
+        "I like coffee, but I don't like tea."
+      ],
+      [
+        "Ela trabalha em um escritório, mas não trabalha aos sábados.",
+        "She works in an office, but she doesn't work on Saturdays."
+      ],
+      [
+        "Ele joga futebol, mas não joga basquete.",
+        "He plays soccer, but he doesn't play basketball."
+      ],
+      [
+        "Nós assistimos TV à noite, mas nunca assistimos ao jornal.",
+        "We watch TV at night, but we never watch the news."
+      ],
+      [
+        "Chove no inverno, mas não chove todos os dias.",
+        "It rains in winter, but it doesn't rain every day."
+      ],
+      [
+        "Eles leem livros, mas não leem jornais.",
+        "They read books, but they don't read newspapers."
+      ],
+      [
+        "Você fala inglês, mas não fala espanhol.",
+        "You speak English, but you don't speak Spanish."
+      ]
+    ],
+    "choose": [
+      [
+        "I ___ drink tea.",
+        "don't",
+        [
+          "don't",
+          "doesn't",
+          "isn't"
+        ]
+      ],
+      [
+        "He ___ work on Sundays.",
+        "doesn't",
+        [
+          "doesn't",
+          "don't",
+          "isn't"
+        ]
+      ],
+      [
+        "She doesn't ___ music.",
+        "like",
+        [
+          "like",
+          "likes",
+          "liking"
+        ]
+      ],
+      [
+        "We ___ watch the news.",
+        "never",
+        [
+          "never",
+          "doesn't",
+          "is"
+        ]
+      ]
+    ],
+    "gaps": [
+      [
+        "I ___ like tea.",
+        "don't"
+      ],
+      [
+        "She ___ work on Saturdays.",
+        "doesn't"
+      ],
+      [
+        "We ___ watch the news.",
+        "never"
+      ],
+      [
+        "He doesn't ___ basketball.",
+        "play"
+      ],
+      [
+        "You ___ speak Spanish.",
+        "don't"
+      ]
+    ]
+  },
+  {
+    "code": "SVO-L11",
+    "page": 23,
+    "title": "Present Simple · Do / Does Questions",
+    "level": "A1–A2",
+    "vocab": "live=morar/viver|speak=falar|study=estudar|have=ter|want=querer|like=gostar|pizza=pizza|movie=filme|book=livro|dog=cachorro|car=carro|job=emprego/trabalho|do=auxiliar de pergunta|does=auxiliar de pergunta",
+    "context": [
+      "Do you live in the city? Yes, I do.",
+      "Does she speak Portuguese? Yes, she does.",
+      "What do you study? I study English.",
+      "Where does he work? He works in a school.",
+      "When do they watch movies? They watch movies on weekends."
+    ],
+    "chunks": [
+      "Do you live here?",
+      "Does she speak English?",
+      "Yes, I do. / No, I don't.",
+      "Yes, she does. / No, she doesn't.",
+      "Where does he work?",
+      "When do they watch movies?"
+    ],
+    "grammar": "Use Do + I/you/we/they + base verb for Present Simple questions. Use Does + he/she/it + base verb. The main verb never takes -s after does: Does she speak? NOT Does she speaks? Respond with Yes, I do / No, I don't; Yes, she does / No, she doesn't. For information questions, begin with what, where, when or why.",
+    "grammarExamples": [
+      "Do you live in the city? Yes, I do.",
+      "Does she speak Portuguese? Yes, she does.",
+      "What do you study? I study English."
+    ],
+    "express": [
+      [
+        "Você mora na cidade? - Sim, moro. / Não, não moro.",
+        "Do you live in the city? Yes, I do. / No, I don't."
+      ],
+      [
+        "Ela fala português? - Sim, ela fala.",
+        "Does she speak Portuguese? Yes, she does."
+      ],
+      [
+        "O que você estuda? - Eu estudo inglês.",
+        "What do you study? I study English."
+      ],
+      [
+        "Onde ele trabalha? - Ele trabalha em uma escola.",
+        "Where does he work? He works in a school."
+      ],
+      [
+        "Quando eles assistem filmes? - Eles assistem filmes nos fins de semana.",
+        "When do they watch movies? They watch movies on weekends."
+      ],
+      [
+        "Por que você quer um carro? - Porque eu preciso para o trabalho.",
+        "Why do you want a car? Because I need it for work."
+      ],
+      [
+        "Você tem um cachorro? - Não, tenho um gato.",
+        "Do you have a dog? No, I have a cat."
+      ]
+    ],
+    "choose": [
+      [
+        "___ you live in the city?",
+        "Do",
+        [
+          "Do",
+          "Does",
+          "Are"
+        ]
+      ],
+      [
+        "___ she speak Portuguese?",
+        "Does",
+        [
+          "Does",
+          "Do",
+          "Is"
+        ]
+      ],
+      [
+        "Does he ___ in a school?",
+        "work",
+        [
+          "work",
+          "works",
+          "working"
+        ]
+      ],
+      [
+        "Do you study English? Yes, I ___.",
+        "do",
+        [
+          "do",
+          "am",
+          "does"
+        ]
+      ]
+    ],
+    "gaps": [
+      [
+        "___ you have a dog?",
+        "Do"
+      ],
+      [
+        "Does she ___ English?",
+        "speak"
+      ],
+      [
+        "Where ___ he work?",
+        "does"
+      ],
+      [
+        "Yes, she ___.",
+        "does"
+      ],
+      [
+        "When ___ they watch movies?",
+        "do"
+      ]
+    ]
+  },
+  {
+    "code": "SVO-L12",
+    "page": 24,
+    "title": "Who / What / Where / When / Why / How",
+    "level": "A1–A2",
+    "vocab": "who=quem|what=o que/qual|where=onde|when=quando|why=por que|how=como|am=ser/estar (I)|is=ser/estar (he/she/it)|are=ser/estar (you/we/they)|do=auxiliar de pergunta|does=auxiliar de pergunta|work=trabalhar|study=estudar|live=morar|like=gostar|eat=comer|drink=beber|play=jogar/tocar|watch=assistir|read=ler|have=ter|want=querer|speak=falar|teacher=professor|student=estudante|friend=amigo|job=trabalho|home=casa|school=escola|book=livro|supermarket=supermercado|bank=banco|park=parque|coffee=café|music=música|movie=filme|brother=irmão|sister=irmã|father=pai|mother=mãe|car=carro|dog=cachorro|phone=telefone|language=idioma",
+    "context": [
+      "Who is your English teacher? Ms. Silva.",
+      "What do you do? I am a student.",
+      "What is your job? I'm a chef.",
+      "Where are you now? I am at home.",
+      "Where does she live? She lives in São Paulo.",
+      "When is your English class? It's on Monday.",
+      "When do you study? I study every night.",
+      "Why are you happy? Because it's Friday!",
+      "Why do you want to learn English? For my job.",
+      "How are you? I'm fine, thanks.",
+      "How do you get to school? By bus."
+    ],
+    "chunks": [
+      "Who is your teacher?",
+      "What do you do?",
+      "Where does she live?",
+      "When is your English class?",
+      "Why are you happy?",
+      "How do you get to school?"
+    ],
+    "grammar": "Choose the question word according to the information wanted: who person, what thing/activity, where place, when time, why reason, how manner/state. After the question word, use be (Who is she? Where are you?) or do/does with other Present Simple verbs (Where does he work? What do you eat?).",
+    "grammarExamples": [
+      "Where is the bank?",
+      "What do you eat for breakfast?",
+      "Where does he work?"
+    ],
+    "express": [
+      [
+        "Quem é o seu professor de matemática? - O Sr. Costa.",
+        "Who is your Math teacher? Mr. Costa."
+      ],
+      [
+        "O que você faz? - Sou estudante. / Qual é o seu trabalho? - Sou garçom.",
+        "What do you do? I am a student. / What is your job? I am a waiter."
+      ],
+      [
+        "Onde você está agora? - Estou no parque. / Onde ela mora? - Ela mora no Rio de Janeiro.",
+        "Where are you now? I am at the park. / Where does she live? She lives in Rio de Janeiro."
+      ],
+      [
+        "Quando é a sua aula? - É à noite. / Quando você trabalha? - Trabalho de segunda a sexta.",
+        "When is your class? It is at night. / When do you work? I work from Monday to Friday."
+      ],
+      [
+        "Por que você está cansado? - Porque eu estudo muito. / Por que você estuda inglês? - Porque eu gosto.",
+        "Why are you tired? Because I study a lot. / Why do you study English? Because I like it."
+      ],
+      [
+        "Como você está? - Estou bem. / Como você vai para a escola? - Eu vou a pé.",
+        "How are you? I am fine. / How do you get to school? I walk."
+      ]
+    ],
+    "choose": [
+      [
+        "___ is your teacher?",
+        "Who",
+        [
+          "Who",
+          "When",
+          "How"
+        ]
+      ],
+      [
+        "Where ___ she live?",
+        "does",
+        [
+          "does",
+          "is",
+          "are"
+        ]
+      ],
+      [
+        "___ are you happy?",
+        "Why",
+        [
+          "Why",
+          "Where",
+          "When"
+        ]
+      ],
+      [
+        "How ___ you get to school?",
+        "do",
+        [
+          "do",
+          "are",
+          "is"
+        ]
+      ]
+    ],
+    "gaps": [
+      [
+        "___ is your name?",
+        "What"
+      ],
+      [
+        "___ do you study?",
+        "When"
+      ],
+      [
+        "___ is the supermarket?",
+        "Where"
+      ],
+      [
+        "Where ___ he work?",
+        "does"
+      ],
+      [
+        "___ are you today?",
+        "How"
+      ]
+    ]
+  },
+  {
+    "code": "SVO-L13",
+    "page": 26,
+    "title": "I Worked / She Went",
+    "level": "A2",
+    "vocab": "work → worked=trabalhar → trabalhou|watch → watched=assistir → assistiu|play → played=jogar → jogou|cook → cooked=cozinhar → cozinhou|clean → cleaned=limpar → limpou|study → studied=estudar → estudou|go → went=ir → foi|eat → ate=comer → comeu|drink → drank=beber → bebeu|see → saw=ver → viu|have → had=ter → teve|read → read=ler → leu|yesterday=ontem|last night=ontem à noite|last week=semana passada|last weekend=fim de semana passado|this morning=esta manhã|an hour ago=uma hora atrás",
+    "context": [
+      "I watched a movie yesterday.",
+      "She worked at the office last week.",
+      "They played soccer last weekend.",
+      "I went to the park yesterday.",
+      "You ate an apple an hour ago.",
+      "She drank coffee this morning."
+    ],
+    "chunks": [
+      "I worked yesterday",
+      "she went to the park",
+      "last weekend",
+      "an hour ago",
+      "this morning",
+      "regular -ed / irregular went"
+    ],
+    "grammar": "Past Simple affirmative describes a completed past event. Regular verbs often add -ed (work → worked; watch → watched), while some use an irregular form (go → went, eat → ate). After the subject, use the past form without do/does. Time expressions include yesterday, last night, last week and an hour ago. Read is spelled the same in past but pronounced differently.",
+    "grammarExamples": [
+      "I worked yesterday.",
+      "She went to the park yesterday.",
+      "He ate lunch an hour ago."
+    ],
+    "express": [
+      [
+        "Eu assisti um filme ontem.",
+        "I watched a movie yesterday."
+      ],
+      [
+        "Ela trabalhou no escritório na semana passada.",
+        "She worked at the office last week."
+      ],
+      [
+        "Eles jogaram futebol no fim de semana passado.",
+        "They played soccer last weekend."
+      ],
+      [
+        "Ele cozinhou o jantar ontem à noite.",
+        "He cooked dinner last night."
+      ],
+      [
+        "Nós limpamos a casa esta manhã.",
+        "We cleaned the house this morning."
+      ],
+      [
+        "Eu fui ao parque ontem. Você comeu uma maçã uma hora atrás.",
+        "I went to the park yesterday. You ate an apple an hour ago."
+      ],
+      [
+        "Ela bebeu café esta manhã. Ele se divertiu ontem à noite.",
+        "She drank coffee this morning. He had fun last night."
+      ]
+    ],
+    "choose": [
+      [
+        "I ___ a movie yesterday.",
+        "watched",
+        [
+          "watched",
+          "watch",
+          "watching"
+        ]
+      ],
+      [
+        "She ___ to the park.",
+        "went",
+        [
+          "went",
+          "go",
+          "goed"
+        ]
+      ],
+      [
+        "They played soccer ___.",
+        "last weekend",
+        [
+          "last weekend",
+          "every day",
+          "tomorrow"
+        ]
+      ],
+      [
+        "You ___ an apple an hour ago.",
+        "ate",
+        [
+          "ate",
+          "eat",
+          "eated"
+        ]
+      ]
+    ],
+    "gaps": [
+      [
+        "I ___ yesterday. (work)",
+        "worked"
+      ],
+      [
+        "She ___ to the park. (go)",
+        "went"
+      ],
+      [
+        "You ___ an apple. (eat)",
+        "ate"
+      ],
+      [
+        "They ___ soccer last weekend. (play)",
+        "played"
+      ],
+      [
+        "She ___ coffee this morning. (drink)",
+        "drank"
+      ]
+    ]
+  },
+  {
+    "code": "SVO-L14",
+    "page": 27,
+    "title": "I Didn't Understand / They Didn't Go",
+    "level": "A2",
+    "vocab": "work → worked=trabalhar → trabalhou|cook → cooked=cozinhar → cozinhou|go → went=ir → foi|see → saw=ver → viu|have → had=ter → teve|eat → ate=comer → comeu|movie=filme|soccer=futebol|tv show=programa de TV|dinner=jantar|party=festa|breakfast=café da manhã|didn't=não (did not)",
+    "context": [
+      "I watched a movie, but I didn't watch a TV show.",
+      "She went to the park, but she didn't go to school.",
+      "They played soccer, but they didn't play basketball.",
+      "He cooked dinner, but he didn't cook lunch.",
+      "We had a party last weekend, but we didn't have one last night.",
+      "I saw my brother, but I didn't see my sister."
+    ],
+    "chunks": [
+      "I didn't watch a TV show",
+      "She didn't go to school",
+      "We didn't have a party",
+      "I didn't see my sister",
+      "but I didn't",
+      "didn't + base verb"
+    ],
+    "grammar": "Past Simple negative uses didn't + base verb with every subject: I didn't watch; she didn't go; they didn't play. The verb after didn't stays in base form even when the positive uses an irregular past form: went, but didn't go; saw, but didn't see. Use but to contrast the two facts.",
+    "grammarExamples": [
+      "I watched a movie, but I didn't watch a TV show.",
+      "She went to the park, but she didn't go to school."
+    ],
+    "express": [
+      [
+        "Eu assisti um filme, mas não assisti um programa de TV.",
+        "I watched a movie, but I didn't watch a TV show."
+      ],
+      [
+        "Eles jogaram futebol, mas não jogaram basquete.",
+        "They played soccer, but they didn't play basketball."
+      ],
+      [
+        "Ele cozinhou o jantar, mas não cozinhou o almoço.",
+        "He cooked dinner, but he didn't cook lunch."
+      ],
+      [
+        "Nós fizemos uma festa no fim de semana passado, mas não fizemos uma ontem à noite.",
+        "We had a party last weekend, but we didn't have one last night."
+      ],
+      [
+        "Eu vi meu irmão, mas não vi minha irmã.",
+        "I saw my brother, but I didn't see my sister."
+      ],
+      [
+        "Você tomou o café da manhã, mas não almoçou porque estava ocupado.",
+        "You ate breakfast, but you didn't have lunch because you were busy."
+      ]
+    ],
+    "choose": [
+      [
+        "She ___ go to school.",
+        "didn't",
+        [
+          "didn't",
+          "doesn't",
+          "don't"
+        ]
+      ],
+      [
+        "I didn't ___ a TV show.",
+        "watch",
+        [
+          "watch",
+          "watched",
+          "watches"
+        ]
+      ],
+      [
+        "They played soccer, but they ___ play basketball.",
+        "didn't",
+        [
+          "didn't",
+          "weren't",
+          "doesn't"
+        ]
+      ],
+      [
+        "We ___ a party last weekend.",
+        "had",
+        [
+          "had",
+          "have",
+          "haved"
+        ]
+      ]
+    ],
+    "gaps": [
+      [
+        "I ___ watch a TV show.",
+        "didn't"
+      ],
+      [
+        "She went to the park, but didn't ___ to school.",
+        "go"
+      ],
+      [
+        "We had a party, but we ___ have one last night.",
+        "didn't"
+      ],
+      [
+        "He cooked dinner, but didn't ___ lunch.",
+        "cook"
+      ],
+      [
+        "I saw my brother, but I didn't ___ my sister.",
+        "see"
+      ]
+    ]
+  },
+  {
+    "code": "SVO-L15",
+    "page": 28,
+    "title": "Did You Understand? / Did You Do It?",
+    "level": "A2",
+    "vocab": "work → worked=trabalhar → trabalhou|play → played=jogar → jogou|watch → watched=assistir → assistiu|go → went=ir → foi|see → saw=ver → viu|have → had=ter → teve|eat → ate=comer → comeu|movie=filme|home=casa|school=escola|park=parque|friend=amigo|party=festa|dinner=jantar|last weekend=fim de semana passado|last monday=segunda-feira passada|this morning=esta manhã|did=auxiliar do passado|what=o que|where=onde",
+    "context": [
+      "Did you work yesterday? Yes, I did. / No, I didn't.",
+      "Did she go to school? Yes, she did.",
+      "What did you watch last night? I watched a movie.",
+      "Where did they go last weekend? They went to the park.",
+      "When did he see his friend? He saw him this morning."
+    ],
+    "chunks": [
+      "Did you work yesterday?",
+      "Yes, I did.",
+      "No, I didn't.",
+      "Did she go to school?",
+      "What did you watch?",
+      "Where did they go?"
+    ],
+    "grammar": "Past Simple questions use Did + subject + base verb: Did you work? Did she go? Did is already past, so the main verb remains in base form, not went or watched. Short answers: Yes, I did; No, I didn't. Information questions begin with What, Where, When, Who, Why or How followed by did.",
+    "grammarExamples": [
+      "Did you work yesterday? Yes, I did.",
+      "Did she go to school? Yes, she did.",
+      "Where did they go last weekend? They went to the park."
+    ],
+    "express": [
+      [
+        "O que você assistiu ontem à noite? - Eu assisti um filme.",
+        "What did you watch last night? I watched a movie."
+      ],
+      [
+        "Para onde eles foram no fim de semana passado? - Eles foram ao parque.",
+        "Where did they go last weekend? They went to the park."
+      ],
+      [
+        "Quando ele viu o amigo? - Ele o viu esta manhã.",
+        "When did he see his friend? He saw him this morning."
+      ],
+      [
+        "Quem você viu na festa? - Eu vi meu irmão.",
+        "Who did you see at the party? I saw my brother."
+      ],
+      [
+        "Por que você jantou cedo? - Porque eu estava com fome.",
+        "Why did you eat dinner early? Because I was hungry."
+      ],
+      [
+        "Como você voltou para casa? - Eu voltei de ônibus.",
+        "How did you get home? I came home by bus."
+      ]
+    ],
+    "choose": [
+      [
+        "___ you work yesterday?",
+        "Did",
+        [
+          "Did",
+          "Do",
+          "Does"
+        ]
+      ],
+      [
+        "Did she ___ to school?",
+        "go",
+        [
+          "go",
+          "went",
+          "goes"
+        ]
+      ],
+      [
+        "Where did they ___?",
+        "go",
+        [
+          "go",
+          "went",
+          "going"
+        ]
+      ],
+      [
+        "Did you watch TV? Yes, I ___.",
+        "did",
+        [
+          "did",
+          "do",
+          "was"
+        ]
+      ]
+    ],
+    "gaps": [
+      [
+        "___ you work yesterday?",
+        "Did"
+      ],
+      [
+        "Did she ___ to school?",
+        "go"
+      ],
+      [
+        "What did you ___ last night?",
+        "watch"
+      ],
+      [
+        "Where ___ they go?",
+        "did"
+      ],
+      [
+        "No, I ___.",
+        "didn't"
+      ]
+    ]
+  }
+]

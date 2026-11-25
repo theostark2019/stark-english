@@ -1057,3 +1057,28 @@ body:has(.svo-player)>main{max-width:none;margin:0;padding:0;min-height:100vh}
 .stream-course-words>p:not(.stream-course-word-eyebrow){color:#9fbccc;font-size:.72rem;line-height:1.64}
 .stream-course-words>a{display:inline-block;border:1px solid #729b8e;border-radius:8px;
  padding:9px 11px;font-size:.78rem;font-weight:800;color:var(--sc-accent)!important;margin-top:7px}
+
+
+/* Full SVO series: source review and universal substitution stages */
+.svo-course-player .svo-lesson-select,.svo-review-player .svo-field input,
+.svo-review-player .svo-field textarea,.svo-course-player .svo-field textarea{
+ display:block;width:100%;border-radius:8px;border:1px solid #477080;background:#14384a;
+ color:#f4fbff;font:inherit;font-size:.86rem;padding:11px 12px;margin:8px 0 11px;
+ outline-offset:2px
+}
+.svo-course-player .svo-lesson-select:focus,.svo-review-player .svo-field input:focus,
+.svo-review-player .svo-field textarea:focus{outline:2px solid #f0c680}
+.svo-review-player .svo-source-passage{border-left:4px solid #e9bc76;background:#153a4d;
+ padding:19px 22px;color:#f1fafb;line-height:1.84;font-size:.89rem;border-radius:5px 11px 11px 5px;
+ margin:13px 0 23px;white-space:pre-wrap}
+.svo-review-player .svo-field{font-weight:640;color:#d6e7ed}
+.svo-review-player .svo-field textarea{line-height:1.67}
+.svo-review-guidance{border:1px solid #4d817b;border-radius:10px;padding:15px 18px;
+ margin:14px 0;background:#1b4648}
+.svo-review-guidance strong{font-size:.81rem;color:#f5d393}
+.svo-review-guidance p{font-size:.79rem;color:#c6ddd9;margin:6px 0 0;line-height:1.66}
+.svo-preview-bottom{text-align:center;padding:12px;background:#0b2534}
+.svo-preview-bottom a{color:#e9c383;font-weight:750;font-size:.78rem}
+.svo-course-player .svo-details button{border:1px solid #4a7581;border-radius:6px;
+ background:#235261;font-size:.67rem;padding:2px 8px;color:#eafaff}
+@media(max-width:600px){.svo-review-player .svo-source-passage{padding:13px 14px;font-size:.8rem}}

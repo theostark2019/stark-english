@@ -2,6 +2,8 @@ import Link from 'next/link';
 import {CourseChooseButton} from '@/components/CourseExplorer';
 import {PORTALS,type CoursePreview,type CourseStatus,type PortalSlug} from '@/lib/course-portals';
 import type {StreamLearning} from '@/lib/course-stream-data';
+import type {StarkCatalogCollection,StarkCatalogKind} from '@/lib/stark-catalog';
+import {StarkCatalogShelf} from '@/components/StarkCatalogShelf';
 
 const categories=[
  {id:'inicio',icon:'⌂',label:'Início'},
@@ -53,9 +55,11 @@ function Cover({slug,variant=0,mini=false}:{slug:PortalSlug;variant?:number;mini
   <span className="stream-art-symbol">{PORTALS[slug].icon}</span>
  </span>;
 }
-type Props={slug:PortalSlug;course:CoursePreview;status:CourseStatus;learning:StreamLearning|null;query:string};
-export function StreamingCourseDashboard({slug,course,status,learning,query}:Props){
+type Props={slug:PortalSlug;course:CoursePreview;status:CourseStatus;learning:StreamLearning|null;query:string;starkCatalog?:StarkCatalogCollection[]};
+export function StreamingCourseDashboard({slug,course,status,learning,query,starkCatalog=[]}:Props){
  const d=PORTALS[slug],enrolled=Boolean(learning?.enrolled);
+ const starkItems=(kind:StarkCatalogKind)=>starkCatalog.filter(c=>c.kind===kind&&
+  (!query||[c.title,c.cefr,c.description].join(' ').toLocaleLowerCase().includes(query.toLocaleLowerCase())));
  const assigned=learning?.assignments||[],completed=learning?.finished||[];
  const currentSeries=course.series||[];
  const filteredSeries=(currentSeries.length?currentSeries.map((s,i)=>({
@@ -69,6 +73,10 @@ export function StreamingCourseDashboard({slug,course,status,learning,query}:Pro
  }))).filter(s=>!query||[s.title,s.description,s.level].join(' ').toLowerCase().includes(query.toLowerCase()));
  const suggestions=(enrolled&&assigned.length?assigned.slice(0,3).map(x=>({
   label:x.series,title:x.title,sub:x.level+' · '+statusLabel(x.status),href:'/lessons/'+x.id
+ })):slug==='stark-english'&&starkCatalog.length?starkCatalog.filter(x=>['svo','dvc','bluey-xylophone'].includes(x.slug)).map(x=>({
+  label:x.kind==='series'?'Série · '+x.cefr:'Filme · '+x.cefr,title:x.title,
+  sub:x.status==='source_records'?'Material em organização':'Coleção planejada',
+  href:'/courses/stark-english/catalog/'+x.slug
  })):course.publishedEpisodes?.length?course.publishedEpisodes.slice(0,3).map(x=>({
   label:x.level+' · Publicado',title:x.title,sub:'Disponível após atribuição',href:'#series'
  })):d.paths.slice(0,3).map(x=>({
@@ -143,6 +151,7 @@ export function StreamingCourseDashboard({slug,course,status,learning,query}:Pro
     <section className="stream-course-panel stream-course-library" id="series">
      <div className="stream-course-panel-heading"><h2><span className="stream-course-heading-icon">▣</span> Séries</h2>
       <span className="stream-course-label">{currentSeries.length?currentSeries.length+' módulos no catálogo':'Séries em planejamento'}</span></div>
+     {slug==='stark-english'&&starkCatalog.length?<StarkCatalogShelf kind="series" items={starkItems("series")}/>:
      <div className="stream-course-series-grid">
       {filteredSeries.length?filteredSeries.map((s,i)=>{
        const content=<><Cover slug={slug} variant={i}/><span className="stream-course-series-info">
@@ -153,18 +162,21 @@ export function StreamingCourseDashboard({slug,course,status,learning,query}:Pro
        return s.seriesId?<Link key={s.title} href={'/series/'+s.seriesId} className="stream-course-series-card">{content}</Link>:
         <article key={s.title} className="stream-course-series-card placeholder">{content}</article>;
       }):<p className="stream-course-empty">Nenhuma série encontrada.</p>}
-     </div>
+     </div>}
     </section>
     {extra.map((x,k)=><section className="stream-course-panel stream-course-category" id={x.id} key={x.id}>
      <div className="stream-course-panel-heading"><h2><span className="stream-course-heading-icon">{x.id==='filmes'?'▤':x.id==='shorts'?'▷':'♙'}</span> {x.title}</h2>
-      <span className="stream-course-label">Em desenvolvimento</span></div>
+      <span className="stream-course-label">{slug==='stark-english'?starkItems(x.id==='filmes'?'movie':x.id==='shorts'?'short':'interview').length+' coleções':'Em desenvolvimento'}</span></div>
+     {slug==='stark-english'&&starkCatalog.length?<StarkCatalogShelf
+      kind={x.id==='filmes'?'movie':x.id==='shorts'?'short':'interview'}
+      items={starkItems(x.id==='filmes'?'movie':x.id==='shorts'?'short':'interview')}/>:
      <div className="stream-course-category-grid">
       {x.paths.map((v,i)=><article className="stream-course-category-card" key={v.title}>
        <Cover slug={slug} variant={k+i+1}/><span className="stream-course-category-info">
         <strong>{v.title}</strong><small>{x.desc} · Conceito</small></span>
        <span className="stream-course-mini-lock">Em breve</span>
       </article>)}
-     </div>
+     </div>}
     </section>)}
    </div>
    <aside className="stream-course-right">

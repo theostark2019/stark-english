@@ -3,6 +3,8 @@
 import {useCallback,useEffect,useRef,useState} from 'react';
 import Link from 'next/link';
 import {browserClient} from '@/lib/supabase/browser';
+import {Agro101ReadingPlayer} from '@/components/Agro101ReadingPlayer';
+import {agroMediaManifest,type AgroMediaManifest} from '@/lib/agro-media';
 
 type Attempt = {id:string;assignment_id:string;student_id:string;episode_id:string;status:string};
 type ResponseRow = {activity_key:string;field_key:string;response:Record<string,unknown>};
@@ -29,6 +31,7 @@ function mimeFor(type:string){
 export function IntegratedAgricultureLesson({attempt,initialResponses,initialFiles,reviews,episodeCode,episodeTitle}:{attempt:Attempt;initialResponses:ResponseRow[];initialFiles:FileRow[];reviews:ReviewRow[];episodeCode:string;episodeTitle:string}){
  const frame=useRef<HTMLIFrameElement|null>(null);
  const [ready,setReady]=useState(false);
+ const [agroMedia,setAgroMedia]=useState<AgroMediaManifest>({});
  const [status,setStatus]=useState(attempt.status);
  const [files,setFiles]=useState(initialFiles);
  const [uploading,setUploading]=useState(0);
@@ -48,6 +51,12 @@ export function IntegratedAgricultureLesson({attempt,initialResponses,initialFil
  const lessonFile=episodeCode==='AGRO-A1-02'?'agribiology.html':'agriculture101.html';
  const prefix=attempt.id+':'+lessonSlug+'-';
 
+ useEffect(()=>{
+  if(episodeCode!=='AGRO-A1-01')return;
+  let live=true;
+  void agroMediaManifest(browserClient()).then(m=>{if(live)setAgroMedia(m)});
+  return()=>{live=false};
+ },[episodeCode]);
  useEffect(()=>{
   // Keep local drafts isolated by attempt ID, and restore canonical cloud records
   // before loading the original lesson in a same-origin frame.
@@ -174,6 +183,18 @@ export function IntegratedAgricultureLesson({attempt,initialResponses,initialFil
   setSubmitting(false);
  }
  return <div className="agro-integrated">
+  {episodeCode==='AGRO-A1-01'&&<div className="agro-integrated-media">
+   <div className="agrs-assigned-lesson-head">
+    {agroMedia.hero&&<img src={agroMedia.hero} alt="Marina and farmers in the workshop"/>}
+    <div><Link href="/courses/agroenglish/agriculture-101">← Agriculture 101 overview</Link>
+     <p>AGROENGLISH · SERIES 1 · A1/A2</p>
+     <h1>My Place in Agriculture</h1>
+     <span>Reading, vocabulary, substitution, word families, production and teacher feedback</span></div>
+   </div>
+   <Agro101ReadingPlayer media={agroMedia} compact/>
+   <div className="agrs-embedded-task-heading" id="agro-activities"><h2>Now put the language to work</h2>
+    <p>The following activities save to your assigned student account and can be submitted to your teacher.</p></div>
+  </div>}
   <div className="agro-integrated-head">
    <Link href="/dashboard" aria-label="Return to dashboard">← My learning</Link>
    <strong>🌱 {episodeTitle}</strong>

@@ -80,13 +80,13 @@ export function CinematicCollectionDetail({
   <div className="scd-shell">
    <nav className="scd-breadcrumb" aria-label="Breadcrumb">
     <Link href="/courses/stark-english">← Stark English</Link>
-    <span>/</span><Link href="/courses/stark-english#series">{STARK_SECTION_LABELS[c.kind]}</Link>
+    <span>/</span><Link href={'/courses/stark-english#'+(c.kind==='movie'?'filmes':c.kind==='short'?'shorts':c.kind==='interview'?'entrevistas':'series')}>{STARK_SECTION_LABELS[c.kind]}</Link>
     <span>/</span><span>{c.title}</span>
    </nav>
    <section className={'scd-feature scd-feature-'+c.kind}>
     <div className="scd-feature-ambient" aria-hidden="true"/>
     <div className="scd-feature-copy">
-     <div className="scd-feature-identity"><span className="scd-mini-mark">S</span> STARK LEARNING <b>ORIGINAL SERIES</b></div>
+     <div className="scd-feature-identity"><span className="scd-mini-mark">S</span> STARK LEARNING <b>{c.kind==='series'?'ORIGINAL SERIES':'LEARNING COLLECTION'}</b></div>
      <div className="scd-feature-type"><span className="scd-live-dot"/> {STARK_SECTION_LABELS[c.kind].toUpperCase()} · {c.cefr} · {collectionStage(c)}</div>
      <h1>{c.title}</h1>
      <h2>{featureName(c)}</h2>
@@ -94,7 +94,7 @@ export function CinematicCollectionDetail({
        ?'From your first English sentence to a confident conversation. Build vocabulary, practice meaningful patterns, and develop independence one episode at a time.'
        :c.description}</p>
      <div className="scd-feature-tags">
-      <span>{oneLine}</span><span>{durationLabel(totalTime)} estimated</span>
+      <span>{oneLine}</span>{totalTime>0&&<span>{durationLabel(totalTime)} estimated</span>}
       {c.status==='published'&&<span className="scd-live">AVAILABLE</span>}
      </div>
      <div className="scd-feature-actions">

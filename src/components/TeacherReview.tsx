@@ -11,6 +11,31 @@ function responseLabel(field:string){
 }
 function responseDisplay(row:Response){
  const raw=Object.prototype.hasOwnProperty.call(row.response,'value')?row.response.value:row.response.text;
+ if(row.activity_key==='svo_l01'&&row.field_key==='portfolio'&&raw&&typeof raw==='object'&&!Array.isArray(raw)){
+  const p=raw as Record<string,unknown>;
+  const asText=(v:unknown)=>Array.isArray(v)?v.map((x,i)=>(i+1)+'. '+String(x||'')).join('\n'):'None';
+  const checked=p.practiceChoice&&typeof p.practiceChoice==='object'?Object.keys(p.practiceChoice).length:0;
+  return [
+   'SVO LESSON 1 · TO DRINK / TO STUDY',
+   '',
+   'Selected unfamiliar words: '+asText(p.unknown),
+   '',
+   'EXPRESS IT · TRANSLATIONS',
+   asText(p.translations),
+   '',
+   'TWO ORIGINAL SENTENCES',
+   asText(p.substitutions),
+   '',
+   'Student doubts: '+String(p.doubts||'None recorded'),
+   '',
+   'IMMEDIATE PRACTICE A · '+checked+' choices answered',
+   'IMMEDIATE PRACTICE B',
+   asText(p.practiceGap),
+   '',
+   'FINAL DICTATION · FIVE SENTENCES',
+   asText(p.dictation)
+  ].join('\n');
+ }
  if(Array.isArray(raw)&&row.field_key==='28'){
   const classified=raw.filter(x=>x!==null&&x!==undefined).length;
   return classified+'/28 vocabulary cards classified; '+raw.filter(x=>x===0).length+' marked confident';

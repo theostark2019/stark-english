@@ -15,14 +15,14 @@ begin
    coalesce(port.fields,'{}'::jsonb),min(en.enrolled_at),
    coalesce((
     select sum(credits.minutes) from (
-      select distinct on (episode_id) episode_id,minutes
+      select distinct on (all_credits.episode_id) all_credits.episode_id,all_credits.minutes
       from (
-        select episode_id,minutes,1 as source_order from public.credit_ledger
-         where student_id=p.id
+        select cl.episode_id,cl.minutes,1 as source_order from public.credit_ledger cl
+         where cl.student_id=p.id
         union all
-        select episode_id,minutes,2 as source_order from public.lesson_completion_credits
-         where student_id=p.id
-      ) all_credits order by episode_id,source_order
+        select lc.episode_id,lc.minutes,2 as source_order from public.lesson_completion_credits lc
+         where lc.student_id=p.id
+      ) all_credits order by all_credits.episode_id,all_credits.source_order
     ) credits
   ),0)::bigint,
    (select count(*) from public.lesson_assignments a where a.student_id=p.id),

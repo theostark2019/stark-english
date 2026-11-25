@@ -90,7 +90,7 @@ export default async function StarkCollection({params}:{
              {src.source_url&&<a href={src.source_url} target="_blank" rel="noopener noreferrer">Open original Notion task ↗</a>}
             </details>}
           </div>
-          <span className="stark-unit-status">Draft</span>
+          <span className="stark-unit-status">{u.status==='published'?'Pilot available':u.status==='approved'?'Approved':'Draft'}</span>
          </article>;
        })}</div>
       </section>):<div className="stark-collection-concept">

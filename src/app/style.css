@@ -734,3 +734,14 @@ body:has(.stream-course-shell) > main{max-width:none;margin:0;padding:0;min-heig
 .personal-invite-foot{color:#8faebb;font-size:.74rem}
 .personal-invite-foot a{color:#e9c475;text-decoration:none;font-weight:700}
 @media(max-width:650px){.personal-invite-head small{display:none}.personal-invite-card{margin:20px auto;padding:24px}}
+
+
+.student-invite-bulk{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;
+ border:1px solid #d0dcbf;background:#f5f9f0;border-radius:12px;padding:18px;margin-bottom:20px}
+.student-invite-bulk>div{flex:1;min-width:230px}
+.student-invite-bulk strong{font-size:1rem;color:#314b36}
+.student-invite-bulk p{font-size:.8rem;line-height:1.58;color:#587064;margin:7px 0 0}
+.student-invite-bulk .supervision-notice{flex-basis:100%;margin:0}
+.student-invite-export-again{border:1px solid #8ab39a;border-radius:8px;background:#f9fff8;
+ color:#34684c;font-size:.78rem;font-weight:800;padding:9px 13px;cursor:pointer}
+@media(max-width:700px){.student-invite-bulk .supervision-save{width:100%}}

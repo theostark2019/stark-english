@@ -50,7 +50,8 @@ function speak(value:string,rate=.88){
 function Highlight({value,unknown}:{value:string;unknown:string[]}){
  const items=unknown.map(k=>words.find(w=>w.key===k)?.en).filter((x):x is string=>Boolean(x)).sort((a,b)=>b.length-a.length);
  if(!items.length)return <>{value}</>;
- const chunks=value.split(/(\s+|[.,!?;:])/g);
+ const phrase=items.map(w=>w.replace(/[^A-Za-z ]/g,'')).filter(Boolean).join('|');
+ const chunks=value.split(new RegExp('\\b('+phrase+')\\b','gi'));
  return <>{chunks.map((chunk,i)=>items.some(w=>comparable(w)===comparable(chunk))
   ?<mark className="svo-mark" key={i}>{chunk}</mark>:<span key={i}>{chunk}</span>)}</>;
 }

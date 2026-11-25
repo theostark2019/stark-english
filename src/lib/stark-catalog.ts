@@ -36,3 +36,28 @@ export function collectionUnits(c:StarkCatalogCollection):string{
  if(c.expectedLessons!==null)return c.expectedLessons+' aulas propostas';
  return 'Percurso em desenvolvimento';
 }
+
+export type CollectionUnitProgress={
+ code:string;assignmentId:string|null;
+ status:'not_assigned'|'assigned'|'in_progress'|'awaiting_review'|'revision_requested'|'completed';
+ minutes:number;
+};
+export type CollectionPriorKnowledge={key:string;label:string;checked:boolean};
+export type CollectionProgress={
+ signedIn:boolean;enrolled:boolean;totalUnits:number;assignedUnits:number;
+ completedUnits:number;expectedMinutes:number;earnedMinutes:number;
+ units:CollectionUnitProgress[];skills:CollectionPriorKnowledge[];
+};
+export function durationLabel(totalMinutes:number){
+ const hours=Math.floor(Math.max(0,totalMinutes)/60);
+ const mins=Math.max(0,totalMinutes)%60;
+ return hours?hours+'h'+(mins?String(mins).padStart(2,'0'):''):(mins+' min');
+}
+export function detailUnitStatus(status:CollectionUnitProgress['status']){
+ if(status==='completed')return 'Completed';
+ if(status==='awaiting_review')return 'Awaiting teacher review';
+ if(status==='revision_requested')return 'Revision requested';
+ if(status==='in_progress')return 'In progress';
+ if(status==='assigned')return 'Assigned · Ready';
+ return 'Not assigned';
+}

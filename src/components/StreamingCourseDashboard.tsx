@@ -195,6 +195,20 @@ export function StreamingCourseDashboard({slug,course,status,learning,query,star
        <p>{learning?.nextGoal||'Conclua as atividades atribuídas para receber feedback e definir sua próxima meta.'}</p></div></div>
      </div>
     </section>
+    {slug==='stark-english'&&<section className="stream-course-panel stream-course-words">
+      <div className="stream-course-panel-heading"><h2><span className="stream-course-heading-icon">◎</span> Meu vocabulário</h2></div>
+      <p className="stream-course-word-eyebrow">META SEMANAL · SVO</p>
+      <div className="stream-course-word-number"><strong>{learning?.svoVocabulary?.selectedThisWeek??'—'}</strong><span>/ 30 itens</span></div>
+      <div className="stream-course-word-meter"><i style={{width:(learning?.svoVocabulary?
+        Math.min(100,learning.svoVocabulary.selectedThisWeek/30*100):0)+'%'}}/></div>
+      <div className="stream-course-word-details">
+       <span>✓ {learning?.svoVocabulary?.masteredThisWeek??'—'} dominados na semana</span>
+       <span>◷ {learning?.svoVocabulary?.learningTotal??'—'} em revisão</span>
+      </div>
+      <p>{enrolled?'Palavras selecionadas não são automaticamente palavras aprendidas. Pratique e recupere da memória.':
+        'Entre no seu curso para acompanhar o vocabulário da semana.'}</p>
+      <Link href="/courses/stark-english/svo/lesson-1">▶ Treinar na Lição 1</Link>
+     </section>}
     <div id="escolher-curso" className="stream-course-choose">
      {enrolled?<section className="stream-course-panel stream-course-my-path">
       <p>✓ SEU CURSO</p><strong>{course.title}</strong>

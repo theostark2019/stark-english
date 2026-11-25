@@ -1629,3 +1629,65 @@ body:has(.svo-player)>main{max-width:none;margin:0;padding:0;min-height:100vh}
  .agrs-manager{padding:12px}.agrs-manager-slots{grid-template-columns:1fr}
  .agrs-preview-iframe{min-height:550px;height:82vh}
 }
+
+
+/* Shared cinematic series: all four course environments use the same SVO title/episode grammar. */
+.shared-series-page{--scd-gold:#e8bd74}
+.shared-series-agroenglish{--scd-gold:#c9d88b}
+.shared-series-agroenglish .scd-feature{background:linear-gradient(112deg,#0d3029 10%,#203c32 55%,#405237 100%);border-color:#58735d}
+.shared-series-agroenglish .scd-feature-ambient{background:radial-gradient(ellipse at 85% 30%,#7da65d55,transparent 55%),linear-gradient(90deg,#0a241dd9,#17342c40)}
+.shared-series-agroenglish .scd-feature-type{color:#b5ecb1}
+.shared-series-agroenglish .scd-feature h2,.shared-series-agroenglish .scd-section-kicker{color:#d4e49c}
+.shared-series-agroenglish .scd-play{background:#b9d58c;color:#153221!important}
+.shared-series-agroenglish .scd-poster-frame{background:radial-gradient(circle at 30% 35%,#7b9f65,#1d4436 59%,#0b292c 90%)}
+.shared-series-med-english .scd-feature{background:linear-gradient(115deg,#072637,#113844 60%,#1f5360);border-color:#296779}
+.shared-series-med-english .scd-feature h2,.shared-series-med-english .scd-section-kicker{color:#81ead8}
+.shared-series-med-english .scd-play{background:#52ddc4;color:#092f34!important}
+.shared-series-med-english .scd-poster-frame{background:radial-gradient(circle at center,#237784,#0c3e58 60%,#092337)}
+.shared-series-business-english .scd-feature{background:linear-gradient(115deg,#12233a,#273b53 56%,#69533a)}
+.shared-series-business-english .scd-feature h2{color:#ffdc9b}
+.shared-series-business-english .scd-poster-frame{background:radial-gradient(circle at center,#9a7954,#374965 65%,#142438)}
+.shared-series-page .scd-episode-status.status-locked{color:#a0b7c5}
+.shared-series-page .scd-feature-copy h1{max-width:720px}
+.agrs-available-series-link{display:flex;align-items:center;justify-content:space-between;gap:15px;color:inherit!important;text-decoration:none}
+.agrs-available-series-link:hover{background:#1d4a3d}
+.agrs-available-series-link strong span{color:#d5e7a1;font-size:.85rem;margin-left:5px}
+
+/* SVO-style outer shell for existing non-SVO mechanics; lesson exercises stay unchanged. */
+.streaming-lesson-frame{--lesson-accent:#e8bd74;background:radial-gradient(ellipse at 88% -10%,#244254,#071c2d 65%);padding-bottom:35px}
+.streaming-lesson-agroenglish{--lesson-accent:#a6d7a0;background:radial-gradient(ellipse at 85% -4%,#234e3e,#071d24 64%)}
+.streaming-lesson-med-english{--lesson-accent:#74ddce;background:radial-gradient(ellipse at 85% -4%,#155368,#071b2a 64%)}
+.streaming-lesson-business-english{--lesson-accent:#f4c78b;background:radial-gradient(ellipse at 85% -4%,#4b4050,#0b1a2c 64%)}
+.streaming-lesson-hero{min-height:170px}
+.streaming-lesson-frame .svo-hero>div:first-child{max-width:850px}
+.streaming-lesson-frame .svo-hero h1{font-size:clamp(1.8rem,3.2vw,3rem)}
+.streaming-lesson-symbol{font-size:5rem;color:var(--lesson-accent);opacity:.6;line-height:1}
+.streaming-lesson-meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.streaming-lesson-meta span{font-size:.69rem;font-weight:750;color:#dbeee8;border:1px solid #69827c;border-radius:18px;padding:5px 10px}
+.streaming-lesson-path{padding:18px 22px;background:#0c2838;border:1px solid #32566a;border-radius:14px;margin-bottom:15px}
+.streaming-lesson-path-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.streaming-lesson-path-heading strong{color:var(--lesson-accent);letter-spacing:.11em;font-size:.71rem}
+.streaming-lesson-path-heading small{color:#a7c6d2;font-size:.71rem}
+.streaming-lesson-path-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:8px}
+.streaming-lesson-path-item{display:flex;align-items:center;gap:9px;background:#17394a;border:1px solid #375c6d;border-radius:9px;padding:10px 9px;color:#d8e9ed}
+.streaming-lesson-path-item>span{font-size:.68rem;color:var(--lesson-accent);font-weight:900}
+.streaming-lesson-path-item strong{font-weight:720;font-size:.72rem;line-height:1.4}
+.streaming-lesson-activity{background:#091f2c;border:1px solid #355362;border-radius:14px;overflow:hidden;min-height:350px}
+.streaming-lesson-frame .agro-integrated,.streaming-lesson-frame .unified-lesson{margin:0;max-width:none}
+.streaming-lesson-frame .agro-integrated-head{background:#142f3c;color:#e7f7f2;border-color:#3a5b64}
+.streaming-lesson-frame .agro-integrated-media{background:#0e2934}
+.streaming-lesson-frame .agro-integrated-stage{padding:10px;background:#0d2938}
+.streaming-lesson-frame .agro-integrated-toolbar{background:#102d3b;border-color:#365866;color:#edf9f4}
+.streaming-lesson-frame .agro-integrated-meta span{color:#aac4cf}
+.streaming-lesson-frame .agro-integrated-frame{border-radius:9px;border:1px solid #3c606c}
+.streaming-lesson-frame .unified-hero{margin:0;background:linear-gradient(115deg,#143747,#1b3546);border:0;border-radius:0}
+.streaming-lesson-frame .unified-inner{max-width:none}
+.streaming-lesson-frame .unified-panel{border-radius:10px}
+.streaming-lesson-frame .svo-attribution{margin-top:16px}
+@media(max-width:670px){
+ .streaming-lesson-path{padding:12px}
+ .streaming-lesson-path-items{display:flex;overflow:auto;padding-bottom:4px}
+ .streaming-lesson-path-item{flex:0 0 148px}
+ .streaming-lesson-symbol{display:none}
+ .streaming-lesson-frame .agro-integrated-stage{padding:0}
+}

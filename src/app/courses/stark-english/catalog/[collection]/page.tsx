@@ -56,9 +56,9 @@ export default async function StarkCollection({params}:{
       <p className="stark-catalog-eyebrow">TEACHING STRUCTURE</p>
       <h2>{c.units?.length?'Sequence and assessment milestones':'Collection overview'}</h2>
       {c.slug==='svo'?<p>
-       SVO uses five blocks of three lessons followed by one review. The structure and instructional requirements
-       are documented in the existing Notion task bank. All lesson-topic titles shown here are <strong>working labels</strong>,
-       not verified titles from the original book.</p>:
+       SVO uses five blocks of three lessons followed by one review. Lesson titles and topics have now been verified
+       against the 38-page SVO Protocol book. Source vocabulary, contexts, Patterns and Express it are retained;
+       digital learning steps and dictation extend the original material.</p>:
        c.slug==='dvc'?<p>DVC has thirty sequential viewing and communicative lessons with ten reviews,
        each placed after a group of three lessons. The records are imported as curriculum drafts.</p>:
        <p>This collection is part of the draft catalog. Source material and final learning activities must be
@@ -78,9 +78,11 @@ export default async function StarkCollection({params}:{
            <div className="stark-unit-topline"><span>{unitLabel(u)}</span><span>{u.cefr}</span>
             <span>{u.stage}</span></div>
            <h4>{u.workingTitle}</h4>
-           {u.code==='SVO-L01'&&<Link className="svo-catalog-unit-link" href="/courses/stark-english/svo/lesson-1">▶ Try the interactive lesson</Link>}
+           {c.slug==='svo'&&<Link className="svo-catalog-unit-link"
+            href={u.code==='SVO-L01'?'/courses/stark-english/svo/lesson-1':'/courses/stark-english/svo/'+u.code}>
+            ▶ {u.kind==='review'?'Try interactive review':'Try interactive lesson'}</Link>}
            <p>{u.outcome}</p>
-           <small>{u.kind==='review'?'Review · awaiting assessment validation':
+           <small>{u.kind==='review'?'Cumulative review · original book tasks':
              u.titleVerified?'Source title verified':'Working title · source verification required'}</small>
            {src&&<details className="stark-unit-source">
              <summary>Teacher: original Notion task requirements</summary>
@@ -106,7 +108,7 @@ export default async function StarkCollection({params}:{
     <aside className="stark-collection-aside">
      <div className="stark-collection-side-card">
       <p className="stark-catalog-eyebrow">CURRICULUM STATUS</p><h3>{collectionStage(c)}</h3>
-      {c.slug==='svo'?<p>Lesson 1 has an interactive ten-step pilot. Its remaining lessons are still being built and checked.</p>:
+      {c.slug==='svo'?<p>All 15 lessons and 5 cumulative reviews have interactive activities. Assign published units to enrolled students, or explore previews without saving.</p>:
       <p>This is the catalog preview. Draft episodes are not available as student submissions and cannot earn credits.</p>}
       {c.slug==='svo'&&<Link className="svo-catalog-pilot" href="/courses/stark-english/svo/lesson-1">▶ Open interactive Lesson 1 pilot</Link>}
       {teacherView&&<p className="stark-teacher-flag">Teacher view: original task directions and Notion links are available under each unit.</p>}

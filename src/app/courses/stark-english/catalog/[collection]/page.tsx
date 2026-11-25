@@ -78,6 +78,7 @@ export default async function StarkCollection({params}:{
            <div className="stark-unit-topline"><span>{unitLabel(u)}</span><span>{u.cefr}</span>
             <span>{u.stage}</span></div>
            <h4>{u.workingTitle}</h4>
+           {u.code==='SVO-L01'&&<Link className="svo-catalog-unit-link" href="/courses/stark-english/svo/lesson-1">▶ Try the interactive lesson</Link>}
            <p>{u.outcome}</p>
            <small>{u.kind==='review'?'Review · awaiting assessment validation':
              u.titleVerified?'Source title verified':'Working title · source verification required'}</small>
@@ -105,7 +106,9 @@ export default async function StarkCollection({params}:{
     <aside className="stark-collection-aside">
      <div className="stark-collection-side-card">
       <p className="stark-catalog-eyebrow">CURRICULUM STATUS</p><h3>{collectionStage(c)}</h3>
-      <p>This is the catalog preview. Draft episodes are not available as student submissions and cannot earn credits.</p>
+      {c.slug==='svo'?<p>Lesson 1 has an interactive ten-step pilot. Its remaining lessons are still being built and checked.</p>:
+      <p>This is the catalog preview. Draft episodes are not available as student submissions and cannot earn credits.</p>}
+      {c.slug==='svo'&&<Link className="svo-catalog-pilot" href="/courses/stark-english/svo/lesson-1">▶ Open interactive Lesson 1 pilot</Link>}
       {teacherView&&<p className="stark-teacher-flag">Teacher view: original task directions and Notion links are available under each unit.</p>}
      </div>
      {c.slug==='svo'&&<div className="stark-collection-side-card">

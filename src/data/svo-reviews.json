@@ -1,0 +1,162 @@
+[
+  {
+    "code": "SVO-R01",
+    "page": 13,
+    "title": "Review 1 · Lessons 1–3",
+    "level": "A1",
+    "lessonCodes": [
+      "SVO-L01",
+      "SVO-L02",
+      "SVO-L03"
+    ],
+    "change": "I drink milk and water every day. I study English and Spanish. You drink juice and study English every day. We eat bread and cheese. I eat rice and beans at home. You work at the bank, and I work at the store. We work together. I play with my friend. You don't play the flute. We like animals. I play the guitar with my brother.",
+    "questions": [
+      "Where do you study?",
+      "What do you eat every day?",
+      "What juice do you like to drink?",
+      "Do you play an instrument?",
+      "Where do you eat bread?"
+    ],
+    "fill": [
+      "I ______ milk ____ water every day.",
+      "I study ______ and Spanish.",
+      "You ______ juice and study English every day.",
+      "We ______ bread and cheese.",
+      "I eat rice and beans ___ home.",
+      "You ______ at ____ bank, and I ______ at the store.",
+      "We ______ together. I play with my ______.",
+      "You don't play the ______. We like ______."
+    ],
+    "express": "Eu bebo água e leite todos os dias. Eu estudo espanhol e inglês. Você bebe suco e estuda espanhol todos os dias. Nós comemos queijo e pão. Eu como feijão e arroz em casa. Você trabalha na loja, e eu trabalho no banco. Nós trabalhamos juntos. Eu brinco com meu irmão. Você não toca piano. Nós gostamos de animais. Eu toco guitarra com meu amigo.",
+    "reviewGuidance": "Review present simple with I / you / we; SVO objects, interests and familiar routines. Change five details in the original paragraph and keep the sentences meaningful."
+  },
+  {
+    "code": "SVO-R02",
+    "page": 17,
+    "title": "Review 2 · Lessons 4–6",
+    "level": "A1",
+    "lessonCodes": [
+      "SVO-L04",
+      "SVO-L05",
+      "SVO-L06"
+    ],
+    "change": "I read a book every day. She writes an email. He reads a magazine every week. He writes a story every week. She writes with a pen. They cook breakfast in the morning. I clean the kitchen in the afternoon. You cook lunch on Mondays. They clean the house on weekends. They cook soup in the kitchen. We watch movies at night. I listen to music. You watch TV at 7pm. They listen to us. They watch podcasts on the platform. We watch videos on the screen. You listen to the podcast on the computer.",
+    "questions": [
+      "What do you do every day?",
+      "Who writes an email?",
+      "How often does he read a magazine?",
+      "When do they cook dinner?"
+    ],
+    "fill": [
+      "I ______ a book every day.",
+      "She ______ an email.",
+      "He reads a ______ every ______.",
+      "She ______ with a pen.",
+      "They ______ breakfast _____ _____ morning.",
+      "I _____ the ______ in _____ afternoon.",
+      "They ______ the house on weekends.",
+      "We ______ movies ______ night.",
+      "You ______ TV at ______ pm.",
+      "We listen ______ the ______."
+    ],
+    "express": "Eu leio um livro todos os dias. Ela escreve um email. Ele escreve uma história toda semana. Eu leio artigos no quarto. Ela escreve com uma caneta. Eles cozinham o café da manhã todas as manhãs. Eu limpo a cozinha à tarde. Você cozinha o almoço às segundas-feiras. Eles limpam a casa nos fins de semana. Nós assistimos filmes à noite. Eu escuto música. Você assiste filmes às 9 da noite. Eles assistem podcasts na plataforma. Nós assistimos vídeos na tela.",
+    "reviewGuidance": "Consolidate third-person -s, routines, days, at/in/on and listen to. Change a meaningful selection of subjects, objects and time expressions."
+  },
+  {
+    "code": "SVO-R03",
+    "page": 21,
+    "title": "Review 3 · Lessons 7–9",
+    "level": "A1",
+    "lessonCodes": [
+      "SVO-L07",
+      "SVO-L08",
+      "SVO-L09"
+    ],
+    "change": "I am a student. He is a doctor at the hospital. We are at home. She is happy because she has a new book. They are tired but excited. I am hungry. You are my friend. I am not a lawyer. She is not an artist. They are not at the beach. It is not a café; it is a restaurant. You are not angry, you are just tired. This is my book, but that is not my pen. Are you a student? Is she a doctor? Where is the library? Who is that? What is your job? Why are you late? How are you?",
+    "questions": [
+      "What is your job?",
+      "Where are you now?",
+      "How are you today?",
+      "Who is your teacher?",
+      "Is English easy or difficult?"
+    ],
+    "fill": [
+      "I ______ a student.",
+      "He ______ a doctor in the ______.",
+      "We ______ at school.",
+      "She ______ happy because it ______ sunny.",
+      "They ______ tired ______ still happy.",
+      "You ______ my friend.",
+      "I ______ a lawyer; I ______ a teacher.",
+      "It ______ a park; it ______ a museum.",
+      "They ______ at the beach; they ______ at the library.",
+      "______ you a chef?",
+      "______ she at the supermarket?",
+      "______ is your father?",
+      "______ is that?",
+      "______ are you sad?"
+    ],
+    "express": "Eu sou estudante e estou na escola. Meu irmão é médico no hospital da cidade. Eles não estão em casa; eles estão no shopping. Isto é um lápis, mas aquilo não é uma caneta. Você está cansado? Não, estou bem, obrigado. Onde fica o banco? Fica perto do escritório. Quem é aquele homem? Ele é o meu professor de inglês. Por que ela está atrasada? Porque o carro não funciona. Como está sua mãe? Ela está um pouco doente. Nós não somos artistas, somos engenheiros.",
+    "reviewGuidance": "Review am/is/are, negative be, yes/no and WH questions with be. Students should give personalized answers rather than repeat examples."
+  },
+  {
+    "code": "SVO-R04",
+    "page": 25,
+    "title": "Review 4 · Lessons 10–12",
+    "level": "A1–A2",
+    "lessonCodes": [
+      "SVO-L10",
+      "SVO-L11",
+      "SVO-L12"
+    ],
+    "change": "I like coffee, but I don't like tea. She works in an office, but she doesn't work on Saturdays. He plays soccer, but he doesn't play basketball. We watch TV in the evening, but we never watch the news. They read books, but they don't read newspapers. Do you live in the city? Does she speak Portuguese? What do you study? Where does he work? When do they watch movies? Why do you want a car? Who is your teacher? What is your job? How are you today?",
+    "questions": [
+      "Do you speak English? Give a full yes/no answer.",
+      "What do you eat for breakfast?",
+      "Where does your father work?",
+      "When do you study?",
+      "Why are you happy today?"
+    ],
+    "fill": [
+      "I ______ coffee, but I ______ tea.",
+      "She ______ in an office, but she ______ on Saturdays.",
+      "______ you ______ in the city?",
+      "______ she ______ Portuguese?",
+      "______ do you ______?",
+      "______ does he ______?"
+    ],
+    "express": "Eu gosto de café, mas não gosto de chá. Meu irmão joga futebol, mas não joga vôlei. Você mora em uma casa? Não, moro em um apartamento. O que você estuda à noite? Estudo inglês e matemática. Onde sua mãe trabalha? Ela trabalha em um hospital. Quando eles assistem TV? Eles assistem TV nos fins de semana. Por que você está cansado? Porque eu trabalho muito. Quem é aquele homem? Ele é o meu professor. Como você vai para a faculdade? Eu vou de ônibus. Nós lemos livros, mas não lemos revistas.",
+    "reviewGuidance": "Assess Present Simple negative (don't/doesn't), question auxiliaries (do/does) and WH choices. A productive dialogue can be added by the student."
+  },
+  {
+    "code": "SVO-R05",
+    "page": 29,
+    "title": "Review 5 · Lessons 13–15",
+    "level": "A2",
+    "lessonCodes": [
+      "SVO-L13",
+      "SVO-L14",
+      "SVO-L15"
+    ],
+    "change": "I watched a movie yesterday. She worked at the office last week. They played soccer last weekend. He cooked dinner last night. I went to the park. You ate an apple. I watched a movie, but I didn't watch a TV show. She went to the park, but she didn't go to school. They played soccer, but they didn't play basketball. We had a party last weekend, but we didn't have one last night. Did you work yesterday? Did she go to school? What did you watch last night? Where did they go last weekend? When did he see his friend? Why did you eat dinner early?",
+    "questions": [
+      "What did you do yesterday?",
+      "Did you watch TV last night?",
+      "Where did you go last weekend?",
+      "Who did you see this morning?",
+      "What did you eat for breakfast?"
+    ],
+    "fill": [
+      "I ______ a movie ______. (watch - yesterday)",
+      "She ______ at the office ______. (work - last week)",
+      "They ______ soccer, but they ______ basketball. (play - negative)",
+      "He ______ dinner ______. (cook - last night)",
+      "______ you ______ yesterday? (work - question)",
+      "______ did you ______ last night? (What - watch - question)",
+      "We ______ a party, but we ______ a party last night. (have - negative)",
+      "______ did they ______ last weekend? (Where - go - question)"
+    ],
+    "express": "Eu assisti um filme ontem à noite. Meu irmão trabalhou no sábado passado. Eles foram ao parque, mas não foram à praia. Você cozinhou o jantar? Sim, cozinhei. O que você comeu no café da manhã? Eu comi pão e queijo. Onde ela foi na segunda-feira? Ela foi para a escola. Quando você viu sua amiga? Eu a vi esta manhã. Nós jogamos tênis, mas não jogamos futebol. Por que você chegou tarde? Porque meu carro quebrou. Eles não estudaram matemática porque a aula foi cancelada.",
+    "reviewGuidance": "Consolidate regular and irregular Past Simple, didn't + base verb and did + subject + base verb. Source instructions require answering in complete sentences and producing three original past-tense sentences."
+  }
+]

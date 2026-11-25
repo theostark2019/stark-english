@@ -5,6 +5,9 @@ import {StudentSubmission} from '@/components/StudentSubmission';
 import {IntegratedAgricultureLesson} from '@/components/IntegratedAgricultureLesson';
 import {SvoLessonOne} from '@/components/SvoLessonOne';
 import type {SvoL01Answers} from '@/lib/svo-lesson-content';
+import {SVO_LESSONS,SVO_REVIEWS,type SvoLessonAnswers,type SvoReviewAnswers} from '@/lib/svo-curriculum';
+import {SvoCourseLesson} from '@/components/SvoCourseLesson';
+import {SvoCourseReview} from '@/components/SvoCourseReview';
 type Attempt={id:string;assignment_id:string;student_id:string;episode_id:string;status:string};
 type Activity={activity_key:string;activity_type:string;position:number;config:Record<string,unknown>};
 type Episode={title:string;code:string;level:string;description?:string;lesson_body?:string};
@@ -27,6 +30,16 @@ export function LessonWorkspace({assignment,studentId,episode,initialAttempt,act
   started.current=true;
   void start();
  },[initialAttempt]);
+ if(attempt&&episode?.code&&SVO_LESSONS[episode.code]){
+  const record=responses.find((row:any)=>row.activity_key==='svo_course'&&row.field_key==='portfolio');
+  return <SvoCourseLesson code={episode.code} attempt={attempt}
+   initialAnswers={(record?.response?.value||null) as Partial<SvoLessonAnswers>|null}/>;
+ }
+ if(attempt&&episode?.code&&SVO_REVIEWS[episode.code]){
+  const record=responses.find((row:any)=>row.activity_key==='svo_review'&&row.field_key==='portfolio');
+  return <SvoCourseReview code={episode.code} attempt={attempt}
+   initialAnswers={(record?.response?.value||null) as Partial<SvoReviewAnswers>|null}/>;
+ }
  if(attempt&&episode?.code==='SVO-L01'){
   const record=responses.find((row:any)=>row.activity_key==='svo_l01'&&row.field_key==='portfolio');
   return <SvoLessonOne attempt={attempt} initialAnswers={(record?.response?.value||null) as Partial<SvoL01Answers>|null}/>;

@@ -1,9 +1,39 @@
 'use client';
 import {useState} from 'react';
+import {useRouter} from 'next/navigation';
+import {browserClient} from '@/lib/supabase/browser';
 import Link from 'next/link';
 import type {StudentInviteInfo} from '@/components/StudentInvitationControls';
 export function InvitationRoster({rows}:{rows:StudentInviteInfo[]}){
  const [search,setSearch]=useState(''),[filter,setFilter]=useState('all');
+ const [bulkBusy,setBulkBusy]=useState(false),[bulkMessage,setBulkMessage]=useState('');
+ const [bulkError,setBulkError]=useState(false);
+ const router=useRouter();
+ async function bulkGenerate(){
+  if(bulkBusy||!window.confirm(
+   'Criar links individuais para alunos ainda sem convite e baixar uma planilha CSV? Cada link dá início ao cadastro. Guarde a planilha com segurança.'))return;
+  setBulkBusy(true);setBulkMessage('');setBulkError(false);
+  const {data,error}=await browserClient().rpc('supervision_generate_invites_bulk',{p_days:14});
+  setBulkBusy(false);
+  if(error){setBulkError(true);setBulkMessage('Erro: '+error.message);return;}
+  const items=(data||[]) as {student_id:string;student_name:string;course_title:string;invite_token:string;expires_at:string}[];
+  if(!items.length){setBulkMessage('Nenhum novo convite necessário. Os alunos restantes já possuem convites ativos ou contas vinculadas.');router.refresh();return;}
+  const escapeCell=(value:string)=>{
+   const neutral=/^[\\t\\r\\n ]*[=+@-]/.test(value)?"'"+value:value;
+   return '"'+neutral.replaceAll('"','""')+'"';
+  };
+  const header=['Aluno','Curso','Link pessoal','Validade'];
+  const values=items.map(x=>[x.student_name,x.course_title,
+    window.location.origin+'/join#invite='+x.invite_token,x.expires_at.slice(0,10)]);
+  const csv='\\uFEFF'+[header,...values].map(row=>row.map(v=>escapeCell(String(v))).join(';')).join('\\r\\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+  const download=URL.createObjectURL(blob);
+  const anchor=document.createElement('a');anchor.href=download;anchor.download='stark-learning-convites-individuais.csv';
+  document.body.appendChild(anchor);anchor.click();anchor.remove();
+  window.setTimeout(()=>URL.revokeObjectURL(download),1000);
+  setBulkMessage(items.length+' links pessoais criados e preparados em um CSV. Envie cada linha apenas ao aluno correspondente. Os links não podem ser recuperados depois.');
+  router.refresh();
+ }
  const stats={
   linked:rows.filter(x=>Boolean(x.linked_student_id)).length,
   pending:rows.filter(x=>x.status==='claimed'&&!x.linked_student_id).length,
@@ -37,6 +67,14 @@ export function InvitationRoster({rows}:{rows:StudentInviteInfo[]}){
     <div key={name} className="supervision-kpi"><p>{name}</p><strong>{num}</strong><small>{name==='Convites ativos'?'Links temporários não utilizados':'Cadastro de matrícula'}</small></div>)}
   </div>
   <section className="supervision-section">
+    <div className="student-invite-bulk">
+      <div><strong>Criar os links de todos os alunos ainda sem convite</strong>
+       <p>Gere links exclusivos em lote e baixe uma planilha CSV com nome, curso, link e validade. Não invalida convites já emitidos. Os links só ficam disponíveis neste arquivo e devem ser enviados individualmente.</p></div>
+      <button type="button" className="supervision-save" disabled={bulkBusy} onClick={()=>void bulkGenerate()}>
+       {bulkBusy?'Gerando links…':'Gerar links pendentes (CSV)'}
+      </button>
+      {bulkMessage&&<p role="status" className={'supervision-notice'+(bulkError?' error':'')}>{bulkMessage}</p>}
+    </div>
     <div className="supervision-section-heading"><div><p className="supervision-eyebrow">LISTA DE CONVITES</p><h2>Enviar e acompanhar convites</h2>
       <p>Abra uma ficha para gerar ou copiar o link. Convites já gerados não são recuperáveis: gere um novo se perder o endereço.</p></div>
       <span className="supervision-count">{active.length} de {rows.length}</span></div>

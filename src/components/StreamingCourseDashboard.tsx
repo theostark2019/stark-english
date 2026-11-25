@@ -83,8 +83,8 @@ export function StreamingCourseDashboard({slug,course,status,learning,query,star
   label:'Série proposta',title:x.title,sub:'Conteúdo em desenvolvimento',href:'#series'
  }))).filter(x=>!query||[x.label,x.title,x.sub].join(' ').toLowerCase().includes(query.toLowerCase()));
  const stats=[
-  {icon:'◷',title:'Horas investidas',value:enrolled?fnum(learning?.hours||0)+' h':'—',
-   hint:enrolled?'Créditos confirmados':'Entre para ver seus créditos',graph:'⌁'},
+  {icon:'◷',title:'Horas creditadas',value:enrolled?fnum(learning?.hours||0)+' h':'—',
+   hint:enrolled?'Carga horária estimada das atividades concluídas':'Entre para ver seus créditos',graph:'⌁'},
   {icon:'▱',title:'Conteúdo adquirido',value:enrolled?String(learning?.completed||0):'—',
    hint:enrolled?(learning?.assigned||0)+' aulas atribuídas':'Aulas finalizadas pelo professor',graph:'▤'},
   {icon:'◎',title:'Eficiência',value:enrolled&&learning?.completionRate!==null?String(learning?.completionRate)+'%':'—',

@@ -1750,3 +1750,30 @@ body:has(.svo-player)>main{max-width:none;margin:0;padding:0;min-height:100vh}
  .streaming-lesson-frame .streaming-player-info p{font-size:.67rem}
  .streaming-lesson-frame .agro-integrated-frame{min-height:550px;height:79vh}
 }
+
+
+/* Agriculture 101 public lesson entrance follows the SVO episode title treatment.
+   The A1/A2 reading module, assessment steps and assigned-lesson mechanics are untouched. */
+.agrs-lesson-hub .agrs-breadcrumb{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+ border-bottom:1px solid #385b50;margin-bottom:18px}
+.agrs-lesson-hub .agrs-lesson-hero{min-height:365px;border:1px solid #4b695c;border-radius:18px;
+ background:radial-gradient(ellipse at 84% 20%,#59704d,#183729 58%,#0a251f)}
+.agrs-lesson-hub .agrs-lesson-hero-placeholder{font-size:7rem;background:
+ radial-gradient(circle at 65% 48%,#708f5a66,#0b281f 70%);display:grid;place-items:center}
+.agrs-lesson-hub .agrs-lesson-gradient{background:linear-gradient(90deg,#0c241ded,#10281ea6 62%,#1329197b)}
+.agrs-lesson-hub .agrs-lesson-hero-copy{max-width:800px}
+.agrs-lesson-hub .agrs-lesson-hero-copy h1{font-size:clamp(2.35rem,5vw,4.2rem);letter-spacing:-.047em}
+.agrs-lesson-hub .agrs-lesson-hero-copy h2{font-size:clamp(1rem,1.7vw,1.35rem);letter-spacing:.03em}
+.agrs-lesson-hub .agrs-hub-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.agrs-lesson-hub .agrs-hub-meta>div{border:1px solid #486d5d;border-radius:12px;
+ background:linear-gradient(135deg,#183b30,#102b27);min-height:93px}
+.agrs-lesson-hub .agrs-hub-steps{display:grid;gap:10px}
+.agrs-lesson-hub .agrs-step-card{background:linear-gradient(110deg,#193b30,#12362d);border:1px solid #466d5a;border-radius:12px}
+.agrs-lesson-hub .agrs-step-card:hover{border-color:#abca8e}
+.agrs-lesson-hub .agrs-step-number{color:#dbeb9e;font-weight:900}
+.agrs-lesson-hub .agrs-hub-aside{position:sticky;top:18px}
+@media(max-width:770px){
+ .agrs-lesson-hub .agrs-hub-meta{grid-template-columns:1fr}
+ .agrs-lesson-hub .agrs-hub-aside{position:static}
+ .agrs-lesson-hub .agrs-lesson-hero{min-height:0}
+}

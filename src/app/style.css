@@ -1691,3 +1691,62 @@ body:has(.svo-player)>main{max-width:none;margin:0;padding:0;min-height:100vh}
  .streaming-lesson-symbol{display:none}
  .streaming-lesson-frame .agro-integrated-stage{padding:0}
 }
+
+
+/* Unified SVO-style lesson presentation for Stark, Agro, Medical and Business English.
+   Only the outer experience changes; existing iframe, forms, audio and RPC lifecycle remain intact. */
+.streaming-lesson-frame{--lesson-panel:#102d3d;--lesson-border:#365769}
+.streaming-lesson-agroenglish{--lesson-panel:#102e29;--lesson-border:#3d685a}
+.streaming-lesson-med-english{--lesson-panel:#102d3b;--lesson-border:#367183}
+.streaming-lesson-business-english{--lesson-panel:#2c2a36;--lesson-border:#696277}
+.streaming-lesson-frame .streaming-lesson-hero{border-color:var(--lesson-border)}
+.streaming-lesson-frame .streaming-lesson-meta span{border-color:var(--lesson-border)}
+.streaming-lesson-frame .streaming-player-info{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 17px}
+.streaming-lesson-frame .streaming-player-info>div{background:var(--lesson-panel);border:1px solid var(--lesson-border);border-radius:12px;padding:17px 18px;min-width:0}
+.streaming-lesson-frame .streaming-player-info small{display:block;color:var(--lesson-accent);font-weight:830;font-size:.66rem;letter-spacing:.09em;margin-bottom:7px}
+.streaming-lesson-frame .streaming-player-info strong{display:block;color:#f2faf9;font-size:1.13rem;line-height:1.45}
+.streaming-lesson-frame .streaming-player-info p{font-size:.74rem;color:#b6cbd1;line-height:1.55;margin:7px 0 0}
+.streaming-lesson-frame .streaming-lesson-grid{display:grid;grid-template-columns:minmax(190px,242px) minmax(0,1fr);align-items:start;gap:15px}
+.streaming-lesson-frame .streaming-lesson-sidebar{position:sticky;top:15px;background:var(--lesson-panel);border:1px solid var(--lesson-border);border-radius:13px;padding:18px;min-width:0}
+.streaming-lesson-frame .streaming-lesson-sidebar-title{font-size:.68rem;color:var(--lesson-accent);font-weight:860;letter-spacing:.09em}
+.streaming-lesson-frame .streaming-lesson-sidebar>p{font-size:.73rem;color:#b0cbd3;line-height:1.55;border-bottom:1px solid var(--lesson-border);padding-bottom:13px}
+.streaming-lesson-frame .streaming-lesson-sidebar ol{list-style:none;padding:0;margin:12px 0 16px;display:grid;gap:5px}
+.streaming-lesson-frame .streaming-lesson-sidebar li{display:flex;gap:10px;align-items:center;border:1px solid transparent;border-radius:9px;color:#d0e3e9;padding:11px 8px;font-size:.77rem;line-height:1.35}
+.streaming-lesson-frame .streaming-lesson-sidebar li:first-child{background:#22504e;border-color:#4a8376}
+.streaming-lesson-frame .streaming-lesson-sidebar li>span{font-size:.68rem;color:var(--lesson-accent);font-weight:830}
+.streaming-lesson-frame .streaming-lesson-sidebar li strong{font-weight:710}
+.streaming-lesson-frame .streaming-lesson-focus,.streaming-lesson-frame .streaming-lesson-back{display:block;text-decoration:none;text-align:center;font-weight:790;font-size:.76rem;border-radius:8px;padding:11px;margin-top:8px}
+.streaming-lesson-frame .streaming-lesson-focus{background:var(--lesson-accent);color:#17312e!important}
+.streaming-lesson-frame .streaming-lesson-back{border:1px solid var(--lesson-border);color:#d6e4ec!important}
+.streaming-lesson-frame .streaming-lesson-activity{min-width:0;border-color:var(--lesson-border);background:var(--lesson-panel);scroll-margin-top:12px}
+.streaming-lesson-frame .agro-integrated-media{padding-top:0}
+.streaming-lesson-frame .agrs-assigned-lesson-head{display:none}
+.streaming-lesson-frame .agro-integrated-head{position:sticky;top:0;z-index:3}
+.streaming-lesson-frame .agro-integrated-head>strong{font-size:.83rem}
+.streaming-lesson-frame .agro-integrated-frame{min-height:650px;height:min(85vh,1040px);background:#101f23}
+.streaming-lesson-frame .agro-integrated-toolbar{position:sticky;bottom:0;z-index:5}
+.streaming-lesson-frame .agrs-reading-module{margin:0 0 15px}
+.streaming-lesson-frame .agrs-reading-module.compact{padding:16px}
+.streaming-lesson-frame .unified-hero{background:var(--lesson-panel)}
+@media(max-width:1040px){
+ .streaming-lesson-frame .streaming-lesson-grid{grid-template-columns:minmax(165px,205px) minmax(0,1fr);gap:9px}
+ .streaming-lesson-frame .streaming-lesson-sidebar{padding:12px}
+ .streaming-lesson-frame .streaming-player-info>div{padding:13px}
+}
+@media(max-width:780px){
+ .streaming-lesson-frame .streaming-lesson-grid{grid-template-columns:1fr}
+ .streaming-lesson-frame .streaming-lesson-sidebar{position:static;padding:10px 12px}
+ .streaming-lesson-frame .streaming-lesson-sidebar>p{display:none}
+ .streaming-lesson-frame .streaming-lesson-sidebar ol{display:flex;overflow-x:auto;gap:7px;padding:4px 0 9px;margin:9px 0}
+ .streaming-lesson-frame .streaming-lesson-sidebar li{flex:0 0 auto;background:#183d43;border:1px solid #41606a;padding:8px 11px;font-size:.72rem}
+ .streaming-lesson-frame .streaming-lesson-focus,.streaming-lesson-frame .streaming-lesson-back{display:inline-flex;margin:0 8px 0 0}
+ .streaming-lesson-frame .streaming-player-info{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .streaming-lesson-frame .streaming-player-info>div:last-child{grid-column:1/-1}
+}
+@media(max-width:540px){
+ .streaming-lesson-frame .streaming-player-info{gap:7px}
+ .streaming-lesson-frame .streaming-player-info>div{padding:11px}
+ .streaming-lesson-frame .streaming-player-info strong{font-size:.9rem}
+ .streaming-lesson-frame .streaming-player-info p{font-size:.67rem}
+ .streaming-lesson-frame .agro-integrated-frame{min-height:550px;height:79vh}
+}

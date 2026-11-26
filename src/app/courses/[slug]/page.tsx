@@ -8,6 +8,8 @@ import {agroMediaManifest} from '@/lib/agro-media';
 import {getCourseStreamLearning,type StreamLearning} from '@/lib/course-stream-data';
 import {isPortalSlug,type CoursePreview,type CourseStatus} from '@/lib/course-portals';
 import type {StarkCatalogCollection} from '@/lib/stark-catalog';
+import {Agro02Dashboard} from '@/components/Agro02Dashboard';
+import {getAgro02Progress} from '@/lib/agro02-progress';
 export default async function CoursePortal({params,searchParams}:{
  params:Promise<{slug:string}>;searchParams:Promise<{q?:string}>
 }){
@@ -15,6 +17,12 @@ export default async function CoursePortal({params,searchParams}:{
  if(!isPortalSlug(slug))notFound();
  const query=((await searchParams).q||'').trim().slice(0,120);
  const sb=await serverClient();
+ if(slug==='agroenglish'){
+  const {data:{user}}=await sb.auth.getUser();
+  let progress:Awaited<ReturnType<typeof getAgro02Progress>>=[];let recordError=false;
+  if(user)try{progress=await getAgro02Progress(sb,user.id)}catch{recordError=true}
+  return <Agro02Dashboard progress={progress} query={query} recordError={recordError}/>;
+ }
  const [{data:catalog,error},{data:status},{data:{user}}]=await Promise.all([
   sb.rpc('course_preview_catalog'),sb.rpc('student_course_status'),sb.auth.getUser()
  ]);
@@ -34,11 +42,6 @@ export default async function CoursePortal({params,searchParams}:{
   catch(e){return <section className="panel"><h1>Unable to load student dashboard</h1>
    <p role="alert">Your course is enrolled, but the learning record could not be loaded. Please try again.</p>
    <p><a href="/courses">Back to the course selector</a></p></section>}
- }
- if(slug==='agroenglish'){
-  const [{data:editor},media]=await Promise.all([sb.rpc('agro_media_is_editor'),agroMediaManifest(sb)]);
-  return <AgroStreamingDashboard course={course} status={account} learning={learning}
-   media={media} isEditor={!!editor} query={query}/>;
  }
  return <StreamingCourseDashboard slug={slug} course={course} status={account} learning={learning} query={query} starkCatalog={starkCatalog}/>;
 }

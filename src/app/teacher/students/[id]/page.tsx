@@ -25,7 +25,7 @@ export default async function StudentSupervision({params}:{params:Promise<{id:st
    <Link className="supervision-back" href="/teacher">← All students</Link>
    <h1>{row.student_name}</h1>
    <p>{(row.courses||[]).join(' · ')||'Enrolled student'} · {String(row.academic_fields?.Group||'Group not set')}</p>
-  </div><div className="supervision-hero-actions"><Link href="/teacher">Roster →</Link><Link href="/teacher/reviews">Review queue →</Link></div></div>
+  </div><div className="supervision-hero-actions"><Link href={'/teacher/students/'+id+'/course-plan'}>Contracts, meetings & homework →</Link><Link href="/teacher">Roster →</Link><Link href="/teacher/reviews">Review queue →</Link></div></div>
   <StudentPortfolioEditor studentId={id} role={staff.hierarchy} name={row.student_name}
    metrics={indicators(row)} stats={row} detail={detail} fileCreatedAt={portfolio?.created_at||null}
    learningRecord={learningRecord as StudentLearningRecord} availableLessons={(episodes||[]) as AssignableEpisode[]}/>

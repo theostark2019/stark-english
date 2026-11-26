@@ -5,12 +5,21 @@ type Attempt={id:string;student_id:string;status:string;claimed_by:string|null;e
 type Response={id:string;activity_key:string;field_key:string;response:Record<string,unknown>};
 type FileRow={id:string;activity_key:string;storage_path:string;mime_type:string};
 type Criterion={key:string;label:string;scale:number[]};
+type EvidenceVersion={id:string;payload:Record<string,unknown>;file_ids:string[];submitted_at:string};
 const activityOrder=['reading','vocabulary','substitution','word_families','first_production','transfer','feedback'];
 function responseLabel(field:string){
  return field==='28'?'Flashcard familiarity (28 words)':field==='first-final'||field==='transfer-final'?'Final written performance':field.replaceAll('-',' ').replaceAll('_',' ');
 }
 function responseDisplay(row:Response){
  const raw=Object.prototype.hasOwnProperty.call(row.response,'value')?row.response.value:row.response.text;
+ if(row.activity_key==='agro02'&&raw&&typeof raw==='object'&&!Array.isArray(raw)){
+  const p=raw as Record<string,unknown>;const rehearsal=p.practice as Record<string,unknown>|undefined;
+  return ['AGROENGLISH 0.2 · '+String(p.code||''),'',
+   ...['substitute','change','translate','create'].flatMap(k=>[k.toUpperCase(),String(rehearsal?.[k]||''),'']),
+   'FINAL WRITTEN EVIDENCE / PLAN',String(p.proof||'(Spoken evidence attached below)'),'',
+   'INITIAL ATTEMPT / REFLECTION',String(p.reflection||''),'',
+   'VOCABULARY RECALL',JSON.stringify(p.wordRatings||{})].join('\n');
+ }
  if((row.activity_key==='svo_course'||row.activity_key==='svo_review')&&
   row.field_key==='portfolio'&&raw&&typeof raw==='object'&&!Array.isArray(raw)){
   const a=raw as Record<string,unknown>;
@@ -95,7 +104,7 @@ function responseDisplay(row:Response){
  return JSON.stringify(raw,null,2);
 }
 
-export function TeacherReview({attempt,responses,files,currentTeacher,criteria,studentName,episodeTitle}:{attempt:Attempt;responses:Response[];files:FileRow[];currentTeacher:string;criteria:Criterion[];studentName:string;episodeTitle:string}){
+export function TeacherReview({attempt,responses,files,history=[],currentTeacher,criteria,studentName,episodeTitle}:{attempt:Attempt;responses:Response[];files:FileRow[];history?:EvidenceVersion[];currentTeacher:string;criteria:Criterion[];studentName:string;episodeTitle:string}){
  const [status,setStatus]=useState(attempt.status),[claimedBy,setClaimedBy]=useState(attempt.claimed_by);
  const [feedback,setFeedback]=useState(''),[scores,setScores]=useState<Record<string,number>>({}),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
  async function claim(){
@@ -118,11 +127,12 @@ export function TeacherReview({attempt,responses,files,currentTeacher,criteria,s
   <h2>Evidence and submissions</h2>{responses.length===0&&<p>No written evidence saved.</p>}
   <div className="responses">{responses.slice().sort((a,b)=>activityOrder.indexOf(a.activity_key)-activityOrder.indexOf(b.activity_key)||a.field_key.localeCompare(b.field_key)).map(r=><section className="response" key={r.id}><strong>{r.activity_key.replaceAll('_',' ')} · {responseLabel(r.field_key)}</strong><p style={{whiteSpace:'pre-wrap'}}>{responseDisplay(r)}</p></section>)}</div>
   <h2>Audio and attached evidence</h2>{!files.length&&<p>No files submitted.</p>}{files.map(f=><p key={f.id}><button className="secondary" onClick={()=>open(f.storage_path)}>Open {f.activity_key.replaceAll('_',' ')} · {f.mime_type}</button></p>)}
+  {history.length>0&&<details className="panel"><summary>Submission history · {history.length} saved performance{history.length===1?'':'s'}</summary>{history.map((v,i)=><article className="response" key={v.id}><strong>Performance {i+1} · {new Date(v.submitted_at).toLocaleString()}</strong><p style={{whiteSpace:'pre-wrap'}}>{String(v.payload.proof||'Spoken performance')}</p>{v.file_ids.map(id=>{const file=files.find(f=>f.id===id);return file?<p key={id}><button className="secondary" onClick={()=>void open(file.storage_path)}>Open this performance's audio</button></p>:null})}</article>)}</details>}
   {status==='submitted'&&<button className="gold" disabled={busy} onClick={claim}>Claim submission</button>}
   {status==='claimed'&&claimedBy===currentTeacher&&<div className="panel"><h2>Assess the performance</h2><p>Evaluate the observable language performance. Give specific, actionable feedback.</p>
-  {criteria.map(c=><label key={c.key} className="field">{c.label}<select value={scores[c.key]??''} onChange={e=>setScores(v=>({...v,[c.key]:Number(e.target.value)}))}><option value="">Not assessed</option>{(c.scale||[1,2,3,4]).map(n=><option value={n} key={n}>{n}</option>)}</select></label>)}
+  {criteria.map(c=><label key={c.key} className="field">{c.label}<select value={scores[c.key]??''} onChange={e=>{const value=e.target.value;setScores(v=>{const next={...v};if(value==='')delete next[c.key];else next[c.key]=Number(value);return next;})}}><option value="">Not assessed</option>{(c.scale||[1,2,3,4]).map(n=><option value={n} key={n}>{n}</option>)}</select></label>)}
   <label>Teacher feedback<textarea rows={6} value={feedback} onChange={e=>setFeedback(e.target.value)} placeholder="What worked well? What should the student improve? What is the next communicative challenge?"/></label>
-  <p className="row"><button className="secondary" disabled={busy||!feedback.trim()} onClick={()=>review('revision_requested')}>Request revision</button><button className="gold" disabled={busy||!feedback.trim()||criteria.some(c=>!scores[c.key])} onClick={()=>review('finalized')}>Finalize lesson</button></p></div>}
+  <p className="row"><button className="secondary" disabled={busy||!feedback.trim()} onClick={()=>review('revision_requested')}>Request revision</button><button className="gold" disabled={busy||!feedback.trim()||criteria.some(c=>scores[c.key]===undefined)} onClick={()=>review('finalized')}>Finalize lesson</button></p></div>}
   {message&&<p role="status" className="notice">{message}</p>}
  </section>;
 }

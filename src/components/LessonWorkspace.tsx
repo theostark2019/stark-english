@@ -10,6 +10,8 @@ import {SvoCourseLesson} from '@/components/SvoCourseLesson';
 import {SvoCourseReview} from '@/components/SvoCourseReview';
 import {StreamingLessonFrame} from '@/components/StreamingLessonFrame';
 import {isPortalSlug} from '@/lib/course-portals';
+import {agroEpisode} from '@/lib/agro02';
+import {Agro02Lesson,type AgroAnswers} from '@/components/Agro02Lesson';
 type Attempt={id:string;assignment_id:string;student_id:string;episode_id:string;status:string};
 type Activity={activity_key:string;activity_type:string;position:number;config:Record<string,unknown>};
 type Episode={title:string;code:string;level:string;description?:string;lesson_body?:string};
@@ -21,9 +23,11 @@ export function LessonWorkspace({assignment,studentId,episode,courseSlug,seriesN
  const started=useRef(false);
  async function start(){
   setLoading(true);setError('');
-  const {data,error:creationError}=await browserClient().from('lesson_attempts').insert({
+  const isAgro02=!!episode?.code?.startsWith('AGRO02-');
+  const result=isAgro02?await browserClient().rpc('stark02_open_attempt',{p_assignment:assignment.id}):await browserClient().from('lesson_attempts').insert({
    assignment_id:assignment.id,student_id:studentId,episode_id:assignment.episode_id,status:'draft'
   }).select('id,assignment_id,student_id,episode_id,status').single();
+  const {data,error:creationError}=result;
   if(creationError){setError(creationError.message);setLoading(false);return;}
   setAttempt(data);setLoading(false);
  }
@@ -32,6 +36,12 @@ export function LessonWorkspace({assignment,studentId,episode,courseSlug,seriesN
   started.current=true;
   void start();
  },[initialAttempt]);
+ const agro=episode?.code?agroEpisode(episode.code):undefined;
+ if(attempt&&agro){
+  const saved=responses.find((r:any)=>r.activity_key==='agro02'&&r.field_key==='portfolio');
+  return <Agro02Lesson key={attempt.id} episode={agro} attempt={attempt}
+   initialAnswers={saved?.response?.value as Partial<AgroAnswers>|undefined} initialFiles={files} reviews={reviews}/>;
+ }
  if(attempt&&episode?.code&&SVO_LESSONS[episode.code]){
   const record=responses.find((row:any)=>row.activity_key==='svo_course'&&row.field_key==='portfolio');
   return <SvoCourseLesson code={episode.code} attempt={attempt}

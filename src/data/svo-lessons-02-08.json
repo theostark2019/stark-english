@@ -1,0 +1,873 @@
+[
+  {
+    "code": "SVO-L02",
+    "page": 11,
+    "title": "To Eat / To Work",
+    "level": "A1",
+    "vocab": "eat=comer|work=trabalhar|bread=pão|cheese=queijo|meat=carne|beef=carne bovina|chicken=frango|beans=feijão|rice=arroz|butter=manteiga|home=casa|office=escritório|school=escola|store=loja|restaurant=restaurante|we=nós|with=com|at=em|the=o/a|together=juntos",
+    "context": [
+      "I eat bread.",
+      "You eat cheese.",
+      "We eat meat.",
+      "I eat rice and beans at home.",
+      "We eat bread and butter.",
+      "You work at the bank.",
+      "We work together.",
+      "I work at the store.",
+      "You work at the bank and I work with you.",
+      "We work at the office together."
+    ],
+    "chunks": [
+      "We eat",
+      "at the bank",
+      "at the school",
+      "with you",
+      "work together",
+      "bread and butter"
+    ],
+    "grammar": "Present Simple with I, you and we keeps the base verb: I eat, you work, we eat. Use at for workplaces (at the bank, at the office); with for company (with you), and together for shared action. The identifies a specific place.",
+    "grammarExamples": [
+      "We eat rice and beans at home.",
+      "We work at the office together."
+    ],
+    "express": [
+      [
+        "Eu como queijo em casa.",
+        "I eat cheese at home."
+      ],
+      [
+        "Você come maçãs no escritório.",
+        "You eat apples at the office."
+      ],
+      [
+        "Nós comemos arroz e feijão todos os dias.",
+        "We eat rice and beans every day."
+      ],
+      [
+        "Eu como pão e manteiga e bebo café todos os dias.",
+        "I eat bread and butter and drink coffee every day."
+      ],
+      [
+        "Você come pão e queijo e bebe café e leite.",
+        "You eat bread and cheese and drink coffee and milk."
+      ],
+      [
+        "Eu trabalho na loja.",
+        "I work at the store."
+      ],
+      [
+        "Você trabalha no banco.",
+        "You work at the bank."
+      ],
+      [
+        "Eu como arroz e feijão em casa.",
+        "I eat rice and beans at home."
+      ]
+    ],
+    "choose": [
+      [
+        "We ___ rice and beans.",
+        "eat",
+        [
+          "eat",
+          "eats",
+          "am"
+        ]
+      ],
+      [
+        "I work ___ the store.",
+        "at",
+        [
+          "at",
+          "on",
+          "to"
+        ]
+      ],
+      [
+        "We work ___.",
+        "together",
+        [
+          "together",
+          "bread",
+          "office"
+        ]
+      ],
+      [
+        "You eat bread ___ butter.",
+        "and",
+        [
+          "and",
+          "at",
+          "we"
+        ]
+      ]
+    ],
+    "gaps": [
+      [
+        "I ___ bread.",
+        "eat"
+      ],
+      [
+        "You ___ at the bank.",
+        "work"
+      ],
+      [
+        "We eat rice and ___ at home.",
+        "beans"
+      ],
+      [
+        "We ___ together.",
+        "work"
+      ],
+      [
+        "I work ___ the office.",
+        "at"
+      ]
+    ]
+  },
+  {
+    "code": "SVO-L03",
+    "page": 12,
+    "title": "To Play / To Like",
+    "level": "A1",
+    "vocab": "play=jogar/tocar/brincar|like=gostar|friend=amigo|mother=mãe|father=pai|brother=irmão|games=jogos|park=parque|square=praca|guitar=violão/guitarra|flute=flauta|animal=animal|dog=cachorro|cat=gato|book=livro|fantasy=fantasia|sport=esporte|my=meu/minha|your=seu/sua",
+    "context": [
+      "I play with my friend.",
+      "You don't play the guitar.",
+      "We don't like sports.",
+      "I like to play the guitar.",
+      "We play games with my friends.",
+      "I like to speak English.",
+      "I don't like to study math.",
+      "We like animals.",
+      "You like to play fantasy games.",
+      "I play the guitar with my brother."
+    ],
+    "chunks": [
+      "my friend",
+      "your father",
+      "like to play",
+      "play games",
+      "play the guitar",
+      "with my brother"
+    ],
+    "grammar": "My and your show possession. Use like + to + base verb to express interests: I like to play. Use the with a named musical instrument: play the guitar. The source also introduces don't as a negative chunk; more detailed negative Present Simple practice comes later in Lesson 10.",
+    "grammarExamples": [
+      "I like to play the guitar.",
+      "You don't play the guitar.",
+      "I play the guitar with my brother."
+    ],
+    "express": [
+      [
+        "Eu jogo jogos com meu irmão.",
+        "I play games with my brother."
+      ],
+      [
+        "Você não gosta de jogos.",
+        "You don't like games."
+      ],
+      [
+        "Nós gostamos de tocar violão.",
+        "We like to play the guitar."
+      ],
+      [
+        "Você brinca com meu irmão em casa.",
+        "You play with my brother at home."
+      ],
+      [
+        "Você não gosta de beber chá. Eu gosto de beber café.",
+        "You don't like to drink tea. I like to drink coffee."
+      ],
+      [
+        "Eu brinco no parque com meu irmão.",
+        "I play in the park with my brother."
+      ],
+      [
+        "Você gosta de brincar com animais.",
+        "You like to play with animals."
+      ],
+      [
+        "Eu não toco violão. Eu toco flauta.",
+        "I don't play the guitar. I play the flute."
+      ]
+    ],
+    "choose": [
+      [
+        "I play with ___ friend.",
+        "my",
+        [
+          "my",
+          "you",
+          "we"
+        ]
+      ],
+      [
+        "I like ___ play the guitar.",
+        "to",
+        [
+          "to",
+          "at",
+          "and"
+        ]
+      ],
+      [
+        "You ___ like games.",
+        "don't",
+        [
+          "don't",
+          "doesn't",
+          "isn't"
+        ]
+      ],
+      [
+        "We ___ animals.",
+        "like",
+        [
+          "like",
+          "likes",
+          "liking"
+        ]
+      ]
+    ],
+    "gaps": [
+      [
+        "I play games with my ___.",
+        "brother"
+      ],
+      [
+        "You ___ the guitar.",
+        "play"
+      ],
+      [
+        "I like ___ play the flute.",
+        "to"
+      ],
+      [
+        "This is ___ friend.",
+        "my"
+      ],
+      [
+        "We don't like ___.",
+        "sports"
+      ]
+    ]
+  },
+  {
+    "code": "SVO-L04",
+    "page": 14,
+    "title": "To Read / To Write",
+    "level": "A1",
+    "vocab": "read=ler|write=escrever|book=livro|magazine=revista|newspaper=jornal|letter=carta|email=email|story=história|article=artigo|library=biblioteca|bedroom=quarto|pen=caneta|pencil=lápis|week=semana|he=ele|she=ela|in=em/dentro|a=um/uma|an=um/uma",
+    "context": [
+      "He reads a book.",
+      "She writes an email.",
+      "I read a magazine every week.",
+      "He writes a letter at home.",
+      "She reads a newspaper.",
+      "I write a story every week.",
+      "He reads articles in the library.",
+      "She writes with a pen."
+    ],
+    "chunks": [
+      "read a book",
+      "write an email",
+      "every week",
+      "in the library",
+      "with a pen",
+      "he reads",
+      "she writes"
+    ],
+    "grammar": "Present Simple: with he and she, regular verbs normally add -s (he reads, she writes). With I, use the base form (I read, I write). Use a before consonant sounds (a book), an before vowel sounds (an email). In the library gives a location.",
+    "grammarExamples": [
+      "He reads a book.",
+      "She writes an email.",
+      "I write a story every week."
+    ],
+    "express": [
+      [
+        "Ele lê um livro.",
+        "He reads a book."
+      ],
+      [
+        "Ela escreve um email.",
+        "She writes an email."
+      ],
+      [
+        "Eu leio uma revista toda semana.",
+        "I read a magazine every week."
+      ],
+      [
+        "Ele escreve uma carta em casa.",
+        "He writes a letter at home."
+      ],
+      [
+        "Ela lê um jornal.",
+        "She reads a newspaper."
+      ],
+      [
+        "Ela bebe café e eu bebo chá.",
+        "She drinks coffee and I drink tea."
+      ],
+      [
+        "Ele come pão e ela gosta de maçãs.",
+        "He eats bread and she likes apples."
+      ],
+      [
+        "Ela escreve com uma caneta.",
+        "She writes with a pen."
+      ]
+    ],
+    "choose": [
+      [
+        "He ___ a book.",
+        "reads",
+        [
+          "reads",
+          "read",
+          "reading"
+        ]
+      ],
+      [
+        "She writes ___ email.",
+        "an",
+        [
+          "an",
+          "a",
+          "at"
+        ]
+      ],
+      [
+        "I ___ a story every week.",
+        "write",
+        [
+          "write",
+          "writes",
+          "writing"
+        ]
+      ],
+      [
+        "He reads articles ___ the library.",
+        "in",
+        [
+          "in",
+          "on",
+          "to"
+        ]
+      ]
+    ],
+    "gaps": [
+      [
+        "She ___ a newspaper.",
+        "reads"
+      ],
+      [
+        "He ___ a letter.",
+        "writes"
+      ],
+      [
+        "I read a magazine every ___.",
+        "week"
+      ],
+      [
+        "She writes with a ___.",
+        "pen"
+      ],
+      [
+        "She writes ___ email.",
+        "an"
+      ]
+    ]
+  },
+  {
+    "code": "SVO-L05",
+    "page": 15,
+    "title": "To Cook / To Clean",
+    "level": "A1",
+    "vocab": "cook=cozinhar|clean=limpar|breakfast=café da manhã|lunch=almoço|dinner=jantar|salad=salada|soup=sopa|bread=pão|kitchen=cozinha|house=casa|room=quarto|garden=jardim|monday=segunda-feira|tuesday=terça-feira|sundays=domingos|evening=noite|weekend=fim de semana|they=eles/elas|every=todo/cada|on=em (dia)",
+    "context": [
+      "They cook breakfast.",
+      "I clean the kitchen.",
+      "You cook lunch every Monday.",
+      "They clean the house on weekends.",
+      "We cook dinner in the evening.",
+      "I clean my room on Tuesdays.",
+      "They cook soup in the kitchen.",
+      "You clean the garden in the afternoon.",
+      "I cook lunch on Sundays."
+    ],
+    "chunks": [
+      "every Monday",
+      "on weekends",
+      "in the evening",
+      "in the kitchen",
+      "cook breakfast",
+      "clean the house"
+    ],
+    "grammar": "With they, we, you and I, use the base verb in Present Simple: They cook; I clean. Use every before a day for a repeated routine (every Monday), on with days (on Tuesdays), and in with parts of the day (in the evening).",
+    "grammarExamples": [
+      "They cook breakfast.",
+      "I clean my room on Tuesdays.",
+      "We cook dinner in the evening."
+    ],
+    "express": [
+      [
+        "Eles cozinham o café da manhã.",
+        "They cook breakfast."
+      ],
+      [
+        "Eu limpo a cozinha à tarde.",
+        "I clean the kitchen in the afternoon."
+      ],
+      [
+        "Você cozinha o almoço todos os dias.",
+        "You cook lunch every day."
+      ],
+      [
+        "Eles limpam a casa nos fins de semana.",
+        "They clean the house on weekends."
+      ],
+      [
+        "Nós cozinhamos o jantar.",
+        "We cook dinner."
+      ],
+      [
+        "Eu limpo meu quarto todos às segundas.",
+        "I clean my room on Mondays."
+      ],
+      [
+        "Eles cozinham sopa na cozinha.",
+        "They cook soup in the kitchen."
+      ],
+      [
+        "Você limpa o jardim de manhã.",
+        "You clean the garden in the morning."
+      ]
+    ],
+    "choose": [
+      [
+        "They ___ breakfast.",
+        "cook",
+        [
+          "cook",
+          "cooks",
+          "cooking"
+        ]
+      ],
+      [
+        "I clean my room ___ Tuesdays.",
+        "on",
+        [
+          "on",
+          "at",
+          "to"
+        ]
+      ],
+      [
+        "We cook dinner ___ the evening.",
+        "in",
+        [
+          "in",
+          "on",
+          "to"
+        ]
+      ],
+      [
+        "You cook lunch ___ Monday.",
+        "every",
+        [
+          "every",
+          "the",
+          "in"
+        ]
+      ]
+    ],
+    "gaps": [
+      [
+        "I ___ the kitchen.",
+        "clean"
+      ],
+      [
+        "They cook ___ in the morning.",
+        "breakfast"
+      ],
+      [
+        "I clean my room ___ Tuesdays.",
+        "on"
+      ],
+      [
+        "We cook dinner in the ___.",
+        "evening"
+      ],
+      [
+        "They cook soup in the ___.",
+        "kitchen"
+      ]
+    ]
+  },
+  {
+    "code": "SVO-L06",
+    "page": 16,
+    "title": "To Watch / To Listen",
+    "level": "A1",
+    "vocab": "watch=assistir|listen=escutar|movie=filme|tv=televisão|show=programa|music=música|radio=rádio|podcast=podcast|video=vídeo|earphones=fones de ouvido|screen=tela|theater=cinema/teatro|we=nós|us=nós (objeto)|to=para|at=às/em|on=em/sobre|platform=plataforma",
+    "context": [
+      "We watch movies at night.",
+      "I listen to music.",
+      "You watch TV at 7pm.",
+      "We listen to the radio.",
+      "They listen to us.",
+      "They watch podcasts on the platform.",
+      "We watch videos on the screen.",
+      "You listen to the podcast on the computer.",
+      "I watch movies in the theater."
+    ],
+    "chunks": [
+      "at night",
+      "listen to",
+      "at 7pm",
+      "listen to us",
+      "on the platform",
+      "on the screen"
+    ],
+    "grammar": "Watch is followed directly by the thing watched: watch TV, watch movies. Listen uses to before its object: listen to music, listen to us. At introduces an exact time (at 7pm), on often indicates a platform or screen, and in identifies a location.",
+    "grammarExamples": [
+      "We watch movies at night.",
+      "I listen to music.",
+      "You watch TV at 7pm."
+    ],
+    "express": [
+      [
+        "Nós assistimos filmes à noite.",
+        "We watch movies at night."
+      ],
+      [
+        "Eu escuto música.",
+        "I listen to music."
+      ],
+      [
+        "Você assiste TV às 7 da manhã.",
+        "You watch TV at 7am."
+      ],
+      [
+        "Você nos escuta.",
+        "You listen to us."
+      ],
+      [
+        "Eles assistem shows na TV.",
+        "They watch shows on TV."
+      ],
+      [
+        "Eu escuto podcasts na internet.",
+        "I listen to podcasts on the internet."
+      ],
+      [
+        "Nós assistimos vídeos na tela.",
+        "We watch videos on the screen."
+      ],
+      [
+        "Você escuta o podcast no aplicativo.",
+        "You listen to the podcast on the app."
+      ]
+    ],
+    "choose": [
+      [
+        "I listen ___ music.",
+        "to",
+        [
+          "to",
+          "at",
+          "on"
+        ]
+      ],
+      [
+        "We ___ movies at night.",
+        "watch",
+        [
+          "watch",
+          "listen",
+          "watches"
+        ]
+      ],
+      [
+        "You watch TV ___ 7pm.",
+        "at",
+        [
+          "at",
+          "to",
+          "in"
+        ]
+      ],
+      [
+        "They listen ___ us.",
+        "to",
+        [
+          "to",
+          "at",
+          "by"
+        ]
+      ]
+    ],
+    "gaps": [
+      [
+        "I ___ to music.",
+        "listen"
+      ],
+      [
+        "We ___ movies at night.",
+        "watch"
+      ],
+      [
+        "You listen ___ the podcast.",
+        "to"
+      ],
+      [
+        "They watch videos ___ the screen.",
+        "on"
+      ],
+      [
+        "You watch TV ___ 7pm.",
+        "at"
+      ]
+    ]
+  },
+  {
+    "code": "SVO-L07",
+    "page": 18,
+    "title": "To Be · Am / Is / Are",
+    "level": "A1",
+    "vocab": "student=estudante|teacher=professor|doctor=médico|engineer=engenheiro|chef=cozinheiro/chef|friend=amigo|home=casa|school=escola|office=escritório|hospital=hospital|city=cidade|park=parque|happy=feliz|tired=cansado|hungry=com fome|sad=triste|excited=animado|okay=fine/bem|a=um/uma|an=um/uma|but=mas|because=porque",
+    "context": [
+      "I am a student.",
+      "He is a doctor at the hospital.",
+      "We are at home.",
+      "She is happy because she has a new book.",
+      "They are tired but excited.",
+      "I am hungry. I want an apple.",
+      "You are my friend."
+    ],
+    "chunks": [
+      "I am a student",
+      "He is a doctor",
+      "We are at home",
+      "happy but tired",
+      "because I am hungry",
+      "a teacher / an engineer"
+    ],
+    "grammar": "This lesson introduces To Be: I am; he, she, it is; you, we, they are. Use it to identify a person, describe a state, or locate someone. This is Subject + Be + Complement, not always Subject + Verb + Object. A/an accompany singular professions; but contrasts, because explains a reason.",
+    "grammarExamples": [
+      "I am a student.",
+      "He is in the park.",
+      "They are happy."
+    ],
+    "express": [
+      [
+        "Eu sou um estudante.",
+        "I am a student."
+      ],
+      [
+        "Ele é um médico no hospital.",
+        "He is a doctor at the hospital."
+      ],
+      [
+        "Nós estamos em casa.",
+        "We are at home."
+      ],
+      [
+        "Ela está feliz porque tem um livro novo.",
+        "She is happy because she has a new book."
+      ],
+      [
+        "Eles estão cansados mas animados.",
+        "They are tired but excited."
+      ],
+      [
+        "Eu estou com fome. Eu quero uma maçã.",
+        "I am hungry. I want an apple."
+      ],
+      [
+        "Você é meu amigo.",
+        "You are my friend."
+      ]
+    ],
+    "choose": [
+      [
+        "I ___ a student.",
+        "am",
+        [
+          "am",
+          "is",
+          "are"
+        ]
+      ],
+      [
+        "He ___ at the hospital.",
+        "is",
+        [
+          "is",
+          "am",
+          "are"
+        ]
+      ],
+      [
+        "They ___ excited.",
+        "are",
+        [
+          "are",
+          "is",
+          "am"
+        ]
+      ],
+      [
+        "She is happy ___ she has a book.",
+        "because",
+        [
+          "because",
+          "but",
+          "and"
+        ]
+      ]
+    ],
+    "gaps": [
+      [
+        "I ___ hungry.",
+        "am"
+      ],
+      [
+        "He ___ a doctor.",
+        "is"
+      ],
+      [
+        "We ___ at home.",
+        "are"
+      ],
+      [
+        "You ___ my friend.",
+        "are"
+      ],
+      [
+        "They ___ tired but excited.",
+        "are"
+      ]
+    ]
+  },
+  {
+    "code": "SVO-L08",
+    "page": 19,
+    "title": "To Be · Negative",
+    "level": "A1",
+    "vocab": "lawyer=advogado|artist=artista|singer=cantor|nurse=enfermeiro|manager=gerente|architect=arquiteto|restaurant=restaurante|café=café (local)|museum=museu|bank=banco|store=loja|beach=praia|angry=bravo/com raiva|sad=triste|bored=entediado|sick=doente|cold=com frio/frio|hot=quente/com calor|not=não|this=isto/este|that=aquilo/aquele",
+    "context": [
+      "I am not a lawyer.",
+      "She is not an artist.",
+      "They are not at the beach.",
+      "It is not a café; it is a restaurant.",
+      "You are not angry, you are just tired.",
+      "This is my book, but that is not my pen.",
+      "He is not sick, but he is cold."
+    ],
+    "chunks": [
+      "I am not a lawyer",
+      "She is not an artist",
+      "They are not at the beach",
+      "this is my book",
+      "that is not my pen",
+      "not ... but ..."
+    ],
+    "grammar": "Form To Be negative by adding not after be: I am not, she is not / isn't, they are not / aren't. Do not use do or does with be. This and that identify objects nearby or farther away. Contrast two ideas with but.",
+    "grammarExamples": [
+      "I am not a lawyer.",
+      "She isn't an artist.",
+      "They aren't at the beach."
+    ],
+    "express": [
+      [
+        "Eu não sou um advogado.",
+        "I am not a lawyer."
+      ],
+      [
+        "Ela não é uma artista.",
+        "She is not an artist."
+      ],
+      [
+        "Eles não estão na praia.",
+        "They are not at the beach."
+      ],
+      [
+        "Isto não é um café; é um restaurante.",
+        "This is not a café; it is a restaurant."
+      ],
+      [
+        "Você não está com raiva, está apenas cansado.",
+        "You are not angry; you are just tired."
+      ],
+      [
+        "Este é meu livro, mas aquele não é minha caneta.",
+        "This is my book, but that is not my pen."
+      ],
+      [
+        "Ele não está doente, mas está com frio.",
+        "He is not sick, but he is cold."
+      ]
+    ],
+    "choose": [
+      [
+        "She ___ an artist.",
+        "isn't",
+        [
+          "isn't",
+          "doesn't",
+          "don't"
+        ]
+      ],
+      [
+        "They ___ at the beach.",
+        "aren't",
+        [
+          "aren't",
+          "isn't",
+          "don't"
+        ]
+      ],
+      [
+        "I ___ a lawyer.",
+        "am not",
+        [
+          "am not",
+          "is not",
+          "does not"
+        ]
+      ],
+      [
+        "___ is my book; that is not.",
+        "This",
+        [
+          "This",
+          "There",
+          "They"
+        ]
+      ]
+    ],
+    "gaps": [
+      [
+        "He ___ not sick.",
+        "is"
+      ],
+      [
+        "I am ___ a lawyer.",
+        "not"
+      ],
+      [
+        "They ___ not at the beach.",
+        "are"
+      ],
+      [
+        "She ___ an artist.",
+        "isn't"
+      ],
+      [
+        "That ___ not my pen.",
+        "is"
+      ]
+    ]
+  }
+]

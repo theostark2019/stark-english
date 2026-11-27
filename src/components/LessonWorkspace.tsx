@@ -1,0 +1,67 @@
+'use client';
+import {useEffect,useRef,useState} from 'react';
+import {browserClient} from '@/lib/supabase/browser';
+import {StudentSubmission} from '@/components/StudentSubmission';
+import {IntegratedAgricultureLesson} from '@/components/IntegratedAgricultureLesson';
+import {SvoLessonOne} from '@/components/SvoLessonOne';
+import type {SvoL01Answers} from '@/lib/svo-lesson-content';
+import {SVO_LESSONS,SVO_REVIEWS,type SvoLessonAnswers,type SvoReviewAnswers} from '@/lib/svo-curriculum';
+import {SvoCourseLesson} from '@/components/SvoCourseLesson';
+import {SvoCourseReview} from '@/components/SvoCourseReview';
+import {StreamingLessonFrame} from '@/components/StreamingLessonFrame';
+import {isPortalSlug} from '@/lib/course-portals';
+type Attempt={id:string;assignment_id:string;student_id:string;episode_id:string;status:string};
+type Activity={activity_key:string;activity_type:string;position:number;config:Record<string,unknown>};
+type Episode={title:string;code:string;level:string;description?:string;lesson_body?:string};
+
+export function LessonWorkspace({assignment,studentId,episode,courseSlug,seriesName,seriesId,initialAttempt,activities,responses,files,reviews}:{assignment:{id:string;episode_id:string};studentId:string;episode:Episode|null;courseSlug:string|null;seriesName:string|null;seriesId:string|null;initialAttempt:Attempt|null;activities:Activity[];responses:any[];files:any[];reviews:any[]}){
+ const [attempt,setAttempt]=useState(initialAttempt);
+ const [loading,setLoading]=useState(false);
+ const [error,setError]=useState('');
+ const started=useRef(false);
+ async function start(){
+  setLoading(true);setError('');
+  const {data,error:creationError}=await browserClient().from('lesson_attempts').insert({
+   assignment_id:assignment.id,student_id:studentId,episode_id:assignment.episode_id,status:'draft'
+  }).select('id,assignment_id,student_id,episode_id,status').single();
+  if(creationError){setError(creationError.message);setLoading(false);return;}
+  setAttempt(data);setLoading(false);
+ }
+ useEffect(()=>{
+  if(initialAttempt||started.current)return;
+  started.current=true;
+  void start();
+ },[initialAttempt]);
+ if(attempt&&episode?.code&&SVO_LESSONS[episode.code]){
+  const record=responses.find((row:any)=>row.activity_key==='svo_course'&&row.field_key==='portfolio');
+  return <SvoCourseLesson code={episode.code} attempt={attempt}
+   initialAnswers={(record?.response?.value||null) as Partial<SvoLessonAnswers>|null}/>;
+ }
+ if(attempt&&episode?.code&&SVO_REVIEWS[episode.code]){
+  const record=responses.find((row:any)=>row.activity_key==='svo_review'&&row.field_key==='portfolio');
+  return <SvoCourseReview code={episode.code} attempt={attempt}
+   initialAnswers={(record?.response?.value||null) as Partial<SvoReviewAnswers>|null}/>;
+ }
+ if(attempt&&episode?.code==='SVO-L01'){
+  const record=responses.find((row:any)=>row.activity_key==='svo_l01'&&row.field_key==='portfolio');
+  return <SvoLessonOne attempt={attempt} initialAnswers={(record?.response?.value||null) as Partial<SvoL01Answers>|null}/>;
+ }
+ const wrap=(node:React.ReactNode)=>{
+  if(!episode||!courseSlug||!isPortalSlug(courseSlug))return node;
+  return <StreamingLessonFrame slug={courseSlug} title={episode.title} code={episode.code}
+    level={episode.level} seriesName={seriesName||'Series'} seriesId={seriesId}
+    status={attempt?.status||'draft'}>{node}</StreamingLessonFrame>;
+ };
+ if(attempt&&(episode?.code==='AGRO-A1-01'||episode?.code==='AGRO-A1-02'))
+  return wrap(<IntegratedAgricultureLesson attempt={attempt} episodeCode={episode.code}
+   episodeTitle={episode.title} initialResponses={responses} initialFiles={files} reviews={reviews}/>);
+ if(attempt)return wrap(<StudentSubmission attempt={attempt} episode={episode} activities={activities}
+  initialResponses={responses} initialFiles={files} reviews={reviews}/>);
+
+ return <div className="unified-lesson">
+  <header className="unified-hero"><p>STARK LEARNING · {episode?.code||'LESSON'}</p><h1>{episode?.title||'Your lesson'}</h1><p>Your answers and teacher feedback will stay in this lesson.</p></header>
+  <div className="unified-inner"><section className="unified-panel"><h2>{error?'Unable to open your lesson':'Preparing your lesson'}</h2>
+   {error?<><p className="unified-message unified-error">{error}</p><button type="button" className="unified-primary" disabled={loading} onClick={()=>void start()}>Try again</button></>:<p>Loading the lesson workspace…</p>}
+  </section></div>
+ </div>;
+}
